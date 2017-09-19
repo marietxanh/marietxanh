@@ -1,5 +1,0 @@
-Fichier de test pour le dépot git.
-
-*Modification* ;)
-
-19/09/2017 15:40 dernière modification
