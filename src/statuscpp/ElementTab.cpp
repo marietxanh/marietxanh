@@ -1,15 +1,29 @@
 #include"../status/ElementTab.h"
+using namespace status;
+using namespace std;
 
-ElementTab::ElementTab(size_t width, size_t height): this->width(width), this->height(height)
+ElementTab::ElementTab(size_t width, size_t height, TypeID id): width(width), height(height)
 {
+    if(id == LAND){
         for(int i(0); i < height; i++)
         {
-                array.push_back(vector<Element*>);
-                for(int j(0); j < sizeof(width); j++)
+                array.push_back(vector<Element*>());
+                for(int j(0); j < width; j++)
                 {
-                        array[i].push_back(new Element(j, i, 0, 0));
+                    array[i].push_back(new Land(j, i, LAND));
                 }
         }
+    }
+    else {
+        for(int i(0); i < height; i++)
+        {
+                array.push_back(vector<Element*>());
+                for(int j(0); j < width; j++)
+                {
+                    array[i].push_back(new Unit(j, i, UNIT));
+                }
+        }
+    }
 }
 
 ElementTab::~ElementTab()
@@ -21,24 +35,17 @@ ElementTab::~ElementTab()
                         delete array[i][j];
                         delete array[i][j];
                 }
-                delete array[i];
-                array[i] = 0;
         }
 }
 
 size_t ElementTab::getWidth() const
 {
-        return this->width;
+        return width;
 }
 
-size_t ElementTab::getHeigth() const
+size_t ElementTab::getHeight() const
 {
-        return this->height;
-}
-
-void ElementTab::add(Element* element)
-{
-        map->push_back(element);
+        return height;
 }
 
 void ElementTab::resize(size_t width, size_t height)
@@ -47,12 +54,13 @@ void ElementTab::resize(size_t width, size_t height)
         this->height = height;
 }
 
-Element* ElementTab::getElement(int i, int j)
+Element* ElementTab::getElement(int i, int j) const
 {
-        return map[i][j];
+        return array[i][j];
 }
 
 void ElementTab::setElement(int i, int j, Element* element)
 {
-        map[i][j] = element;
+        element->setAbscissa(j);
+        element->setOrdinate(i);
 }
