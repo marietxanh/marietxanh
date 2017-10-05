@@ -1,11 +1,14 @@
 #include "../status/State.h"
+using namespace status;
 
-State::State(){
-        grid = new ElementTab(0, 1);
-        units = new ElementTab(0, 1);
+State::State()
+{
+        grid = new ElementTab(0, 1, LAND);
+        units = new ElementTab(0, 1, UNIT);
 }
 
-State::~State(){
+State::~State()
+{
         delete grid;
         delete units;
 }
@@ -15,7 +18,7 @@ ElementTab* State::getGrid()
         return grid;
 }
 
-ElementTab* State::getCharacter()
+ElementTab* State::getCharacters()
 {
-        return character;
+        return units;
 }

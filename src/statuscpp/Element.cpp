@@ -5,11 +5,11 @@
  */
 
 #include "../status/Element.h"
-#include "../status/TypeID.h"
+using namespace status;
 
-Element::Element(int abs, int ord, int fuel, int load):abscissa(abs), ordinate(ord), refuel(fuel), reload(load)
+Element::Element(int abs, int ord, TypeID id):abscissa(abs), ordinate(ord)
 {
-    
+        setType_id(id);
 }
 
 Element::~Element()
@@ -17,7 +17,7 @@ Element::~Element()
     
 }
 
-int Element::getAbscissa() const
+int const Element::getAbscissa() 
 {
     return abscissa;
 }
@@ -37,22 +37,12 @@ void Element::setOrdinate(int ordinate)
         this->ordinate = ordinate;
 }
 
-int Element::getRefuel() const
+TypeID Element::getType_id() const
 {
-        return refuel;
+    return this->type_id;
 }
 
-void Element::setRefuel(int refuel)
+void Element::setType_id(TypeID id)
 {
-        this->refuel = refuel;
-}
-
-int Element::getReload() const
-{
-        return reload;
-}
-
-void Element::setReload(int reload)
-{
-        this->reload;
+    type_id = id;
 }

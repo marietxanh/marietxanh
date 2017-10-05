@@ -1,6 +1,6 @@
 #include "../status/Commander.h"
-
-Commander::Commander(int bonusMvmt, int bonusRange, int bonusAtk):this->bonusMvmt(bonusMvmt), this->bonusRange(bonusRange), this->bonusAtk(bonusAtk)
+using namespace status;
+Commander::Commander(int bonusMvmt, int bonusRange, int bonusAtk):bonusMvmt(bonusMvmt), bonusRange(bonusRange), bonusAtk(bonusAtk)
 {
 
 }
@@ -10,12 +10,12 @@ Commander::~Commander()
 
 }
 
-TypeCommander Commander::getTypeCommander()
+TypeCommander Commander::getType_commander() const
 {
         return type_commander;
 }
 
-void Commander::setTypeCommander(TypeCommander type)
+void Commander::setType_commander(TypeCommander commander)
 {
-        this->type_commander = type;
+        this->type_commander = commander;
 }
