@@ -17,7 +17,7 @@ Element::~Element()
     
 }
 
-int const Element::getAbscissa() 
+int Element::getAbscissa() const 
 {
     return abscissa;
 }
