@@ -4,34 +4,23 @@
  * and open the template in the editor.
  */
 #include <iostream>
-#include "../status/Land.h"
 #include "../status/Building.h"
+using namespace status;
 
-Land :: Building (int type)
+Building::Building(int abs, int ord, TypeBuilding type_building, TypeLand type_land, TypeID type_id) : Land(abs, ord, type_land, type_id)
 {
-
+    this->health = 20;
+    this->type_building = type_building;
 }
  
-bool Building :: canCraft ()
+bool const Building::canCraft()
 {
     bool answer = false;
-    if (this->getTypeBuilding() == 1 )
-        answer = true;
+    if (this->getType_building() != TOWN && this->getType_building() != HQ ) answer = true;
     return answer;
 }
 
-bool const Building :: isLand ()
+int const Building::getHealth()
 {
-     bool answer = false;
-    if (this->getTypeLand() == 1 )
-        answer = true;
-    return answer;
-}
-
-bool const Building :: canProvide ()
-{
-    bool answer = false;
-    if (this->getTypeBuilding() == 1 )
-        answer = true;
-    return answer;
+    return this->health;
 }

@@ -5,33 +5,22 @@
  */
 #include <iostream>
 #include "../status/Land.h"
+using namespace status;
 
-Element::Land(int abs, int ord, int type) : abscissa(abs), ordinate(ord), type_land(type)
+Land::Land(int abs, int ord, TypeLand type_land, TypeID type_id): Element(abs, ord, type_id)
 {
-    this->unit& = NULL;
+    this->type_land = type_land;
 }
 
 bool const Land::isBuilding()
 {
     bool answer = false;
-    if (this->getTypeLand() != BUILDING) return answer;
+    if (this->getType_land() != BUILDING) return answer;
     else
     {
         answer = true;
         return answer;
     }
-}
-
-bool const Land::hasUnit()
-{
-    bool answer = false;
-    if(unit& == NULL) return answer;
-    else
-    {
-        answer = true;
-        return answer;
-    }
-    
 }
 
 Land::~Land ()
@@ -41,20 +30,17 @@ Land::~Land ()
 
 bool const Land::isStatic()
 {
-     bool answer = false;
-     if(getTypeID() != LAND) return answer;
-     else
-     {
-         answer = true;
-         return answer;
-     }
-    
+    bool answer = false;
+    if(getType_id() != LAND) answer = true;
+    return answer;
+}
+
 int Land::getDefense() const
 {
     return this->defense;
 }
     
-void Land :setDefense(int defense)
+void Land::setDefense(int defense)
 {
     this->defense = defense;
 }
@@ -68,16 +54,10 @@ void Land::setCost_mvmt(int cost_mvmt)
 {
     this->cost_mvmt = cost_mvmt;
 }
-const Unit& getUnit() const{
-    return this->unit;
-}
 
-void setUnit(const Unit& unit){
-    this->unit = unit
-}
-TypeLand getType_land() const{
+TypeLand Land::getType_land() const{
     return this->type_land;
 }
-void setType_land(TypeLand type_land){
+void Land::setType_land(TypeLand type_land){
     this->type_land = type_land;
 }

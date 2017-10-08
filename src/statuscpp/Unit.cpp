@@ -3,79 +3,37 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-#include <iostream>
 #include "../status/Unit.h"
-#include "../status/Element.h"
+using namespace status;
 
-Element :: Unit (bool land, bool mountain, bool river, bool sea, int health) : this->health(health)
+Unit::Unit(int abs, int ord, TypeUnits type_units, TypeID type_id):Element(abs, ord, type_id)
 {
-
+    this->type_unit = type_units;
 }
-
- bool Unit :: canAtk (Unit* target)
- {
-     bool answer = false;
-     TypeUnit target_type = target.getTypeUnit();
-      
-     if (this->attack == 0)
-         answer = false;
-     
-     return answer;       
- }
  
- bool Unit :: canCross (Element* land)
- {
-     bool answer = false;
-     type_unit unite = this->getTypeUnit();
-     type_land terrain = land.getTypeLand();
-     
-     return answer;
- }
- 
- bool Unit :: canCapture (Element* land)
- {
-     bool answer = false;
-     type_land terrain = land.getTypeLand();
-     
-     return answer;
- }
- 
- TypeUnit const Unit :: getTypeUnit ()
+ TypeUnits const Unit :: getTypeUnit ()
  {
      return type_unit;
  }
  
- void Unit :: setTypeUnit (TypeUnit type)
+ void Unit :: setTypeUnit (TypeUnits type)
  {
      this->type_unit = type;
  }
  
- /* bool const Unit :: isStatic ()
+bool const Unit::isStatic()
  {
      bool answer = false;
-     TypeID typeElement = this->getType_ID();
-     if (typeElement == 0)
-         answer = true;
-     return answer;
- } */
-    
- bool const Unit :: isTransport ()
-{
-    bool answer = false;
-     type_unit unite = this->getTypeUnit();
-     if (unite == 0)
-         answer = true;
-     return answer;
-}
-    
- bool const Unit :: canGroup ()
- {
-     bool answer = false;
-     type_unit unite = this->getTypeUnit();
-     if (unite == 1)
-         answer = true;
+     if (this->getType_id() == UNIT) answer = true;
      return answer;
  }
+    
+bool const Unit::isTransport()
+{
+    bool answer = false;
+    if (this->getType_unit() == TRANSPORT) answer = true;
+    return answer;
+}
  
 int Unit :: getAmplitude_mvmt() const
 {
