@@ -7,7 +7,7 @@
 #include "../status/Building.h"
 using namespace status;
 
-Building::Building(int abs, int ord, TypeBuilding type_building, TypeLand type_land, TypeID type_id) : Land(abs, ord, type_land, type_id)
+Building::Building(int abs, int ord, TypeBuilding type_building) : Land(abs, ord, BUILDING)
 {
     this->health = 20;
     this->type_building = type_building;
@@ -16,7 +16,7 @@ Building::Building(int abs, int ord, TypeBuilding type_building, TypeLand type_l
 bool const Building::canCraft()
 {
     bool answer = false;
-    if (this->getType_building() != TOWN && this->getType_building() != HQ ) answer = true;
+    if ((this->getType_building() != TOWN) && (this->getType_building() != HQ)) answer = true;
     return answer;
 }
 

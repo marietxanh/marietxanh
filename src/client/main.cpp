@@ -9,27 +9,20 @@ void testSFML() {
 
 // Fin test SFML
 
-#include "state.h"
-#include "test/testState.h"
+#include "../shared/test/TestState.h"
 
 using namespace std;
-using namespace state;
+using namespace status;
 
 int main(int argc,char* argv[]) 
 {
-    Exemple exemple;
-    exemple.setX(53);
     if(argc == 2){
         if(std::string(argv[1]) == "hello"){
-            cout << "Bonjour tout le monde !" << endl;
+            cout << "Hello everyone !" << endl;
             return 0;
         }
         else if(std::string(argv[1]) == "state"){
-            int ret = testState();
-            if (ret==0)
-                cout << "état validé" << endl;
-            else 
-                cout <<"état non valide" << endl;
+            TestState::testState();
         }
     }
     return 0;

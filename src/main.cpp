@@ -9,15 +9,13 @@ void testSFML() {
 
 // Fin test SFML
 
-#include "state.h"
+#include "status.h"
 
 using namespace std;
-using namespace state;
+using namespace status;
 
 int main(int argc,char* argv[]) 
 {
-    Exemple exemple;
-    exemple.setX(53);
 
 	if(argv[1]=="hello"){
     		cout << "Bonjour tout le monde !\n" << endl;

@@ -14,7 +14,14 @@
 #ifndef TESTSTATE_H
 #define TESTSTATE_H
 
-int testState();
+#include <iostream>
+#include "../../status.h"
+
+class TestState
+{
+public:
+    static void testState();
+};
 
 #endif /* TESTSTATE_H */
 

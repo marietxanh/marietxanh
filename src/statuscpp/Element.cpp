@@ -7,7 +7,7 @@
 #include "../status/Element.h"
 using namespace status;
 
-Element::Element(int abs, int ord, TypeID id):abscissa(abs), ordinate(ord)
+Element::Element(int abs, int ord, TypeID id): abscissa(abs), ordinate(ord)
 {
         setType_id(id);
 }

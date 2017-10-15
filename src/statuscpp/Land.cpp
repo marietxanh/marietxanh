@@ -7,7 +7,7 @@
 #include "../status/Land.h"
 using namespace status;
 
-Land::Land(int abs, int ord, TypeLand type_land, TypeID type_id): Element(abs, ord, type_id)
+Land::Land(int abs, int ord, TypeLand type_land): Element(abs, ord, LAND)
 {
     this->type_land = type_land;
 }
@@ -30,9 +30,7 @@ Land::~Land ()
 
 bool const Land::isStatic()
 {
-    bool answer = false;
-    if(getType_id() != LAND) answer = true;
-    return answer;
+    return true;
 }
 
 int Land::getDefense() const

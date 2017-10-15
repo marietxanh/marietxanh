@@ -6,7 +6,7 @@
 #include "../status/Unit.h"
 using namespace status;
 
-Unit::Unit(int abs, int ord, TypeUnits type_units, TypeID type_id):Element(abs, ord, type_id)
+Unit::Unit(int abs, int ord, TypeUnits type_units): Element(abs, ord, UNIT)
 {
     this->type_unit = type_units;
 }
@@ -23,9 +23,7 @@ Unit::Unit(int abs, int ord, TypeUnits type_units, TypeID type_id):Element(abs, 
  
 bool const Unit::isStatic()
  {
-     bool answer = false;
-     if (this->getType_id() == UNIT) answer = true;
-     return answer;
+    return false;
  }
     
 bool const Unit::isTransport()

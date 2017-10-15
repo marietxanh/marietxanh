@@ -1,10 +1,10 @@
 #include "../status/State.h"
 using namespace status;
 
-State::State()
+State::State(size_t width, size_t height)
 {
-        grid = new ElementTab(0, 1, LAND);
-        units = new ElementTab(0, 1, UNIT);
+        grid = new ElementTab(width, height, LAND);
+        units = new ElementTab(width, height, UNIT);
 }
 
 State::~State()
