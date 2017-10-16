@@ -9,7 +9,7 @@ void testSFML() {
 
 // Fin test SFML
 
-#include "../shared/test/TestState.h"
+#include "test/TestState.h"
 
 using namespace std;
 using namespace status;

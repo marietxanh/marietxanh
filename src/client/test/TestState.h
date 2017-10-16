@@ -15,7 +15,7 @@
 #define TESTSTATE_H
 
 #include <iostream>
-#include "../../status.h"
+#include "status.h"
 
 class TestState
 {
