@@ -6,13 +6,14 @@
 #include <iostream>
 #include "../status/Land.h"
 using namespace status;
+using namespace std;
 
 Land::Land(int abs, int ord, TypeLand type_land): Element(abs, ord, LAND)
 {
     this->type_land = type_land;
 }
 
-bool const Land::isBuilding()
+bool Land::isBuilding() const
 {
     bool answer = false;
     if (this->getType_land() != BUILDING) return answer;
@@ -28,9 +29,31 @@ Land::~Land ()
 
 }
 
-bool const Land::isStatic()
+bool Land::isStatic() const
 {
     return true;
+}
+
+void Land::affiche() const
+{
+    cout << "The land is a ";
+    switch(this->getType_land())
+    {
+        case BUILDING: cout << "Building" << endl; break;
+        case FOREST: cout << "Forest" << endl; break;
+        case MOUNTAIN: cout << "Mountain" << endl; break;
+        case PLAIN: cout << "Plain" << endl; break;
+        case SHORE: cout << "Shore" << endl; break;
+        case BEACH: cout << "Beach" << endl; break;
+        case RIVER_MOUTH: cout << "River mouth" << endl; break;
+        case SEA: cout << "Sea" << endl; break;
+        case RIVER: cout << "River" << endl; break;
+        case REEF: cout << "Reef" << endl; break;
+        case CROSSROAD: cout << "Crossroad" << endl; break;
+        case ROAD: cout << "Road" << endl; break;
+        case BRIDGE: cout << "Bridge" << endl; break;
+        default: break;
+    }
 }
 
 int Land::getDefense() const

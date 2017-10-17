@@ -17,12 +17,12 @@ Transport::~Transport()
     
 }
 
-int const Transport::getOnBoard()
+int Transport::getOnBoard() const
 {
     return onBoard;
 }
 
-int const Transport::getMaximumCharge()
+int Transport::getMaximumCharge() const
 {
     return maximumCharge;
 }

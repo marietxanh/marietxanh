@@ -9,7 +9,7 @@ Commander::~Commander()
 {
 
 }
-
+/*
 TypeCommander Commander::getType_commander() const
 {
         return type_commander;
@@ -19,3 +19,4 @@ void Commander::setType_commander(TypeCommander commander)
 {
         this->type_commander = commander;
 }
+//*/

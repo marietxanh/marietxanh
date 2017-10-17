@@ -24,8 +24,8 @@ namespace status {
   public:
     Transport (int abs, int ord, TypeTransport type_transport);
     ~Transport ();
-    int const getOnBoard ();
-    int const getMaximumCharge ();
+    int getOnBoard () const;
+    int getMaximumCharge () const;
     void setMaximumCharge (int charge);
     // Setters and Getters
   };

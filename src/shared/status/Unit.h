@@ -28,10 +28,11 @@ namespace status {
     // Operations
   public:
     Unit (int abs, int ord, TypeUnits type_units);
-    TypeUnits const getTypeUnit ();
+    TypeUnits getTypeUnit () const;
     void setTypeUnit (TypeUnits type);
-    bool const isStatic ();
-    bool const isTransport ();
+    bool isStatic () const;
+    bool isTransport () const;
+    void affiche () const;
     // Setters and Getters
     int getAmplitude_mvmt() const;
     void setAmplitude_mvmt(int amplitude_mvmt);

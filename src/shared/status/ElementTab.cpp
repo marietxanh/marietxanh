@@ -3,7 +3,7 @@
 using namespace status;
 using namespace std;
 
-ElementTab::ElementTab (size_t width, size_t height, TypeID type_id): width(width), height(height)
+ElementTab::ElementTab (int width, int height, TypeID type_id): width(width), height(height)
 {
     // rewrite with a resize function
     array.resize(width);
@@ -15,33 +15,26 @@ ElementTab::ElementTab (size_t width, size_t height, TypeID type_id): width(widt
 
 ElementTab::~ElementTab()
 {
-        for(int i(0); i < sizeof(array); i++)
-        {
-                for(int j(0); j < sizeof(array[i]); j++)
-                {
-                        delete array[i][j];
-                        delete array[i][j];
-                }
-        }
+     
 }
 
-size_t const ElementTab::getWidth()
+int ElementTab::getWidth() const
 {
         return width;
 }
 
-size_t const ElementTab::getHeight()
+int ElementTab::getHeight() const
 {
         return height;
 }
 
-Element* const ElementTab::getElement(int i, int j)
+unique_ptr<Element>& ElementTab::getElement(int i, int j)
 {
         return array[i][j];
 }
 
-void ElementTab::setElement(int i, int j, Element* element)
+void ElementTab::setElement(int i, int j, unique_ptr<Element>& element)
 {
-    if(array[i][j] == NULL) array[i][j] = element;
+    if(array[i][j] == NULL) array[i][j] = move(element);
     else printf("An element is already using this space.\n");
 }

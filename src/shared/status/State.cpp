@@ -1,24 +1,24 @@
 #include "../status/State.h"
 using namespace status;
+using namespace std;
 
-State::State(size_t width, size_t height)
+State::State(int width, int height)
 {
-        grid = new ElementTab(width, height, LAND);
-        units = new ElementTab(width, height, UNIT);
+        grid.reset(new ElementTab(width, height, LAND));
+        units.reset(new ElementTab(width, height, UNIT));
 }
 
 State::~State()
 {
-        delete grid;
-        delete units;
+
 }
 
-ElementTab* State::getGrid()
+unique_ptr<ElementTab>& State::getGrid()
 {
         return grid;
 }
 
-ElementTab* State::getCharacters()
+unique_ptr<ElementTab>& State::getCharacters()
 {
         return units;
 }

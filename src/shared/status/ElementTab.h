@@ -2,8 +2,8 @@
 #ifndef STATUS__ELEMENTTAB__H
 #define STATUS__ELEMENTTAB__H
 
-#include <stdlib.h>
 #include <vector>
+#include <memory>
 
 namespace status {
   class Element;
@@ -19,17 +19,17 @@ namespace status {
     // Associations
     // Attributes
   private:
-    size_t height;
-    size_t width;
-    std::vector<std::vector<Element*>> array;
+    int width;
+    int height;
+    std::vector<std::vector<std::unique_ptr<Element>>> array;
     // Operations
   public:
-    ElementTab (size_t width, size_t height, TypeID type_id);
+    ElementTab (int width, int height, TypeID type_id);
     ~ElementTab ();
-    size_t const getWidth ();
-    size_t const getHeight ();
-    Element* const getElement (int i, int j);
-    void setElement (int i, int j, Element* element);
+    int getWidth () const;
+    int getHeight () const;
+    std::unique_ptr<Element>& getElement (int i, int j);
+    void setElement (int i, int j, std::unique_ptr<Element>& element);
     // Setters and Getters
   };
 

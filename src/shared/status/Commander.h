@@ -20,9 +20,9 @@ namespace status {
     // Attributes
   private:
     int bonusMvmt;
-    int bonusHealth;
-    int bonusAtk;
     int bonusRange;
+    int bonusAtk;
+    int bonusHealth;
     bool bonusRound;
     int power_meter;
     TypeCommander type_commander;

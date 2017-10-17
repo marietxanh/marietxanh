@@ -12,15 +12,25 @@ Building::Building(int abs, int ord, TypeBuilding type_building) : Land(abs, ord
     this->health = 20;
     this->type_building = type_building;
 }
+
+Building::~Building()
+{
+    
+}
  
-bool const Building::canCraft()
+bool Building::canCraft() const
 {
     bool answer = false;
     if ((this->getType_building() != TOWN) && (this->getType_building() != HQ)) answer = true;
     return answer;
 }
 
-int const Building::getHealth()
+int Building::getHealth() const
 {
     return this->health;
+}
+
+TypeBuilding Building::getType_building() const
+{
+    return this->type_building;
 }

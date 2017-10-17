@@ -25,9 +25,9 @@ namespace status {
   public:
     Building (int abs, int ord, TypeBuilding type_building);
     ~Building ();
-    bool const canCraft ();
-    int const getHealth ();
-    TypeBuilding getType_building ();
+    bool canCraft () const;
+    int getHealth () const;
+    TypeBuilding getType_building () const;
     // Setters and Getters
   };
 

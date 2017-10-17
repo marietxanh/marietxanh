@@ -4,14 +4,21 @@
  * and open the template in the editor.
  */
 #include "../status/Unit.h"
+#include <iostream>
 using namespace status;
+using namespace std;
 
 Unit::Unit(int abs, int ord, TypeUnits type_units): Element(abs, ord, UNIT)
 {
     this->type_unit = type_units;
 }
+
+void Unit::affiche() const
+{
+    cout << "Ceci est une unité." << endl;
+}
  
- TypeUnits const Unit :: getTypeUnit ()
+ TypeUnits Unit :: getType_unit () const
  {
      return type_unit;
  }
@@ -21,12 +28,12 @@ Unit::Unit(int abs, int ord, TypeUnits type_units): Element(abs, ord, UNIT)
      this->type_unit = type;
  }
  
-bool const Unit::isStatic()
+bool Unit::isStatic() const
  {
     return false;
  }
     
-bool const Unit::isTransport()
+bool Unit::isTransport() const
 {
     bool answer = false;
     if (this->getType_unit() == TRANSPORT) answer = true;

@@ -19,7 +19,8 @@ namespace status {
   public:
     Element (int abs, int ord, TypeID id);
     virtual ~Element ();
-    virtual bool const isStatic () = 0;
+    virtual bool isStatic () const = 0;
+    virtual void affiche () const = 0;
     // Setters and Getters
     int getAbscissa() const;
     void setAbscissa(int abscissa);

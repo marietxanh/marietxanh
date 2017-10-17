@@ -9,5 +9,10 @@ using namespace std;
 using namespace status;
 
 void TestState::testState(){
-    cout <<  "Test of state in game." << endl; 
+    cout <<  "Test of state in game." << endl;
+    
+    State state(10, 10);
+    unique_ptr<Element> p(new Land(0, 0, BUILDING));
+    state.getGrid()->setElement(0, 0, p);
+    state.getGrid()->getElement(0, 0)->affiche();
 }

@@ -24,8 +24,9 @@ namespace status {
   public:
     Land (int abs, int ord, TypeLand type_land);
     ~Land ();
-    bool const isBuilding ();
-    bool const isStatic ();
+    bool isBuilding () const;
+    bool isStatic () const;
+    void affiche () const;
     // Setters and Getters
     int getDefense() const;
     void setDefense(int defense);
