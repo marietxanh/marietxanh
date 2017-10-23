@@ -8,7 +8,7 @@
 using namespace status;
 using namespace std;
 
-Land::Land(int abs, int ord, TypeLand type_land): Element(abs, ord, LAND)
+Land::Land(TypeLand type_land): Element(LAND)
 {
     this->type_land = type_land;
 }

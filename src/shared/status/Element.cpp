@@ -7,7 +7,7 @@
 #include "../status/Element.h"
 using namespace status;
 
-Element::Element(int abs, int ord, TypeID id): abscissa(abs), ordinate(ord)
+Element::Element(TypeID id)
 {
         setType_id(id);
 }
@@ -15,26 +15,6 @@ Element::Element(int abs, int ord, TypeID id): abscissa(abs), ordinate(ord)
 Element::~Element()
 {
     
-}
-
-int Element::getAbscissa() const 
-{
-    return abscissa;
-}
-
-void Element::setAbscissa(int abscissa)
-{
-    this->abscissa = abscissa;
-}
-
-int Element::getOrdinate() const
-{
-    return ordinate;
-}
-
-void Element::setOrdinate(int ordinate)
-{
-        this->ordinate = ordinate;
 }
 
 TypeID Element::getType_id() const

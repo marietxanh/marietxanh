@@ -28,13 +28,13 @@ int ElementTab::getHeight() const
         return height;
 }
 
-unique_ptr<Element>& ElementTab::getElement(int i, int j)
+Element* ElementTab::getElement(int i, int j)
 {
         return array[i][j];
 }
 
-void ElementTab::setElement(int i, int j, unique_ptr<Element>& element)
+void ElementTab::setElement(int i, int j, Element* element)
 {
-    if(array[i][j] == NULL) array[i][j] = move(element);
+    if(array[i][j] == NULL) array[i][j] = element;
     else printf("An element is already using this space.\n");
 }

@@ -22,11 +22,13 @@ namespace status {
     TypeTransport type_transport;
     // Operations
   public:
-    Transport (int abs, int ord, TypeTransport type_transport);
+    Transport (TypeTransport type_transport);
     ~Transport ();
     int getOnBoard () const;
     int getMaximumCharge () const;
     void setMaximumCharge (int charge);
+    TypeTransport getType_transport () const;
+    void setType_transport (TypeTransport type_transport);
     // Setters and Getters
   };
 

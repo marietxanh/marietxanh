@@ -8,11 +8,35 @@
 using namespace std;
 using namespace status;
 
+#define CHECK(expr) \
+    if (!(expr)) throw std::runtime_error("Echec " #expr);
+
 void TestState::testState(){
     cout <<  "Test of state in game." << endl;
     
-    State state(10, 10);
-    unique_ptr<Element> p(new Land(0, 0, BUILDING));
-    state.getGrid()->setElement(0, 0, p);
-    state.getGrid()->getElement(0, 0)->affiche();
+    State* state = new State(2, 2);
+    state->getGrid()->setElement(0, 0, new Land(PLAIN));
+    state->getGrid()->setElement(0, 1, new Land(MOUNTAIN));
+    state->getGrid()->setElement(1, 0, new Land(BUILDING));
+    state->getGrid()->setElement(1, 1, new Land(RIVER));
+    cout << "Check types..." << endl;
+    CHECK(state->getGrid()->getElement(0, 0)->getType_id() == LAND);
+    CHECK(state->getGrid()->getElement(0, 0)->isStatic() == true);
+    CHECK(state->getGrid()->getElement(0, 1)->getType_id() == LAND);
+    CHECK(state->getGrid()->getElement(0, 1)->isStatic() == true);
+    CHECK(state->getGrid()->getElement(1, 0)->getType_id() == LAND);
+    CHECK(state->getGrid()->getElement(1, 0)->isStatic() == true);
+    CHECK(state->getGrid()->getElement(1, 1)->getType_id() == LAND);
+    CHECK(state->getGrid()->getElement(1, 1)->isStatic() == true);
+    
+    state->getCharacters()->setElement(0, 0, new Unit(INFANTRY));
+    state->getCharacters()->setElement(0, 1, new Transport(HELICOPTER_T));
+    
+    CHECK(state->getCharacters()->getElement(0, 0)->getType_id() == UNIT);
+    CHECK(state->getCharacters()->getElement(0, 1)->getType_id() == UNIT);
+    
+    CHECK(state->getCharacters()->(Unit)getElement(0, 0)->getType_unit() == INFANTRY);
+    
+    cout << "All objects are created and correct." << endl;
+    delete state;
 }
