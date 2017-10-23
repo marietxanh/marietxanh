@@ -34,9 +34,11 @@ void TestState::testState(){
     
     CHECK(state->getCharacters()->getElement(0, 0)->getType_id() == UNIT);
     CHECK(state->getCharacters()->getElement(0, 1)->getType_id() == UNIT);
+    //Unit* unit = (Unit*)(state->getCharacters()->getElement(0, 1));
+    //CHECK(unit->getType_unit() == INFANTRY);
     
-    CHECK(state->getCharacters()->(Unit)getElement(0, 0)->getType_unit() == INFANTRY);
-    
+    CHECK(((Unit*)(state->getCharacters()->getElement(0, 0)))->getType_unit() == INFANTRY);
+    CHECK(((Transport*)(state->getCharacters()->getElement(0, 1)))->getType_transport() == HELICOPTER_T);
     cout << "All objects are created and correct." << endl;
     delete state;
 }
