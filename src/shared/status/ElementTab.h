@@ -9,11 +9,13 @@ namespace status {
 }
 
 #include "TypeID.h"
+#include "Element.h"
 
 namespace status {
 
   /// class ElementTab - 
   class ElementTab {
+    // Associations
     // Attributes
   private:
     int width;

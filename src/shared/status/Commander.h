@@ -4,13 +4,13 @@
 
 
 namespace status {
-  class Building;
   class Unit;
+  class Building;
 }
 
 #include "TypeCommander.h"
-#include "Building.h"
 #include "Unit.h"
+#include "Building.h"
 
 namespace status {
 
