@@ -23,7 +23,7 @@ namespace render {
     status::ElementTab* element_tab;
     // Operations
   public:
-    ElementTabLayer (ElementTab* element_tab);
+    ElementTabLayer (status::ElementTab* element_tab);
     ~ElementTabLayer ();
     void initSurface ();
     // Setters and Getters

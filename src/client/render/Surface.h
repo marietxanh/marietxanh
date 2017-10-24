@@ -28,6 +28,8 @@ namespace render {
     sf::VertexArray quads;
     // Operations
   public:
+    Surface ();
+    ~Surface ();
     void loadTexture (std::string& image_file);
     void initQuads (int count);
     void setSpriteLocation (int nb, int abs, int ord);

@@ -20,7 +20,7 @@ CharsTileSet::~CharTileSet ()
 }
 int CharsTileSet::getCellWidth () const
 {
-    return this->
+    
 }
 int CharsTileSet::getCellHeight () const
 {
@@ -30,7 +30,7 @@ string CharsTileSet::getImageFile () const
 {
     
 }
-Tile* CharsTileSet::getTile (status::Element* element)
+Tile* CharsTileSet::getTile (Element* element)
 {
     
 }
