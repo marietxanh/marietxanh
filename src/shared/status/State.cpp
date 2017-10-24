@@ -1,4 +1,5 @@
 #include "../status/State.h"
+#include <iostream>
 using namespace status;
 using namespace std;
 
@@ -10,7 +11,9 @@ State::State(int width, int height)
 
 State::~State()
 {
-
+    delete grid;
+    delete units;
+    //cout << "Suppression des tableaux d'unités et terrains terminée." << endl;
 }
 
 ElementTab* State::getGrid()

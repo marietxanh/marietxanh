@@ -5,7 +5,8 @@ using namespace std;
 
 ElementTab::ElementTab (int width, int height, TypeID type_id): width(width), height(height)
 {
-    // rewrite with a resize function
+    /*utilisation de la fonction resize
+     en remplacement d'une boucle for supplementaire*/
     array.resize(width);
     for(int i(0); i < width; i++)
         {
@@ -15,7 +16,17 @@ ElementTab::ElementTab (int width, int height, TypeID type_id): width(width), he
 
 ElementTab::~ElementTab()
 {
-     
+    for(int i(0); i < width; i++)
+    {
+        for(int j(0); j < height; j++)
+        {
+            /*suppression des contenus des pointeurs
+             et repointage sur l'adresse 0*/
+            delete array[i][j];
+            array[i][j] = 0;
+        }
+    }
+    //cout << "Suppression du tableau terminée." << endl;
 }
 
 int ElementTab::getWidth() const
@@ -36,5 +47,10 @@ Element* ElementTab::getElement(int i, int j)
 void ElementTab::setElement(int i, int j, Element* element)
 {
     if(array[i][j] == NULL) array[i][j] = element;
-    else printf("An element is already using this space.\n");
+    else
+    {
+        printf("An element is already using this space.\n");
+        delete element;
+        element = 0;
+    }
 }
