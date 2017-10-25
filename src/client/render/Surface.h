@@ -8,11 +8,6 @@
 namespace sf {
   class Texture;
   class VertexArray;
-};
-namespace render {
-  class Tile;
-};
-namespace sf {
   class Drawable;
   class Transformable;
 }
@@ -30,11 +25,12 @@ namespace render {
   public:
     Surface ();
     ~Surface ();
-    void loadTexture (std::string& image_file);
-    void initQuads (int count);
-    void setSpriteLocation (int nb, int abs, int ord);
-    void setSpriteTexture (int nb, Tile* texture);
+    void loadTexture (std::string& file_name);
+    void initQuads (int width, int height);
+    void setQuadsCorners (sf::Vertex* quad, int i, int j, int tilewidth, int tileheight);
+    void setQuadsCoordinate (sf::Vertex* quad, int i, int j, int tilewidth, int tileheight);
     void draw (sf::RenderTarget& target, sf::RenderStates states);
+    void seekForData (std::string& file_name);
     // Setters and Getters
   };
 

@@ -24,7 +24,6 @@ namespace render {
     // Attributes
   private:
     std::vector<Tile*> lands;
-    std::vector<Tile*> buildings;
     // Operations
   public:
     GridTileSet ();

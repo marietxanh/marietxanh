@@ -14,7 +14,11 @@ GridTileSet::GridTileSet ()
 }
 GridTileSet::~GridTileSet ()
 {
-    
+    for(int i(0); i < sizeof(lands); ++i)
+    {
+        delete lands[i];
+        lands[i] = 0;
+    }
 }
 int GridTileSet::getCellWidth () const
 {

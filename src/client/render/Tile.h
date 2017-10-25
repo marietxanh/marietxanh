@@ -18,6 +18,10 @@ namespace render {
     Tile ();
     Tile (int abs, int ord);
     ~Tile ();
+    int getCellWidth () const;
+    int getCellHeight () const;
+    int getCellAbs () const;
+    int getCellOrd () const;
     // Setters and Getters
   };
 

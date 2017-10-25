@@ -24,11 +24,10 @@ namespace render {
     // Attributes
   private:
     std::vector<Tile*> units;
-    std::vector<Tile*> transports;
     // Operations
   public:
-    CharTileSet ();
-    ~CharTileSet ();
+    CharsTileSet ();
+    ~CharsTileSet ();
     int getCellWidth () const;
     int getCellHeight () const;
     std::string getImageFile () const;

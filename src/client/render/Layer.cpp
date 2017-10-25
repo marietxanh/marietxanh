@@ -7,7 +7,10 @@
 #include "Layer.h"
 using namespace render;
 
-
+Layer::Layer()
+{
+    
+}
 Layer::~Layer ()
 {
     delete surface;

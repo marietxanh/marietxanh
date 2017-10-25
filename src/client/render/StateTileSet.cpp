@@ -14,7 +14,11 @@ StateTileSet::StateTileSet ()
 }
 StateTileSet::~StateTileSet ()
 {
-    
+    for(int i(0); i < sizeof(chars); ++i)
+    {
+        delete chars[i];
+        chars[i] = 0;
+    }
 }
 int StateTileSet::getCellHeight () const
 {

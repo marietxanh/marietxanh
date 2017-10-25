@@ -7,7 +7,6 @@
 #include "render/Surface.h"
 #include "render/Layer.h"
 #include "render/StateLayer.h"
-#include "render/ElementTabLayer.h"
 #include "render/StateTileSet.h"
 #include "render/GridTileSet.h"
 #include "render/CharsTileSet.h"
