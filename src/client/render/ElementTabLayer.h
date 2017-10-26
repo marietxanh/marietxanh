@@ -25,7 +25,6 @@ namespace render {
   public:
     ElementTabLayer (status::ElementTab* element_tab);
     ~ElementTabLayer ();
-    void initSurface ();
     // Setters and Getters
   };
 

@@ -2,6 +2,7 @@
 #ifndef RENDER__TILE__H
 #define RENDER__TILE__H
 
+#include <string>
 
 namespace render {
 
@@ -9,19 +10,17 @@ namespace render {
   class Tile {
     // Attributes
   private:
-    int abs;
-    int ord;
-    int height     = 16;
-    int width     = 16;
+    std::string adress_file;
+    int height;
+    int width;
     // Operations
   public:
     Tile ();
-    Tile (int abs, int ord);
+    Tile (std::string& adress_file, int height, int width);
     ~Tile ();
-    int getCellWidth () const;
-    int getCellHeight () const;
-    int getCellAbs () const;
-    int getCellOrd () const;
+    int getWidth () const;
+    int getHeight () const;
+    std::string& getAdressFile () const;
     // Setters and Getters
   };
 

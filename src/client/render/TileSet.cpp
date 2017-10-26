@@ -4,15 +4,24 @@
  * and open the template in the editor.
  */
 
-#include "ElementTabLayer.h"
+#include "TileSet.h"
 using namespace render;
 using namespace status;
 
-ElementTabLayer::ElementTabLayer (ElementTab* element_tab)
+TileSet::TileSet()
 {
-    this->element_tab = element_tab;
+    
 }
-ElementTabLayer::~ElementTabLayer ()
+TileSet::~TileSet()
 {
-    delete element_tab;
+    
 }
+Tile* TileSet::getTile (Element* element) const
+{
+    
+}
+Tile* TileSet::getCharTile (char character) const
+{
+    
+}
+

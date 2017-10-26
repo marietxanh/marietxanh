@@ -25,7 +25,6 @@ namespace render {
   public:
     StateLayer (status::State* state);
     ~StateLayer ();
-    void initSurface ();
     // Setters and Getters
   };
 

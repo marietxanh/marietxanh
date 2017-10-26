@@ -2,6 +2,8 @@
 #ifndef RENDER__LAYER__H
 #define RENDER__LAYER__H
 
+#include <vector>
+#include <string>
 
 namespace render {
   class Surface;
@@ -17,17 +19,43 @@ namespace render {
   class Layer {
     // Associations
     // Attributes
-  private:
+  protected:
     Surface* surface;
     TileSet* tileset;
+    std::vector<std::vector<int> > layer_array;
+    std::string text_file_name;
+    std::vector<std::string> textures_names_array;
+    int width;
+    int height;
+    int tile_width;
+    int tile_height;
     // Operations
   public:
-    Layer ();
+    Layer (std::string& text_file_name);
     virtual ~Layer ();
     Surface* getSurface () const;
-    void setSurface (Surface* surface);
-    virtual void initSurface () = 0;
+    void setSurface (std::string& file_name);
+    void getFileTextData (std::string& text_file_name);
+    TileSet* getTileSet () const;
+    std::string getTextureName (int name) const;
+    void setTextureName ();
+    int getWidth () const;
+    int getHeight () const;
     // Setters and Getters
+    const TileSet*& getTileset() const;
+    void setTileset(const TileSet*& tileset);
+    const std::vector<std::vector<int> >& getLayer_array() const;
+    void setLayer_array(const std::vector<std::vector<int> >& layer_array);
+    const std::string& getText_file_name() const;
+    void setText_file_name(const std::string& text_file_name);
+    const std::vector<std::string>& getTextures_names_array() const;
+    void setTextures_names_array(const std::vector<std::string>& textures_names_array);
+    void setWidth(int width);
+    void setHeight(int height);
+    int getTile_width() const;
+    void setTile_width(int tile_width);
+    int getTile_height() const;
+    void setTile_height(int tile_height);
   };
 
 };

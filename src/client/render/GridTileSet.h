@@ -23,7 +23,8 @@ namespace render {
   class GridTileSet : public render::TileSet {
     // Attributes
   private:
-    std::vector<Tile*> lands;
+    std::vector<std::vector<Tile*>> lands;
+    std::vector<std::vector<Tile*>> buildings;
     // Operations
   public:
     GridTileSet ();

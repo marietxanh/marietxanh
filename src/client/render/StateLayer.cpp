@@ -16,11 +16,5 @@ StateLayer::~StateLayer()
 {
     delete state;
 }
-void StateLayer::initSurface ()
-{
-    this->getSurface()->loadTexture();
-    this->getSurface()->initQuads();
-    this->getSurface()->setQuadsLocation();
-    this->getSurface()->setQuadsTexture();
-}
+
 

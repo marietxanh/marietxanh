@@ -5,8 +5,15 @@
  */
 
 #include "GridTileSet.h"
+
+#define ORANGE_BUILDING "../../res/advance_wars_sprites_buildings/advance_wars_sprites_buildings_orange"
+#define BLUE_BUILDING "../../res/advance_wars_sprites_buildings/advance_wars_sprites_buildings_blue"
+#define GREEN_BUILDING "../../res/advance_wars_sprites_buildings/advance_wars_sprites_buildings_green"
+#define YELLOW_BUILDING "../../res/advance_wars_sprites_buildings/advance_wars_sprites_buildings_yellow"
+
 using namespace render;
 using namespace status;
+using namespace std;
 
 GridTileSet::GridTileSet ()
 {
@@ -16,8 +23,11 @@ GridTileSet::~GridTileSet ()
 {
     for(int i(0); i < sizeof(lands); ++i)
     {
-        delete lands[i];
-        lands[i] = 0;
+        for(int j(0); j < sizeof(lands[i]); j++)
+        {
+            delete lands[i][j];
+            lands[i][j] = 0;
+        }
     }
 }
 int GridTileSet::getCellWidth () const

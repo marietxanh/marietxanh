@@ -23,7 +23,8 @@ namespace render {
   class CharsTileSet : public render::TileSet {
     // Attributes
   private:
-    std::vector<Tile*> units;
+    std::vector<std::vector<Tile*>> units;
+    std::vector<std::vector<Tile*>> transports;
     // Operations
   public:
     CharsTileSet ();

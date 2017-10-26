@@ -2,16 +2,12 @@
 #ifndef RENDER__TILESET__H
 #define RENDER__TILESET__H
 
-#include <string>
+#include <vector>
 
 namespace render {
   class Tile;
-};
-namespace status {
-  class Element;
 }
 
-#include "status/Element.h"
 #include "Tile.h"
 
 namespace render {
@@ -19,14 +15,14 @@ namespace render {
   /// class TileSet - 
   class TileSet {
     // Associations
+    // Attributes
+  private:
+    std::vector<Tile*> tiles_array;
     // Operations
   public:
+    TileSet ();
     virtual ~TileSet ();
-    virtual int getCellWidth () const = 0;
-    virtual int getCellHeight () const = 0;
-    virtual std::string getImageFile () const = 0;
-    virtual Tile* getTile (status::Element* element) const;
-    virtual Tile* getCharTile (char character) const;
+    Tile* getTile (int i) const;
     // Setters and Getters
   };
 

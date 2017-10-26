@@ -56,48 +56,5 @@ void Surface::draw (RenderTarget& target, RenderStates states)
 }
 void Surface::seekForData(string& file_name)
 {
-    /*fonction qui va chercher le fichier txt correspondant au fichier png
-     et permet de definir les parametres du tableau de vertex*/
-    string text_file = "res/" + file_name + ".txt";
-    ifstream file_access(text_file, ios::in);
-    /*inserer un CHECK pour verifier l'ouverture du fichier*/
-    string line;
-    int k = 0;
-    int width, height, tilewidth, tileheight;
-    getline(file_access, line);
-    do
-    {
-        switch(k)
-        {
-            case 1:
-                width = int(line.substr(6));
-                break;
-            case 2:
-                height = int(line.substr(7));
-                break;
-            case 3:
-                tilewidth = int(line.substr(10));
-                break;
-            case 4:
-                tileheight = int(line.substr(11));
-                break;
-        }
-        k++;
-    }while(getline(file_access, line) != "[tileset]");
     
-    for (int i(0); i < width; ++i)
-            for (int j(0); j < height; ++j)
-            {
-                // on récupère un pointeur vers le quad à définir dans le tableau de vertex
-                sf::Vertex* quad = &quads[(i + j * width) * 4];
-
-                // on définit ses quatre coins
-                this->setQuadsCorners(quad, i, j, tilewidth, tileheight);
-
-                // on définit ses quatre coordonnées de texture
-                this->setQuadsCoordinate(i, j, tilewidth, tileheight);
-
-            }
-    
-    file_access.close();
 }
