@@ -24,21 +24,19 @@ namespace render {
     TileSet* tileset;
     std::vector<std::vector<int> > layer_array;
     std::string text_file_name;
-    std::vector<std::string> textures_names_array;
+    std::string type_layer;
     int width;
     int height;
     int tile_width;
     int tile_height;
     // Operations
   public:
-    Layer (std::string& text_file_name);
+    Layer (std::string& text_file_name, std::string& type_layer);
     virtual ~Layer ();
     Surface* getSurface () const;
     void setSurface (std::string& file_name);
     void getFileTextData (std::string& text_file_name);
     TileSet* getTileSet () const;
-    std::string getTextureName (int name) const;
-    void setTextureName ();
     int getWidth () const;
     int getHeight () const;
     // Setters and Getters
@@ -48,8 +46,8 @@ namespace render {
     void setLayer_array(const std::vector<std::vector<int> >& layer_array);
     const std::string& getText_file_name() const;
     void setText_file_name(const std::string& text_file_name);
-    const std::vector<std::string>& getTextures_names_array() const;
-    void setTextures_names_array(const std::vector<std::string>& textures_names_array);
+    const std::string& getType_layer() const;
+    void setType_layer(const std::string& type_layer);
     void setWidth(int width);
     void setHeight(int height);
     int getTile_width() const;

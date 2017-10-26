@@ -21,7 +21,8 @@ Surface::~Surface ()
 void Surface::loadTexture (string& file_name)
 {
     string image_file = "res/" + file_name + ".png";
-    texture.loadFromFile(image_file);
+    textures.push_back();
+    textures[(int)(textures.size()) - 1].loadFromFile(image_file);
     /*inserer un CHECK pour verifier l'ouverture de l'image*/
 }
 void Surface::initQuads (int width, int height)
@@ -29,14 +30,14 @@ void Surface::initQuads (int width, int height)
     quads.setPrimitiveType(sf::Quads);
     quads.resize(width * height * 4);    
 }
-void Surface::setQuadsCorners (Vertex* quad, int i, int j, int tilewidth, int tileheight)
+void Surface::setQuadPosition (Vertex* quad, int i, int j, int tilewidth, int tileheight)
 {
     quad[0].position = sf::Vector2f(i * tilewidth, j * tileheight);
     quad[1].position = sf::Vector2f((i + 1) * tilewidth, j * tileheight);
     quad[2].position = sf::Vector2f((i + 1) * tilewidth, (j + 1) * tileheight);
     quad[3].position = sf::Vector2f(i * tilewidth, (j + 1) * tileheight);    
 }
-void Surface::setQuadsCoordinate (Vertex* quad, int i, int j, int tilewidth, int tileheight)
+void Surface::setQuadTextureCoordinates (Vertex* quad, int i, int j, int tilewidth, int tileheight)
 {
     quad[0].texCoords = sf::Vector2f(i * tilewidth, j * tileheight);
     quad[1].texCoords = sf::Vector2f((i + 1) * tilewidth, j * tileheight);
@@ -49,12 +50,8 @@ void Surface::draw (RenderTarget& target, RenderStates states)
     states.transform *= getTransform();
 
     // on applique la texture du tileset
-    states.texture = &texture;
+    states.texture = &textures;
 
     // et on dessine enfin le tableau de vertex
     target.draw(quads, states);    
-}
-void Surface::seekForData(string& file_name)
-{
-    
 }

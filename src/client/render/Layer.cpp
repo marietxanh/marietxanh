@@ -25,7 +25,6 @@ Surface* Layer::getSurface () const
 }
 void Layer::setSurface ()
 {
-    surface->loadTexture(file_name);
     int nb;
     for (int i(0); i < width; ++i)
             for (int j(0); j < height; ++j)
@@ -37,9 +36,8 @@ void Layer::setSurface ()
                 // on définit ses quatre coins
                 this->getSurface()->setQuadPosition(quad, i, j, tile_width, tile_height, )
 
-                nb
                 // on définit ses quatre coordonnées de texture
-                this->getSurface()->setQuadTextureCoordinates(quad, i, j, this->getTileSet()->getTile(nb)->getWidth(), this->getTileSet()->getTile(nb)->getHeight());
+                this->getSurface()->setQuadTextureCoordinates(quad, nb, i, j, this->getTileSet()->getTile(nb)->getWidth(), this->getTileSet()->getTile(nb)->getHeight());
 
             }
 }
@@ -65,19 +63,77 @@ void Layer::getFileTextData (std::string& text_file_name)
                 this->setHeight(int(line.substr(7)));
                 break;
             case 3:
-                this->tile_width = int(line.substr(10));
+                this->setTile_width(int(line.substr(10)));
                 break;
             case 4:
-                this->tile_height = int(line.substr(11));
+                this->setTile_height(int(line.substr(11)));
                 break;
         }
         k++;
     }while(getline(file_access, line) != "[tilesets]");
     
     this->getSurface()->initQuads(width, height);
-    
-    
-    file_access.close();
+    size_t found, temp;
+    string image_name, image_width, image_height;
+    getline(file_access, line);
+    temp = line.find('=') + 1;
+    found = -1;
+    do
+    {
+        found=line.find('.',found+1,6);
+        if (found!=std::string::npos)
+        {
+            image_name = line.substr(temp, found - temp);
+            temp = found + 1;
+        }    
+        found=line.find(',',found+1,6);
+        if (found!=std::string::npos)
+        {
+            image_width = line.substr(temp, found - temp);
+            temp = found + 1;
+        }
+        found=line.find(',',found+1,6);
+        if (found!=std::string::npos)
+        {
+            image_height = line.substr(temp, found - temp);
+        }
+        this->getTileSet()->setTile(image_name, image_width, image_height);
+        this->getSurface()->loadTexture(image_name);
+    }while(getline(file_access, line) != "");
+    if(this->getType_layer() == "Lands")
+    {
+        while(getline(file_access, line) != "type=Lands");
+    }
+    else if(this->getType_layer() == "Buildings")
+    {
+        while(getline(file_access, line) != "type=Builidings");
+    }
+    while(getline(file_access, line) != "data=");
+    this->getLayer_array().resize(this->getHeight());
+
+    for(int i(0); i < this->getLayer_array().size(); i ++)
+    {
+        temp = 0;
+        found = -1;
+        this->getLayer_array()[i].resize(this->getWidth());
+        for(int j(0); j < this->getLayer_array().size(); j++)
+        {
+            if(i != this->)
+            found=line.find(',',found+1,6);
+            if (found!=std::string::npos)
+            {
+                this->getLayer_array()[i][j] = int(line.substr(temp, found - temp));
+            }    
+        }
+    }
+        
+    file_access.close();    this->getLayer_array().push_back();
+            found=line.find(',');
+            if (found!=std::string::npos)
+            {
+                this->getLayer_array()[i].push_back()line.substr(temp, found - temp);
+                temp = found + 1;
+            }
 } 
 
 int Layer::getWidth() const

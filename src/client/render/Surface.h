@@ -29,7 +29,7 @@ namespace render {
     void loadTexture (std::string& texture_file_name);
     void initQuads (int width, int height);
     void setQuadPosition (sf::Vertex* quad, int abscissa, int ordinate, int tile_width, int tile_height, int height, int width);
-    void setQuadTextureCoordinates (sf::Vertex* quad, int tile_witdh, int tile_height, sf::Texture texture);
+    void setQuadTextureCoordinates (sf::Vertex* quad, int nb, int tile_witdh, int tile_height, sf::Texture texture);
     void draw (sf::RenderTarget& target, sf::RenderStates states);
     sf::VertexArray& getQuad (int i, int j);
     // Setters and Getters

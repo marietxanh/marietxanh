@@ -3,6 +3,7 @@
 #define RENDER__TILESET__H
 
 #include <vector>
+#include <string>
 
 namespace render {
   class Tile;
@@ -20,9 +21,10 @@ namespace render {
     std::vector<Tile*> tiles_array;
     // Operations
   public:
-    TileSet ();
-    virtual ~TileSet ();
+    TileSet (std::string& name, int width, int height);
+    ~TileSet ();
     Tile* getTile (int i) const;
+    void setTile (std::string& name, int width, int height);
     // Setters and Getters
   };
 
