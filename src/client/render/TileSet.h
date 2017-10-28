@@ -21,7 +21,7 @@ namespace render {
     std::vector<Tile*> tiles_array;
     // Operations
   public:
-    TileSet (std::string& name, int width, int height);
+    TileSet ();
     ~TileSet ();
     Tile* getTile (int i) const;
     void setTile (std::string& name, int width, int height);

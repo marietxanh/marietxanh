@@ -21,17 +21,22 @@ namespace render {
     // Attributes
   private:
     std::vector<sf::Texture> textures;
-    sf::VertexArray quads;
+    std::vector<sf::VertexArray> quads;
+    std::vector<std::vector<int> > layer_array;
     // Operations
   public:
     Surface ();
     ~Surface ();
     void loadTexture (std::string& texture_file_name);
     void initQuads (int width, int height);
-    void setQuadPosition (sf::Vertex* quad, int abscissa, int ordinate, int tile_width, int tile_height, int height, int width);
-    void setQuadTextureCoordinates (sf::Vertex* quad, int nb, int tile_witdh, int tile_height, sf::Texture texture);
-    void draw (sf::RenderTarget& target, sf::RenderStates states);
-    sf::VertexArray& getQuad (int i, int j);
+    void setQuadPosition (sf::Vertex* quad, int abscissa, int ordinate, int tile_width, int tile_height, int texture_width, int texture_height);
+    void setQuadTextureCoordinates (sf::Vertex* quad, int texture_witdh, int texture_height);
+    void draw (sf::RenderTarget& target, sf::RenderStates states) const;
+    sf::Vertex* getQuad (int i, int j);
+    sf::Texture* getTexture (int i);
+    int getLayerArray (int i, int j) const;
+    void setLayerArray (int height, int width);
+    void addValue (int value, int i, int j);
     // Setters and Getters
   };
 

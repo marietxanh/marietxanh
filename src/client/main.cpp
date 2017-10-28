@@ -10,6 +10,7 @@ void testSFML() {
 // Fin test SFML
 
 #include "test/TestState.h"
+#include "test/TestRender.h"
 
 using namespace std;
 using namespace status;
@@ -23,6 +24,9 @@ int main(int argc,char* argv[])
         }
         else if(std::string(argv[1]) == "state"){
             TestState::testState();
+        }
+        else if(std::string(argv[1]) == "render"){
+            TestRender::testRender("../res/test_render.txt");
         }
     }
     return 0;

@@ -6,7 +6,6 @@
 
 #include "TileSet.h"
 using namespace render;
-using namespace status;
 
 TileSet::TileSet()
 {
@@ -14,14 +13,18 @@ TileSet::TileSet()
 }
 TileSet::~TileSet()
 {
-    
+    for(int i(0); i < int(this->tiles_array.size()); i++)
+    {
+        delete this->tiles_array[i];
+        this->tiles_array[i] = 0;
+    }
 }
-Tile* TileSet::getTile (Element* element) const
+Tile* TileSet::getTile (int i) const
 {
-    
+    return this->tiles_array[i];
 }
-Tile* TileSet::getCharTile (char character) const
+void TileSet::setTile (std::string& name, int width, int height)
 {
-    
-}
+    this->tiles_array.push_back(new Tile(name, width, height));
 
+}

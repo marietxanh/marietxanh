@@ -20,7 +20,7 @@ namespace render {
     ~Tile ();
     int getWidth () const;
     int getHeight () const;
-    std::string& getAdressFile () const;
+    std::string getAdressFile () const;
     // Setters and Getters
   };
 

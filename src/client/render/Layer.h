@@ -2,7 +2,6 @@
 #ifndef RENDER__LAYER__H
 #define RENDER__LAYER__H
 
-#include <vector>
 #include <string>
 
 namespace render {
@@ -10,8 +9,8 @@ namespace render {
   class TileSet;
 }
 
-#include "TileSet.h"
 #include "Surface.h"
+#include "TileSet.h"
 
 namespace render {
 
@@ -20,9 +19,8 @@ namespace render {
     // Associations
     // Attributes
   protected:
-    Surface* surface;
+    Surface surface;
     TileSet* tileset;
-    std::vector<std::vector<int> > layer_array;
     std::string text_file_name;
     std::string type_layer;
     int width;
@@ -31,9 +29,10 @@ namespace render {
     int tile_height;
     // Operations
   public:
-    Layer (std::string& text_file_name, std::string& type_layer);
+    Layer ();
+    Layer (std::string text_file_name, std::string type_layer);
     virtual ~Layer ();
-    Surface* getSurface () const;
+    Surface getSurface () const;
     void setSurface (std::string& file_name);
     void getFileTextData (std::string& text_file_name);
     TileSet* getTileSet () const;
@@ -42,8 +41,6 @@ namespace render {
     // Setters and Getters
     const TileSet*& getTileset() const;
     void setTileset(const TileSet*& tileset);
-    const std::vector<std::vector<int> >& getLayer_array() const;
-    void setLayer_array(const std::vector<std::vector<int> >& layer_array);
     const std::string& getText_file_name() const;
     void setText_file_name(const std::string& text_file_name);
     const std::string& getType_layer() const;
