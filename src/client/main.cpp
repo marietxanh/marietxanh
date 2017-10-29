@@ -26,7 +26,7 @@ int main(int argc,char* argv[])
             TestState::testState();
         }
         else if(std::string(argv[1]) == "render"){
-            TestRender::testRender("../res/test_render.txt");
+            TestRender::testRender("res/test_render.txt");
         }
     }
     return 0;
