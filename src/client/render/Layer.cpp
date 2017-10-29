@@ -37,19 +37,14 @@ void Layer::setSurface ()
 {
     int nb;
     for (int i(0); i < height; ++i)
+    {
             for (int j(0); j < width; ++j)
             {
                 nb = surface.getLayerArray(i, j);
-                // on récupère un pointeur vers le quad à définir dans le tableau de vertex
-                sf::Vertex* quad = surface.getQuad(i, j);
-
-                // on définit ses quatre coins
-                surface.setQuadPosition(quad, i, j, tile_width, tile_height, tileset->getTile(nb)->getWidth(), tileset->getTile(nb)->getHeight());
-
-                // on définit ses quatre coordonnées de texture
-                surface.setQuadTextureCoordinates(quad, tileset->getTile(nb)->getWidth(), tileset->getTile(nb)->getHeight());
-
+                surface.setQuadPosition(surface.getQuad(i, j), i, j, tile_width, tile_height, tileset->getTile(nb)->getWidth(), tileset->getTile(nb)->getHeight());
+                surface.setQuadTextureCoordinates(surface.getQuad(i, j), tileset->getTile(nb)->getWidth(), tileset->getTile(nb)->getHeight());
             }
+    }
 }
 
 void Layer::getFileTextData (std::string& text_file_name)
@@ -57,7 +52,6 @@ void Layer::getFileTextData (std::string& text_file_name)
     /*fonction qui va chercher le fichier txt definit les parametres du tableau de vertex*/
     cout << "Accessing text file " << text_file_name << endl;
     ifstream file_access(text_file_name);
-    /*inserer un CHECK pour verifier l'ouverture du fichier*/
     if(!file_access) cout << "Cannot load " << text_file_name << endl;
     string line;
     int k = 0;
@@ -85,7 +79,7 @@ void Layer::getFileTextData (std::string& text_file_name)
         getline(file_access, line);
     }while(line != "[tilesets]");
     
-    this->getSurface().initQuads(width, height);
+    surface.initQuads(width, height);
     
     string image_name;
     int image_width = 0, image_height = 0;
@@ -165,19 +159,15 @@ void Layer::getFileTextData (std::string& text_file_name)
             if (found!=std::string::npos)
             {
                 digit_s = line.substr(temp, found - temp);
-                cout << digit_s << " ";
                 digit = std::stoi (digit_s,&sz);
-                //cout << digit << " ";
                 temp = found + 1;
                 surface.addValue(digit, i, j);
             } 
         }
-        if(i != (height - 1)) cout << endl;
     }
     found=line.find('\n');
     digit_s = line.substr(temp, found - temp);
     digit = std::stoi (digit_s,&sz);
-    cout << digit << endl;
     surface.addValue(digit, height - 1, width - 1);
     /*fermeture du fichier texte contenant les informations de la carte*/   
     file_access.close();

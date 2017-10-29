@@ -24,9 +24,12 @@ void TestRender::testRender(string file_name)
     std::cout << "Layers loaded" << std::endl;
     
     lands.setSurface();
+    
+    cout << "Lands ready !" << endl;
+    
     buildings.setSurface();
     
-    cout << "Surfaces ready !" << endl;
+    cout << "Buildings ready !" << endl;
     
     RenderWindow window(VideoMode(size_t(lands.getWidth()*lands.getTile_width()), size_t(lands.getHeight()*lands.getTile_height())), "TestRender");
     //window.setFramerateLimit(30);
@@ -40,9 +43,6 @@ void TestRender::testRender(string file_name)
             if(event.type == sf::Event::Closed)
                 window.close();
         }
-
-        // on dessine le niveau
-        window.clear();
         window.draw(lands.getSurface());
         window.draw(buildings.getSurface());
         window.display();

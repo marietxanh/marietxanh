@@ -38,11 +38,20 @@ void Surface::initQuads (int width, int height)
 }
 void Surface::setQuadPosition (Vertex* quad, int abscissa, int ordinate, int tile_width, int tile_height, int texture_width, int texture_height)
 {
-    quad[0].position = sf::Vector2f(abscissa * tile_width - (texture_width - tile_width) / 2, ordinate * tile_height - (texture_height - tile_height));
-    quad[1].position = sf::Vector2f((abscissa + 1 ) * tile_width + (texture_width - tile_width) / 2, ordinate * tile_height - (texture_height - tile_height));
-    quad[2].position = sf::Vector2f((abscissa + 1 ) * tile_width + (texture_width - tile_width) / 2, (ordinate + 1) * tile_height);
-    quad[3].position = sf::Vector2f(abscissa * tile_width - (texture_width - tile_width) / 2, (ordinate + 1) * tile_height);
-    cout << "Quad loaded" << endl;
+    sf::Vector2u tileset(tile_width, tile_height);
+    sf::Vector2u textureset(texture_width, texture_height);
+    if(ordinate > 0)
+    {
+        quad[0].position = sf::Vector2f(abscissa * tileset.x, ordinate * tileset.y - (textureset.y - tileset.y));
+        quad[1].position = sf::Vector2f((abscissa + 1) * tileset.x, ordinate * tileset.y - (textureset.y - tileset.y));
+    }
+    else
+    {
+        quad[0].position = sf::Vector2f(abscissa * tileset.x, tileset.y);
+        quad[1].position = sf::Vector2f((abscissa + 1) * tileset.x, tileset.y);
+    }
+    quad[2].position = sf::Vector2f((abscissa + 1 ) * tileset.x, (ordinate + 1) * tileset.y);
+    quad[3].position = sf::Vector2f(abscissa * tileset.x, (ordinate + 1) * tileset.y);
 }
 void Surface::setQuadTextureCoordinates (Vertex* quad, int texture_width, int texture_height)
 {
@@ -50,7 +59,6 @@ void Surface::setQuadTextureCoordinates (Vertex* quad, int texture_width, int te
     quad[1].texCoords = sf::Vector2f(texture_width, 0);
     quad[2].texCoords = sf::Vector2f(texture_width, texture_height);
     quad[3].texCoords = sf::Vector2f(0, texture_height);
-    cout << "Quad loaded" << endl;
 }
 
 void Surface::draw (RenderTarget& target, RenderStates states) const
@@ -58,34 +66,20 @@ void Surface::draw (RenderTarget& target, RenderStates states) const
     // on applique la transformation
     states.transform *= getTransform();
 
-    // on applique la texture du tileset
-    //states.texture = textures;
-
     // et on dessine enfin le tableau de vertex
-    for(int i(0); i < int(layer_array.size()); i++)
-    {
-        for(int j(0); j < int(layer_array[i].size()); j++)
-        {
-            states.texture = &textures[layer_array[i][j] - 1];  
-        }
-        target.draw(quads[i], states);
-    }
+    states.texture = &textures[0];  
+
+    target.draw(quads[0], states);
 
 }
 //*
-sf::Vertex* Surface::getQuad(int i, int j)
+Vertex* Surface::getQuad(int i, int j)
 {
-    cout << &quads[i][j] << endl;
-    return &quads[i][j];
+    return &(this->quads[i][0]);
 }
 //*/
-/*
-sf::Vertex* Surface::getQuad(int i)
-{
-    return &quads[i];
-}
-//*/
-sf::Texture* Surface::getTexture(int i)
+
+Texture* Surface::getTexture(int i)
 {
     return &textures[i];   
 }
@@ -105,5 +99,5 @@ int Surface::getLayerArray(int i, int j) const
 }
 void Surface::addValue(int value, int i, int j)
 {
-    layer_array[i][j] = value;
+    this->layer_array[i][j] = value;
 }

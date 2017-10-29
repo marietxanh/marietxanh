@@ -33,7 +33,6 @@ namespace render {
     void setQuadTextureCoordinates (sf::Vertex* quad, int texture_witdh, int texture_height);
     void draw (sf::RenderTarget& target, sf::RenderStates states) const;
     sf::Vertex* getQuad (int i, int j);
-    //sf::Vertex* getQuad (int i);
     sf::Texture* getTexture (int i);
     int getLayerArray (int i, int j) const;
     void setLayerArray (int height, int width);
