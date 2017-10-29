@@ -33,11 +33,11 @@ TileSet* Layer::getTileSet () const
 {
     return tileset;
 }
-void Layer::setSurface (string& file_name)
+void Layer::setSurface ()
 {
     int nb;
-    for (int i(0); i < width; ++i)
-            for (int j(0); j < height; ++j)
+    for (int i(0); i < height; ++i)
+            for (int j(0); j < width; ++j)
             {
                 nb = surface.getLayerArray(i, j);
                 // on récupère un pointeur vers le quad à définir dans le tableau de vertex
@@ -56,10 +56,10 @@ void Layer::getFileTextData (std::string& text_file_name)
 {
     /*fonction qui va chercher le fichier txt definit les parametres du tableau de vertex*/
     string text_file = text_file_name;
-    cout << "Access to the text file " << text_file << endl;
+    cout << "Access to text file " << text_file << endl;
     ifstream file_access(text_file);
     /*inserer un CHECK pour verifier l'ouverture du fichier*/
-    if(!file_access) cout << "Cannot load" << endl;
+    if(!file_access) cout << "Cannot load " << text_file << endl;
     string line;
     int k = 0;
     getline(file_access, line);
@@ -71,35 +71,27 @@ void Layer::getFileTextData (std::string& text_file_name)
         {
             case 1:
                 this->setWidth(stoi(line.substr(6)));
-                cout << this->getWidth() << endl;
                 break;
             case 2:
                 this->setHeight(stoi(line.substr(7)));
-                cout << this->getHeight() << endl;
                 break;
             case 3:
                 this->setTile_width(stoi(line.substr(10)));
-                cout << this->getTile_width() << endl;
                 break;
             case 4:
                 this->setTile_height(stoi(line.substr(11)));
-                cout << this->getTile_height() << endl;
                 break;
         }
         k++;
         getline(file_access, line);
     }while(line != "[tilesets]");
     
-    cout << line << endl;
-    
     this->getSurface().initQuads(width, height);
+    
     string image_name;
     int image_width = 0, image_height = 0;
     getline(file_access, line);
-
-
-    
-    
+   
     /*recherche des textures utilisees pour construire la carte que l'on souhaite
      afficher a l'ecran*/
     do
@@ -107,12 +99,10 @@ void Layer::getFileTextData (std::string& text_file_name)
         size_t found = line.find('.');
         size_t temp = line.find('=') + 1;
         string image_width_s, image_height_s;
-        cout << line << endl;
         std::string::size_type sz;
         if (found!=std::string::npos)
         {
             image_name = line.substr(temp, found - temp);
-            cout << image_name << endl;
             temp = found + 1;
         }    
         found = line.find(',');
@@ -122,18 +112,15 @@ void Layer::getFileTextData (std::string& text_file_name)
         {
             image_width_s = line.substr(temp, found - temp);
             image_width = std::stoi (image_width_s,&sz);
-            cout << image_width_s << endl;
             temp = found + 1;
         }
         found = line.find(',', found + 1);
         if (found!=std::string::npos)
         {
             image_height_s = line.substr(temp, found - temp);
-            cout << image_height_s << endl;
             image_height = std::stoi (image_height_s,&sz);
         }
-        tileset->setTile(image_name, image_width, image_height);
-        cout << "loading name " << image_name << ", width " << image_width << ", height " << image_height << endl;
+        tileset->setTile(image_name, image_width, image_height);        
         surface.loadTexture(image_name);
         getline(file_access, line);
     }while(line != "\0");
@@ -149,13 +136,11 @@ void Layer::getFileTextData (std::string& text_file_name)
     {
         do{getline(file_access, line);}
         while(line != "type=Lands");
-        cout << line << endl;
     }
     else if(type_layer == "Buildings")
     {
         do{getline(file_access, line);}
         while(line != "type=Buildings");
-        cout << line << endl;
     }
     do{getline(file_access, line);}
     while(line != "data=");
@@ -192,7 +177,7 @@ void Layer::getFileTextData (std::string& text_file_name)
                 surface.addValue(digit, i, j);
             } 
         }
-        cout << endl;
+        if(i != (height - 1)) cout << endl;
     }
     found=line.find('\n');
     digit_s = line.substr(temp, found - temp);

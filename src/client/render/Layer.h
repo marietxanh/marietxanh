@@ -33,7 +33,7 @@ namespace render {
     Layer (std::string text_file_name, std::string type_layer);
     virtual ~Layer ();
     Surface getSurface () const;
-    void setSurface (std::string& file_name);
+    void setSurface ();
     void getFileTextData (std::string& text_file_name);
     TileSet* getTileSet () const;
     int getWidth () const;

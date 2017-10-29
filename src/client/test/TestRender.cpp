@@ -23,38 +23,13 @@ void TestRender::testRender(string file_name)
     
     std::cout << "Layers loaded" << std::endl;
     
-
-    for(int i(0); i < lands.getWidth(); i++)
-    {
-        for(int j (0); lands.getHeight(); j++)
-        {
-            lands.getSurface().setQuadPosition(lands.getSurface().getQuad(i, j), lands.getWidth(),
-                    lands.getHeight(), lands.getTile_width(), buildings.getTile_height(),
-                    lands.getTileSet()->getTile(lands.getSurface().getLayerArray(i , j))->getWidth(),
-                    lands.getTileSet()->getTile(lands.getSurface().getLayerArray(i , j))->getWidth());
-            lands.getSurface().setQuadTextureCoordinates(lands.getSurface().getQuad(i, j),
-                    lands.getTileSet()->getTile(lands.getSurface().getLayerArray(i , j))->getWidth(),
-                    lands.getTileSet()->getTile(lands.getSurface().getLayerArray(i , j))->getWidth());
-        }
-    }
+    lands.setSurface();
+    buildings.setSurface();
     
-    for(int i(0); i < buildings.getWidth(); i++)
-    {
-        for(int j (0); buildings.getHeight(); j++)
-        {   
-            buildings.getSurface().setQuadPosition(buildings.getSurface().getQuad(i, j), buildings.getWidth(),
-                    buildings.getHeight(), buildings.getTile_width(), buildings.getTile_height(),
-                    buildings.getTileSet()->getTile(buildings.getSurface().getLayerArray(i , j))->getWidth(),
-                    buildings.getTileSet()->getTile(buildings.getSurface().getLayerArray(i , j))->getWidth());
-            buildings.getSurface().setQuadTextureCoordinates(buildings.getSurface().getQuad(i, j),
-                    buildings.getTileSet()->getTile(buildings.getSurface().getLayerArray(i , j))->getWidth(),
-                    buildings.getTileSet()->getTile(buildings.getSurface().getLayerArray(i , j))->getWidth());
-        }
-    }
-   
+    cout << "Surfaces ready !" << endl;
     
-    RenderWindow window(sf::VideoMode(size_t(lands.getWidth()*lands.getTile_width()), size_t(lands.getHeight()*lands.getTile_height())), "TestRender");
-    window.setFramerateLimit(30);
+    RenderWindow window(VideoMode(size_t(lands.getWidth()*lands.getTile_width()), size_t(lands.getHeight()*lands.getTile_height())), "TestRender");
+    //window.setFramerateLimit(30);
     cout << "Ouverture fenetre" << endl;
     while (window.isOpen())
     {

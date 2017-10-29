@@ -24,8 +24,8 @@ void Surface::loadTexture (string& file_name)
     Texture nouvelle_texture;
     textures.push_back(nouvelle_texture);
     int end = int(textures.size()) - 1;
-    textures[end].loadFromFile(image_file);
-    /*inserer un CHECK pour verifier l'ouverture de l'image*/
+    if(!textures[end].loadFromFile(image_file)) cout << "Cannot load file" << endl;
+    else cout << image_file << " loaded with success !" << endl;
 }
 void Surface::initQuads (int width, int height)
 {
@@ -35,6 +35,7 @@ void Surface::initQuads (int width, int height)
         quads[i].setPrimitiveType(sf::Quads);
         quads[i].resize(4);
     }
+    cout << "Quads of size " << quads.size() << " initialized" << endl;
 }
 void Surface::setQuadPosition (Vertex* quad, int abscissa, int ordinate, int tile_width, int tile_height, int texture_width, int texture_height)
 {
