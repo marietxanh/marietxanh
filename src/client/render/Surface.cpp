@@ -35,7 +35,6 @@ void Surface::initQuads (int width, int height)
         quads[i].setPrimitiveType(sf::Quads);
         quads[i].resize(4);
     }
-    cout << "Quads of size " << quads.size() << " initialized" << endl;
 }
 void Surface::setQuadPosition (Vertex* quad, int abscissa, int ordinate, int tile_width, int tile_height, int texture_width, int texture_height)
 {

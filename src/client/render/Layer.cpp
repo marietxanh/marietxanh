@@ -55,11 +55,10 @@ void Layer::setSurface ()
 void Layer::getFileTextData (std::string& text_file_name)
 {
     /*fonction qui va chercher le fichier txt definit les parametres du tableau de vertex*/
-    string text_file = text_file_name;
-    cout << "Accessing text file " << text_file << endl;
-    ifstream file_access(text_file);
+    cout << "Accessing text file " << text_file_name << endl;
+    ifstream file_access(text_file_name);
     /*inserer un CHECK pour verifier l'ouverture du fichier*/
-    if(!file_access) cout << "Cannot load " << text_file << endl;
+    if(!file_access) cout << "Cannot load " << text_file_name << endl;
     string line;
     int k = 0;
     getline(file_access, line);
@@ -125,8 +124,6 @@ void Layer::getFileTextData (std::string& text_file_name)
         getline(file_access, line);
     }while(line != "\0");
     
-    cout << line << endl;
-    
     /*deux possibilites:
         soit on charge le calque des terrains qui sont des elements non modifiables
         
@@ -144,8 +141,6 @@ void Layer::getFileTextData (std::string& text_file_name)
     }
     do{getline(file_access, line);}
     while(line != "data=");
-    
-    cout << line << endl;
     
     /*on redimensionne le tableau*/
     surface.setLayerArray(height, width);
