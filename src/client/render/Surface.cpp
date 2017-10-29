@@ -20,7 +20,7 @@ Surface::~Surface ()
 }
 void Surface::loadTexture (string& file_name)
 {
-    string image_file = "../res/" + file_name + ".png";
+    string image_file = "res/" + file_name + ".png";
     Texture nouvelle_texture;
     textures.push_back(nouvelle_texture);
     int end = int(textures.size()) - 1;
@@ -72,12 +72,19 @@ void Surface::draw (RenderTarget& target, RenderStates states) const
     }
 
 }
-
+//*
 sf::Vertex* Surface::getQuad(int i, int j)
 {
+    cout << &quads[i][j] << endl;
     return &quads[i][j];
 }
-
+//*/
+/*
+sf::Vertex* Surface::getQuad(int i)
+{
+    return &quads[i];
+}
+//*/
 sf::Texture* Surface::getTexture(int i)
 {
     return &textures[i];   

@@ -35,6 +35,7 @@ TileSet* Layer::getTileSet () const
 }
 void Layer::setSurface ()
 {
+    cout << "Entering the problems" << endl;
     int nb;
     for (int i(0); i < height; ++i)
             for (int j(0); j < width; ++j)
@@ -42,6 +43,8 @@ void Layer::setSurface ()
                 nb = surface.getLayerArray(i, j);
                 // on récupère un pointeur vers le quad à définir dans le tableau de vertex
                 sf::Vertex* quad = surface.getQuad(i, j);
+                
+                cout << "Buying the Porcelian to make it my ping-pong room" << endl;
 
                 // on définit ses quatre coins
                 surface.setQuadPosition(quad, i, j, tile_width, tile_height, tileset->getTile(nb)->getWidth(), tileset->getTile(nb)->getHeight());
