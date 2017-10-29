@@ -200,7 +200,7 @@ ElementTab & Contient un tableau 2D d'éléments\\
     \paragraphe{}\textbf{Plans:} Le principal objectif des instances de Layer est de donner les informations basiques pour former les éléments bas-niveau à transmettre à la carte graphique; ces informations sont données à une instance de Surface, et la déﬁnition des tuiles est contenu dans une instance de TileSet. 
     % définir se que font StateLayer et ElementTabLayer
     
-    \paragraphe{}La méthode setSurface() fabrique une nouvelle surface à partir de notre fichier texte, grâce aux informations contenues dans ce fichier on peut lui demander de charger la texture, et d'initialiser la liste des sprites. Pour afﬁcher le niveau, elle demande les dimensions de la fenêtre avec initQuads().Puis, pour chaque cellule du niveau, elle ﬁxe leur position avec setQuadPosition() et leur tuile avec setQuadTextureCoordinates(). 
+    \paragraphe{}La méthode setSurface() fabrique une nouvelle surface à partir de notre fichier texte, grâce aux informations contenues dans ce fichier on peut lui demander d'initialiser la liste des tableaux de vertex. Pour afﬁcher le niveau, elle demande les dimensions de la fenêtre avec initQuads().Puis, pour chaque cellule du niveau, elle ﬁxe leur position avec setQuadPosition() et leur tuile avec setQuadTextureCoordinates(). 
     
     \paragraphe{}\textbf{Surfaces:} Chaque surface contient une texture du plan et une liste de paires de quadruplets de vecteurs 2D. Les éléments texCoords de chaque quadruplet contient les coordonnées des quatre coins de la tuile à sélectionner dans la texture. Les éléments position de chaque quadruplet contient les coordonnées des quatre coins du carré où doit être dessiné la tuile à l’écran. 
     
