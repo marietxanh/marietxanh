@@ -56,7 +56,7 @@ void Layer::getFileTextData (std::string& text_file_name)
 {
     /*fonction qui va chercher le fichier txt definit les parametres du tableau de vertex*/
     string text_file = text_file_name;
-    cout << "Access to text file " << text_file << endl;
+    cout << "Accessing text file " << text_file << endl;
     ifstream file_access(text_file);
     /*inserer un CHECK pour verifier l'ouverture du fichier*/
     if(!file_access) cout << "Cannot load " << text_file << endl;
