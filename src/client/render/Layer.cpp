@@ -1,8 +1,6 @@
 #include "Layer.h"
 #include <fstream>
 #include <iostream>
-#include <string>
-#include <SFML/OpenGL.hpp>
 
 using namespace std;
 using namespace render;

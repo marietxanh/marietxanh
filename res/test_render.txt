@@ -6,29 +6,34 @@ tileheight=16
 orientation=orthogonal
 
 [tilesets]
-tileset=advance_wars_sprites_lands/plain.png,16,16,0,0
+tileset=advance_wars_sprites_lands/plain/plain.png,16,16,0,0
 tileset=advance_wars_sprites_lands/mountain/big_mountain.png,16,21,0,0
-tileset=advance_wars_sprites_lands/mountain/plain_shadow.png,16,16,0,0
-tileset=advance_wars_sprites_lands/mountain/small_mountain.png,16,16,0,0
-tileset=advance_wars_sprites_lands/road/road_left_right.png,16,16,0,0
-tileset=advance_wars_sprites_lands/river/river_bottom.png,16,16,0,0
+tileset=advance_wars_sprites_lands/plain/plain_shadow.png,16,16,0,0
+tileset=advance_wars_sprites_lands/forest/forest.png,16,16,0,0
+tileset=advance_wars_sprites_lands/river/river_up.png,16,16,0,0
+tileset=advance_wars_sprites_lands/river/river_up_right.png,16,16,0,0
+tileset=advance_wars_sprites_lands/river/river_bot_left.png,16,16,0,0
 tileset=advance_wars_sprites_buildings/advance_wars_sprites_buildings_grey/advance_wars_sprites_city_grey.png,16,22,0,0
+tileset=advance_wars_sprites_buildings/advance_wars_sprites_buildings_grey/advance_wars_sprites_factory_grey.png,16,16,0,0
+tileset=advance_wars_sprites_lands/road/road_left_right.png,16,16,0,0
+tileset=advance_wars_sprites_lands/crossroad/crossroad_up_right.png,16,16,0,0
+tileset=advance_wars_sprites_lands/crossroad/crossroad_bot_left.png,16,16,0,0
 
 [layer]
 type=Lands
 data=
-1,1,1,1,1,
-5,5,5,5,5,
-6,6,6,6,6,
-1,4,4,1,1,
-1,2,2,3,1
+10,10,11,4,4,
+1,1,12,10,10,
+5,5,6,1,1,
+4,4,7,5,5,
+4,2,2,2,3
 
 [layer]
 type=Buildings
 data=
 0,0,0,0,0,
+9,9,0,0,0,
+0,0,0,8,8,
 0,0,0,0,0,
-0,0,0,0,0,
-0,0,0,7,0,
-0,0,0,7,0
+0,0,0,0,0
 
