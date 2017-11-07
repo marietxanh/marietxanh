@@ -1,11 +1,12 @@
 #include "../status/ElementTab.h"
+#include "../status.h"
 #include <iostream>
 #include <fstream>
 
 using namespace status;
 using namespace std;
 
-ElementTab::ElementTab (char* text_file_name, int width, int height, char* type_element): width(width), height(height)
+ElementTab::ElementTab (string& text_file_name, int width, int height, string& type_element)
 {
     /*utilisation de la fonction resize
      en remplacement d'une boucle for supplementaire*/
@@ -18,7 +19,7 @@ ElementTab::ElementTab (char* text_file_name, int width, int height, char* type_
         }
     setLayer_array(text_file_name, type_element);
     setTextures_references(text_file_name, type_element);
-    setElement_array();
+    setElement_array(type_element);
 }
 
 ElementTab::~ElementTab()
@@ -39,12 +40,12 @@ ElementTab::~ElementTab()
 
 Element* ElementTab::getElement(int i, int j)
 {
-        return array[i][j];
+        return element_array[i][j];
 }
 
 void ElementTab::setElement(int i, int j, Element* element)
 {
-    if(array[i][j] == NULL) array[i][j] = element;
+    if(element_array[i][j] == NULL) element_array[i][j] = element;
     else
     {
         printf("An element is already using this space.\n");
@@ -144,8 +145,8 @@ void ElementTab::setTextures_references(std::string& text_file_name, std::string
             found = image_name_s.find("lands");
             if(found != string::npos){
                 image_name_s = "res/" + image_name_s + ".png";
-                if(textures_references.size() == 0) textures_references.resize(k);
-                else textures_references.push_back(image_name_s);
+                textures_references.resize(k);
+                textures_references[k - 1] = image_name_s;
             }
         }
 
@@ -153,8 +154,8 @@ void ElementTab::setTextures_references(std::string& text_file_name, std::string
             found = image_name_s.find("buildings");
             if(found != string::npos){
                 image_name_s = "res/" + image_name_s + ".png";
-                if(textures_references.size() == 0) textures_references.resize(k);
-                else textures_references.push_back(image_name_s);
+                textures_references.resize(k);
+                textures_references[k - 1] = image_name_s;
             }
         }
         k++;
@@ -162,9 +163,10 @@ void ElementTab::setTextures_references(std::string& text_file_name, std::string
     }while(line != "\0");
     
     file_access.close();
+    cout << text_file_name << " closed" << endl;
 }
 
-void ElementTab::setElement_array(string& text_file_name, string& type_layer)
+void ElementTab::setElement_array(string& type_layer)
 {
     int height = layer_array.size();
     int width = layer_array[0].size();
@@ -176,13 +178,17 @@ void ElementTab::setElement_array(string& text_file_name, string& type_layer)
         {
             for(int j(0); j < width; j++)
             {
-                if(layer_array[i][j] != 0){
+                if(layer_array[i][j] > 0){
                     found = 0;
                     temp = 0;
-                    temp = textures_references[layer_array[i][j]].find('/') + 1;
-                    found = textures_references[layer_array[i][j]].find('/', temp);
-                    stock = textures_references[layer_array[i][j]].substr(found, found - temp);
-                    if(stock == "forest") setElement(i, j, FOREST);
+                    for(int k(0); k < 2; k++)
+                    {
+                        found = textures_references[layer_array[i][j]].find('/', found + 1);
+                        temp = found + 1;
+                    }
+                    found = textures_references[layer_array[i][j]].find('/', found + 1);
+                    stock = textures_references[layer_array[i][j]].substr(temp, found - temp);
+                    if(stock == "forest") setElement(i, j, new Land(FOREST));
                     else if(stock == "mountain") setElement(i, j, new Land(MOUNTAIN));
                     else if(stock == "plain") setElement(i, j, new Land(PLAIN));
                     else if(stock == "beach") setElement(i, j, new Land(BEACH));
@@ -201,21 +207,30 @@ void ElementTab::setElement_array(string& text_file_name, string& type_layer)
     
     else if(type_layer == "Buildings")
     {
-        string line = "/advance_wars_sprites_";
         for(int i(0); i < height; i++)
         {
             for(int j(0); j < width; j++)
             {
-                if(layer_array[i][j] != 0)
+                if(layer_array[i][j] > 0)
                 {
                     found = 0;
                     temp = 0;
-                    for(int k (0); k < 2; k++)
+                    for(int k(0); k < 3; k++)
                     {
-                        temp = textures_references[layer_array[i][j]].find(line, temp) + 1;
+                        found = textures_references[layer_array[i][j]].find('/', found + 1);
+                        temp = found + 1;
                     }
-                    found = textures_references[layer_array[i][j]].find('_', temp + line.size());
-                    stock = textures_references[layer_array[i][j]].substr(temp + line.size(), found - (temp + line.size()));
+                    found = textures_references[layer_array[i][j]].find('/', found + 1);
+                    stock = textures_references[layer_array[i][j]].substr(temp, found - temp);
+                    cout << stock << endl;
+                    for(int k(0); k < 3; k++)
+                    {
+                        found = stock.find('_', found + 1);
+                        temp = found + 1;
+                    }
+                    found = stock.find('_', found + 1);
+                    stock = stock.substr(temp, found - temp);
+                    cout << stock << "\n" << endl;
                     if(stock == "city") setElement(i, j, new Building(TOWN));
                     else if(stock == "hq") setElement(i, j, new Building(HQ));
                     else if(stock == "factory") setElement(i, j, new Building(FACTORY));

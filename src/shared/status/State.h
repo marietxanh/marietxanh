@@ -2,6 +2,7 @@
 #ifndef STATUS__STATE__H
 #define STATUS__STATE__H
 
+#include <string>
 #include <stdlib.h>
 
 namespace status {
@@ -20,7 +21,7 @@ namespace status {
     ElementTab* lands;
     ElementTab* buildings;
     ElementTab* units;
-    char* text_file_name;
+    std::string text_file_name;
     size_t day;
     size_t timer     = 90;
     int width;
@@ -29,12 +30,12 @@ namespace status {
     int tile_height;
     // Operations
   public:
-    State (char* text_file_name);
+    State (std::string& text_file_name);
     ~State ();
     ElementTab* getLands () const;
     ElementTab* getBuildings () const;
     ElementTab* getUnits () const;
-    void setDimensions (char* text_file_name);
+    void setDimensions (std::string& text_file_name);
     // Setters and Getters
   };
 

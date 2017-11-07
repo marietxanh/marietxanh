@@ -1,16 +1,18 @@
 #include "../status/State.h"
+#include "../status.h"
 #include <iostream>
 #include <fstream>
 using namespace status;
 using namespace std;
 
 
-State::State(char* text_file_name) : text_file_name(text_file_name)
+State::State(string& text_file_name) : text_file_name(text_file_name)
 {
         setDimensions(text_file_name);
-        lands = new ElementTab(text_file_name, this->width, this->height, "Lands");
-        buildings = new ElementTab(text_file_name, this->width, this->height, "Buildings");
-        units = new ElementTab(text_file_name, this->width, this->height, "Units");
+        string lands_s = "Lands";
+        string buildings_s = "Buildings";
+        lands = new ElementTab(text_file_name, this->width, this->height, lands_s);
+        buildings = new ElementTab(text_file_name, this->width, this->height, buildings_s);
 }
 
 State::~State()
@@ -36,7 +38,7 @@ ElementTab* State::getUnits() const
     return units;
 }
 
-void State::setDimensions(char* text_file_name)
+void State::setDimensions(string& text_file_name)
 {
     std::cout << "Accessing text file " << text_file_name << std::endl;
     ifstream file_access(text_file_name);

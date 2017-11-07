@@ -25,6 +25,7 @@ namespace status {
     int attack;
     int health;
     TypeUnits type_unit;
+    int team;
     // Operations
   public:
     Unit (TypeUnits type_units);
@@ -50,6 +51,8 @@ namespace status {
     void setHealth(int health);
     TypeUnits getType_unit() const;
     void setType_unit(TypeUnits type_unit);
+    int getTeam() const;
+    void setTeam(int team);
   };
 
 };
