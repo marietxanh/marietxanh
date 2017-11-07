@@ -3,13 +3,12 @@
 #define STATUS__ELEMENTTAB__H
 
 #include <vector>
-#include <memory>
+#include <string>
 
 namespace status {
   class Element;
 }
 
-#include "TypeID.h"
 #include "Element.h"
 
 namespace status {
@@ -19,17 +18,18 @@ namespace status {
     // Associations
     // Attributes
   private:
-    int width;
-    int height;
-    std::vector<std::vector<std::unique_ptr<Element>>> array;
+    std::vector<std::vector<Element*>> element_array;
+    std::vector<std::vector<int> > layer_array;
+    std::vector<char*> textures_references;
     // Operations
   public:
-    ElementTab (int width, int height, TypeID type_id);
+    ElementTab (char* text_file_name, int width, int height, char* type_element);
     ~ElementTab ();
-    int getWidth () const;
-    int getHeight () const;
-    std::unique_ptr<Element>& getElement (int i, int j);
-    void setElement (int i, int j, std::unique_ptr<Element>& element);
+    Element* getElement (int i, int j);
+    void setElement (int i, int j, Element* element);
+    void setLayer_array (std::string& text_file_name, std::string& type_layer);
+    void setElement_array (std::string& text_file_name, std::string& type_layer);
+    void setTextures_references (std::string& text_file_name);
     // Setters and Getters
   };
 

@@ -7,7 +7,7 @@
 #include "../status/Building.h"
 using namespace status;
 
-Building::Building(int abs, int ord, TypeBuilding type_building) : Land(abs, ord, BUILDING)
+Building::Building(TypeBuilding type_building) : Land(BUILDING)
 {
     this->health = 20;
     this->type_building = type_building;

@@ -22,7 +22,7 @@ namespace status {
     TypeLand type_land;
     // Operations
   public:
-    Land (int abs, int ord, TypeLand type_land);
+    Land (TypeLand type_land);
     ~Land ();
     bool isBuilding () const;
     bool isStatic () const;

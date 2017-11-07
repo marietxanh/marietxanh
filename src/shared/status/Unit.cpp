@@ -8,7 +8,7 @@
 using namespace status;
 using namespace std;
 
-Unit::Unit(int abs, int ord, TypeUnits type_units): Element(abs, ord, UNIT)
+Unit::Unit(TypeUnits type_units): Element(UNIT)
 {
     this->type_unit = type_units;
 }

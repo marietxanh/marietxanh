@@ -23,7 +23,7 @@ namespace status {
     TypeBuilding type_building;
     // Operations
   public:
-    Building (int abs, int ord, TypeBuilding type_building);
+    Building (TypeBuilding type_building);
     ~Building ();
     bool canCraft () const;
     int getHealth () const;

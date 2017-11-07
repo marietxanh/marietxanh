@@ -8,11 +8,51 @@
 using namespace std;
 using namespace status;
 
+#define CHECK(expr) \
+    if (!(expr)) throw std::runtime_error("Echec " #expr);
+
 void TestState::testState(){
     cout <<  "Test of state in game." << endl;
+    /*creation d'un objet State contenant
+     deux tableaux d'Element* de taille 2*2*/
+    State* state = new State(2, 2);
     
-    State state(10, 10);
-    unique_ptr<Element> p(new Land(0, 0, BUILDING));
-    state.getGrid()->setElement(0, 0, p);
-    state.getGrid()->getElement(0, 0)->affiche();
+    /*instanciation des Elements des tableaux*/
+    state->getGrid()->setElement(0, 0, new Land(PLAIN));
+    state->getGrid()->setElement(0, 1, new Land(MOUNTAIN));
+    state->getGrid()->setElement(1, 0, new Land(BUILDING));
+    state->getGrid()->setElement(1, 1, new Land(RIVER));
+    
+    
+    
+    state->getCharacters()->setElement(0, 0, new Unit(INFANTRY));
+    state->getCharacters()->setElement(0, 1, new Transport(HELICOPTER_T));
+    
+    /*verification que l'on ne peut pas mettre deux Element* dans la
+     meme case d'un tableau sinon risque de reecriture et perte du
+     precedent Element* */
+    state->getCharacters()->setElement(0, 0, new Unit(MECH));
+    
+    /*verfication que les instanciations se sont bien deroulees*/
+    cout << "Check types..." << endl;
+    CHECK(state->getGrid()->getElement(0, 0)->getType_id() == LAND);
+    CHECK(state->getGrid()->getElement(0, 0)->isStatic() == true);
+    CHECK(state->getGrid()->getElement(0, 1)->getType_id() == LAND);
+    CHECK(state->getGrid()->getElement(0, 1)->isStatic() == true);
+    CHECK(state->getGrid()->getElement(1, 0)->getType_id() == LAND);
+    CHECK(state->getGrid()->getElement(1, 0)->isStatic() == true);
+    CHECK(state->getGrid()->getElement(1, 1)->getType_id() == LAND);
+    CHECK(state->getGrid()->getElement(1, 1)->isStatic() == true);
+
+    CHECK(state->getCharacters()->getElement(0, 0)->getType_id() == UNIT);
+    CHECK(state->getCharacters()->getElement(0, 1)->getType_id() == UNIT);
+    
+    CHECK(((Unit*)(state->getCharacters()->getElement(0, 0)))->getType_unit() == INFANTRY);
+    CHECK(((Transport*)(state->getCharacters()->getElement(0, 1)))->getType_transport() == HELICOPTER_T);
+    
+    cout << "All objects are created and correct." << endl;
+    
+    /*suppression de l'objet State permettant de détruire les pointeurs des tableaux*/
+    delete state;
+    //cout << "Suppression des pointeurs de TestState terminée." << endl;
 }

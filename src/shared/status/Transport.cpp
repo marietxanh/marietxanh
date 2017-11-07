@@ -7,7 +7,7 @@
 #include "../status/Transport.h"
 using namespace status;
 
-Transport::Transport(int abs, int ord, TypeTransport type_transport):Unit(abs, ord, TRANSPORT)
+Transport::Transport(TypeTransport type_transport):Unit(TRANSPORT)
 {
     this->type_transport = type_transport;
 }
@@ -30,4 +30,14 @@ int Transport::getMaximumCharge() const
 void Transport::setMaximumCharge(int charge)
 {
     this->maximumCharge = charge;
+}
+
+TypeTransport Transport::getType_transport() const
+{
+    return this->type_transport;
+}
+
+void Transport::setType_transport(TypeTransport type_transport)
+{
+    this->type_transport = type_transport;
 }

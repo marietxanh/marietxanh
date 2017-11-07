@@ -12,20 +12,14 @@ namespace status {
     // Associations
     // Attributes
   protected:
-    int abscissa;
-    int ordinate;
     TypeID type_id;
     // Operations
   public:
-    Element (int abs, int ord, TypeID id);
+    Element (TypeID id);
     virtual ~Element ();
     virtual bool isStatic () const = 0;
     virtual void affiche () const = 0;
     // Setters and Getters
-    int getAbscissa() const;
-    void setAbscissa(int abscissa);
-    int getOrdinate() const;
-    void setOrdinate(int ordinate);
     TypeID getType_id() const;
     void setType_id(TypeID type_id);
   };

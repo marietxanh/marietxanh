@@ -695,6 +695,7 @@ struct stdlib_includes {
    int random;
    int sfmlGraphics;
    int jsoncpp;
+   int iostream;
 };
 
 void print_include_stdlib(struct stdlib_includes* si,char* name) {
@@ -795,6 +796,13 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
            print ("#include <json/json.h>\n");
            si->jsoncpp = 1;
        }       
+       if (!si->iostream
+        && (strstr(name,"std::cout")
+        ||  strstr(name,"std::cin")
+        ||  strstr(name,"std::endl"))){
+            print ("#include <iostream>\n");
+            si->iostream = 1;
+        }
     }
 }
 

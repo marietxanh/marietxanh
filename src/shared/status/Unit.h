@@ -27,7 +27,7 @@ namespace status {
     TypeUnits type_unit;
     // Operations
   public:
-    Unit (int abs, int ord, TypeUnits type_units);
+    Unit (TypeUnits type_units);
     TypeUnits getTypeUnit () const;
     void setTypeUnit (TypeUnits type);
     bool isStatic () const;

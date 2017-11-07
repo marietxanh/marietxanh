@@ -2,7 +2,6 @@
 #ifndef STATUS__STATE__H
 #define STATUS__STATE__H
 
-#include <memory>
 #include <stdlib.h>
 
 namespace status {
@@ -18,16 +17,24 @@ namespace status {
     // Associations
     // Attributes
   private:
-    std::unique_ptr<ElementTab> grid;
-    std::unique_ptr<ElementTab> units;
+    ElementTab* lands;
+    ElementTab* buildings;
+    ElementTab* units;
+    char* text_file_name;
     size_t day;
     size_t timer     = 90;
+    int width;
+    int height;
+    int tile_width;
+    int tile_height;
     // Operations
   public:
-    State (int width, int height);
+    State (char* text_file_name);
     ~State ();
-    std::unique_ptr<ElementTab>& getGrid ();
-    std::unique_ptr<ElementTab>& getCharacters ();
+    ElementTab* getLands () const;
+    ElementTab* getBuildings () const;
+    ElementTab* getUnits () const;
+    void setDimensions (char* text_file_name);
     // Setters and Getters
   };
 

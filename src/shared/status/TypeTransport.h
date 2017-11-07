@@ -8,7 +8,7 @@ namespace status {
   enum TypeTransport {
     LANDER     = 0,
     APC     = 1,
-    HELICOPTER_T     = 2,
+    CHOPPER     = 2,
     CRUISER     = 3
   };
 
