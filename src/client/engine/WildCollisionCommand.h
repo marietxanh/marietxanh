@@ -19,9 +19,9 @@ namespace engine {
     int character;
     // Operations
   public:
-    WildCollisionCommand (int c, state::TypeLand l);
+    WildCollisionCommand (int c, status::TypeLand l);
     CommandTypeId const getTypeId ();
-    void execute (state::State& state);
+    void execute (status::State& state);
     // Setters and Getters
     int getCharacter() const;
     void setCharacter(int character);

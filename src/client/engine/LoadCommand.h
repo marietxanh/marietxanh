@@ -21,7 +21,7 @@ namespace engine {
   public:
     LoadCommand (const char* f);
     CommandTypeId const getTypeId ();
-    void execute (state::State& state);
+    void execute (status::State& state);
     // Setters and Getters
     const std::string& getFile_name() const;
     void setFile_name(const std::string& file_name);

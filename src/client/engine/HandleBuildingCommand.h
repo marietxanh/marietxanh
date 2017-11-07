@@ -19,9 +19,9 @@ namespace engine {
     int building;
     // Operations
   public:
-    int getMoney (state::TypeCommander owner);
+    int getMoney (status::TypeCommander owner);
     CommandTypeId const getTypeId ();
-    void execute (state::State& state);
+    void execute (status::State& state);
     // Setters and Getters
     int getBuilding() const;
     void setBuilding(int building);

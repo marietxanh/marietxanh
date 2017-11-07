@@ -18,9 +18,9 @@ namespace engine {
     int character;
     // Operations
   public:
-    SelectCharCommand (int c, state::Unit u);
+    SelectCharCommand (int c, status::Unit u);
     CommandTypeId const getTypeId ();
-    void execute (state::State& state);
+    void execute (status::State& state);
     // Setters and Getters
   };
 

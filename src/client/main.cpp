@@ -11,6 +11,7 @@ void testSFML() {
 
 #include "test/TestState.h"
 #include "test/TestRender.h"
+#include "test/TestEngine.h"
 
 using namespace std;
 using namespace status;
@@ -27,6 +28,13 @@ int main(int argc,char* argv[])
         }
         else if(std::string(argv[1]) == "render"){
             TestRender::testRender("res/test_render.txt");
+        }
+        else if(std::string(argv[1]) == "engine"){
+            cout<< "Appuyer sur la barre d'espace pour charger un nouvel état:\n"<< endl;
+            cin >> answer;
+            if(answer ==' ')
+                TestEngine::testEngine();
+            else cout<<"erreur : Vous n'avez pas appuyé sur la bonne touche\n"<< endl;
         }
     }
     return 0;

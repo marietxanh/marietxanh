@@ -19,12 +19,12 @@ namespace engine {
     // Attributes
   private:
     std::map<int,std::unique_ptr<Command>> currentCommands;
-    state::State currentState;
+    status::State currentState;
     // Operations
   public:
     Engine ();
     ~Engine ();
-    const state::State& const getState ();
+    const status::State& const getState ();
     void addCommand (int priority, Command* cmd);
     void update ();
     // Setters and Getters

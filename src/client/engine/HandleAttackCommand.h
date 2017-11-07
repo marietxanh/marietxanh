@@ -19,11 +19,11 @@ namespace engine {
     int target;
     // Operations
   public:
-    int attackTarget (state::State& state, int target, int character);
-    killTarget (state::State& state, int target);
-    killCharacter (state::State& state, int character);
+    int attackTarget (status::State& state, int target, int character);
+    killTarget (status::State& state, int target);
+    killCharacter (status::State& state, int character);
     CommandTypeId const getTypeId ();
-    void execute (state::State& state);
+    void execute (status::State& state);
     // Setters and Getters
     int getCharacter() const;
     void setCharacter(int character);

@@ -20,7 +20,7 @@ namespace engine {
   public:
     MoveCharCommand (int c);
     CommandTypeId const getTyepId ();
-    void execute (state::State& state);
+    void execute (status::State& state);
     // Setters and Getters
     int getCharacter() const;
     void setCharacter(int character);
