@@ -2,6 +2,7 @@
 #ifndef RENDER__LAYER__H
 #define RENDER__LAYER__H
 
+<<<<<<< HEAD
 #include <vector>
 #include <string>
 
@@ -13,6 +14,17 @@ namespace sf {
 }
 
 #include "TexturesPack.h"
+=======
+#include <string>
+
+namespace render {
+  class Surface;
+  class TileSet;
+}
+
+#include "Surface.h"
+#include "TileSet.h"
+>>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 
 namespace render {
 
@@ -20,6 +32,7 @@ namespace render {
   class Layer {
     // Associations
     // Attributes
+<<<<<<< HEAD
   private:
     TexturesPack pack_textures;
     std::vector<std::vector<int> > layer_array;
@@ -45,6 +58,41 @@ namespace render {
     TexturesPack getTextures_pack () const;
     int getLayer_array (int i, int j) const;
     // Setters and Getters
+=======
+  protected:
+    Surface surface;
+    TileSet* tileset;
+    std::string text_file_name;
+    std::string type_layer;
+    int width;
+    int height;
+    int tile_width;
+    int tile_height;
+    // Operations
+  public:
+    Layer ();
+    Layer (std::string text_file_name, std::string type_layer);
+    virtual ~Layer ();
+    Surface getSurface () const;
+    void setSurface ();
+    void getFileTextData (std::string& text_file_name);
+    TileSet* getTileSet () const;
+    int getWidth () const;
+    int getHeight () const;
+    // Setters and Getters
+    const TileSet*& getTileset() const;
+    void setTileset(const TileSet*& tileset);
+    const std::string& getText_file_name() const;
+    void setText_file_name(const std::string& text_file_name);
+    const std::string& getType_layer() const;
+    void setType_layer(const std::string& type_layer);
+    void setWidth(int width);
+    void setHeight(int height);
+    int getTile_width() const;
+    void setTile_width(int tile_width);
+    int getTile_height() const;
+    void setTile_height(int tile_height);
+>>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
   };
 
 };

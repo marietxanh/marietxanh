@@ -10,8 +10,12 @@ ElementTab::ElementTab (string& text_file_name, int width, int height, string& t
 {
     /*utilisation de la fonction resize
      en remplacement d'une boucle for supplementaire*/
+<<<<<<< HEAD
     element_array.resize(height);
     layer_array.resize(height);
+=======
+    array.resize(width);
+>>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
     for(int i(0); i < width; i++)
         {
             element_array[i].resize(width);
@@ -24,6 +28,7 @@ ElementTab::ElementTab (string& text_file_name, int width, int height, string& t
 
 ElementTab::~ElementTab()
 {
+<<<<<<< HEAD
     int height = element_array.size();
     int width = element_array[0].size();
     for(int i(0); i < height; i++)
@@ -36,6 +41,19 @@ ElementTab::~ElementTab()
             element_array[i][j] = 0;
         }
     }
+=======
+    for(int i(0); i < width; i++)
+    {
+        for(int j(0); j < height; j++)
+        {
+            /*suppression des contenus des pointeurs
+             et repointage sur l'adresse 0*/
+            delete array[i][j];
+            array[i][j] = 0;
+        }
+    }
+    //cout << "Suppression du tableau terminée." << endl;
+>>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 }
 
 Element* ElementTab::getElement(int i, int j)
@@ -54,7 +72,11 @@ void ElementTab::setElement(int i, int j, Element* element)
     }
 }
 
+<<<<<<< HEAD
 void ElementTab::setLayer_array(std::string& text_file_name, std::string& type_layer)
+=======
+Element* ElementTab::getElement(int i, int j)
+>>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 {
     std::cout << "Accessing text file " << text_file_name << std::endl;
     ifstream file_access(text_file_name);
@@ -113,6 +135,7 @@ void ElementTab::setLayer_array(std::string& text_file_name, std::string& type_l
     cout << text_file_name << " closed" << endl;
 }
 
+<<<<<<< HEAD
 void ElementTab::setTextures_references(std::string& text_file_name, std::string& type_layer)
 {
     std::cout << "Accessing text file " << text_file_name << std::endl;
@@ -241,4 +264,15 @@ void ElementTab::setElement_array(string& type_layer)
         }
     }
     
+=======
+void ElementTab::setElement(int i, int j, Element* element)
+{
+    if(array[i][j] == NULL) array[i][j] = element;
+    else
+    {
+        printf("An element is already using this space.\n");
+        delete element;
+        element = 0;
+    }
+>>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 }

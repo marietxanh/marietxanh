@@ -2,7 +2,15 @@
 #ifndef __RENDER__H
 #define __RENDER__H
 
+<<<<<<< HEAD
 #include "render/TexturesPack.h"
 #include "render/Layer.h"
 #include "render/ElementTabLayer.h"
+=======
+#include "render/Surface.h"
+#include "render/Tile.h"
+#include "render/TileSet.h"
+#include "render/Layer.h"
+#include "render/StateLayer.h"
+>>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 #endif

@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{layout}
+\usepackage{pdflscape}
 \usepackage{graphicx}
 \usepackage[top=2cm, bottom=2cm, left= 2.5cm, right=2.5cm]{geometry}
 
@@ -29,7 +30,7 @@
 \chapter{Présentation générale}
     \section{Archétype}
     \paragraph{}Le projet est de recréer le jeu Advance Wars\textsc{\texttrademark} développé par Intelligent Systems\up{\textregistered} pour la Game Boy Advance\textsc{\texttrademark} de Nintendo\up{\textregistered}.\newline
-    Le jeu est en tour par tour, sur une carte découpée en cases. Les cartes pourront être crées à partir d'un fichier texte.
+    Le jeu est en tour par tour, sur une carte découpée en cases. Le but du jeu est de capturer le Quartier Général adverse. Il est aussi possible de gagner par forfait. Les cartes pourront être crées à partir d'un fichier texte.
     \section{Règles du jeu}
     \subsection{Description des unités}
     \paragraph{}Sur une carte composée de différents terrains et séparée en cases s'affrontent 2 armées. Les terrains augmentent ou non la défense de l'unité qui se trouve dessus. Ces armées sont composées de différentes unités qui ont chacune des spécificités qui varient :
@@ -53,10 +54,10 @@
         Par défaut, l'infanterie et les bazookas ont un bonus de force de frappe de 20\% et de 10\% de défense contre les unités d'infanterie adverse. Une unité qui capture un bâtiment a vitesse de capture de 150\% de ses points de vie.
         La puissance de frappe des autres unités de tir direct est en revanche moins élevée que la moyenne. Les unités de transports peuvent se déplacer d'une case en plus par rapport à la moyenne.
         
-        \paragraph{Puissance Max}Les chars d'assaut voient leur puissance de frappe augmenter de 140\%, leur défense augmente de 1 point et leur amplitude de déplacement augmente de 1 case.
-        Par défaut, les chars d'assaut ont une puissance de frappe 150\% plus élevée que la moyenne.
+        \paragraph{Puissance Max}Les chars d'assaut voient leur puissance de frappe augmenter de 40\%, leur défense augmente de 1 point et leur amplitude de déplacement augmente de 1 case.
+        Par défaut, les chars d'assaut ont une puissance de frappe 50\% plus élevée que la moyenne.
         
-        \paragraph{Embuscade}Les unités de tir indirect voient leur portée augmenter de 1 et leur force de frappe augmenter de 150\%.
+        \paragraph{Embuscade}Les unités de tir indirect voient leur portée augmenter de 1 et leur force de frappe augmenter de 50\%.
         Par défaut, la portée des unités de tir indirect est augmentée de 1 case. Les unités de tir direct ont une force de frappe diminuée de 20\%.
         
         \paragraph{Frappe éclair}Les unités aériennes peuvent se déplacer une nouvelle fois pendant le tour.
@@ -112,4 +113,111 @@
     \end{center}
     \caption{Sprites des fenêtres d'attaque}
     \end{figure}
+    
+\chapter{Description et conception des états}
+
+\section{Description des états}
+\paragraph{}Un état du jeu est représenté par deux types d'éléments, ceux fixes qui sont les terrains et bâtiments et ceux mobiles qui sont les unités déployées. Ces éléments ont comme point commun des coordonnées et un identifiant pour savoir s'ils sont fixes ou statiques.
+
+\subsection{État éléments fixes}
+\paragraph{}La carte est une grille d'éléments dont les dimensions sont fixées en début de partie. Toutes les cases ont des attributs communs comme le niveau de défense et le nombre de points de mouvements nécessaires pour franchir ce terrain. Il existe cependant deux types de cases :
+
+\subsubsection{Les cases terrain}
+\paragraph{}Il en existe deux grand types: sol et eau. Pour les cases terrain sol, aucune unité navale ne peut se déplacer sur ces cases :
+\begin{itemize}
+    \item Plain + Forest + Road + Bridge: Toutes les unités terrestres peuvent traverser. La particularité des cases Bridge est qu'aucune unité navale ne peut la traverser.
+    \item Mountain + River: Seules les unités à pied peuvent traverser.
+    \item Beach: Terrain particulier puisque les Lander peuvent se déplacer sur cette case pour charger et décharger. Toutes les unités terrestres peuvent traverser.
+\end{itemize}
+\paragraph{}Pour les cases terrain eau, aucune unité terrestre ne peut se déplacer sur ces cases.
+\begin{itemize}
+    \item 
+\end{itemize}
+\subsection{État éléments mobiles}
+\paragraph{}Les éléments mobiles peuvent se déplacer sur la carte en fonction de leur condition et du nombre de points de mouvement qu'ils ont a disposition. Les unités peuvent passer par dessus d'autres unités alliées pour se rendre sur une autre case. Il ne peut y avoir qu'une unité par case. Deux types d'unités existent : 
+\begin{itemize}
+    \item \textbf{Les unités standard :} Elles peuvent attaquer, capturer, se déplacer selon leur capacité de mouvement et selon terrain sur lequel elles se déplacent.
+    \item \textbf{Les unités de transport :} Ces unités peuvent transporter certains types d'unités
+\end{itemize}
+
+\subsection{État général}
+\paragraph{}Pour l'ensemble des éléments, nous avons :
+\begin{itemize}
+    \item les jours : qui correspond aux nombres de tours de jeux.
+    \item 
+\end{itemize}
+\section{Conception logiciel}
+\paragraph{}Le diagramme des classes pour les états est présenté en Figure 2.1, les groupes de classes sont les suivants :
+\begin{itemize}
+    \item \textbf{classe Element :} c'est la classe mère des éléments statiques et mobiles. C'est une classe abstraite puiqu'il ne peut y avoir d'instances de cette classe dans le jeu. Elle contient uniquement une variable permettant d'identifier si l'élément de la classe fille est statique ou non.
+    \item \textbf{classe Commander :} cette classe est associée aux classes Building et Unit car elle peut agir sur leur état.
+    \item \textbf{classe ElementTab :} c'est une classe qui regroupe plusieurs éléments dans un tableau 2D. Ce tableau est dynamique afin de pouvoir charger un monde à partir d'un fichier texte. Les coordonnées du tableau sont celles qui permettent d'identifier les positions des éléments contenus.
+    \item \textbf{classe State :} cette classe regroupe deux tableaux de la classe ElementTab : un pour les éléments statiques, un pour les éléments mobiles. De plus, elle contient un compteur de jours (équivalent des tours) et un timer pour indiquer le temps restant pour jouer un tour.
+ \end{itemize} 
+ \hfill
+
+\paragraphe{}Tableau des classes :\newline
+
+\begin{tabular}{|c|c|}
+\hline
+Classe & Rôle de la classe\\
+\hline
+Élément & Classe mère de tous les éléments d'états du jeu\\\hline
+Land & Créer les terrains du jeu \\\hline
+Unit & Créer les unités de l'armée \\\hline
+Building & Créer les bâtiments présents dans le niveau \\\hline
+Transport & Créer les unités de transport \\\hline
+Commander & Créer les officiers du jeu qui peuvent apporter des bonus à leur armée \\\hline
+State &  Rassemble le tableau des éléments fixes et le tableau des éléments mobiles du jeu\\\hline
+ElementTab & Contient un tableau 2D d'éléments\\
+\hline
+\end{tabular}
+
+\newpage
+\thispagestyle{empty}
+\begin{landscape}
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[scale=0.38]{Status.png}
+    \end{center}
+    \caption{Diagramme des classes d'état}
+\end{figure}
+\end{landscape}
+    
+\newpage
+
+\chapter{Rendu : Stratégie et Conception}
+    \section{Stratégie de rendu d'un état}
+    \paragraph{}La stratégie que nous avons établi pour le rendu d'un état est une stratégie de bas niveau. Nos scènes sont coupées en plans : un plan pour le niveau qui contient différents paysages (plaine, montagne, forêt,etc.), un plan d'unités mobiles (infanterie, tank, navire,etc.), et un plan d'informations d'état du jeu (vie, jauge de pouvoir,etc.).. Chaque plan possède différentes informations : une unique texture contenant les tuiles, une unique matrice avec la position des éléments, un tableau de nos plans, le nom du fichier texte à partir du quel nous générons notre état, un tableau des différentes textures, les dimension de la fenêtre ainsi que les dimensions de tuiles. 
+    
+    \paragraphe{}L'organisation du rendu se fait à partir de l'état et de la détection d'un changement. Si le changement dans l’état donne lieu à un changement permanent dans le rendu, on met à jour le morceau de la matrice du plan correspondant. Pour les changements non permanent, comme les éléments mobiles, nous tiendrons à jour une liste d’éléments visuels à mettre à jour (=> modiﬁcation de la matrice du plan) automatiquement à chaque rendu d’une nouvelle frame.  
+    
+   % \paragraphe{Synchronisation}
+    
+    \section{Conception logiciel}
+    \paragraph{} Le diagramme du rendu est présent en Figure 3.1.
+    
+    \paragraphe{}\textbf{Plans:} Le principal objectif des instances de Layer est de donner les informations basiques pour former les éléments bas-niveau à transmettre à la carte graphique; ces informations sont données à une instance de Surface, et la déﬁnition des tuiles est contenu dans une instance de TileSet. 
+    % définir se que font StateLayer et ElementTabLayer
+    
+    \paragraphe{}La méthode setSurface() fabrique une nouvelle surface à partir de notre fichier texte, grâce aux informations contenues dans ce fichier on peut lui demander d'initialiser la liste des tableaux de vertex. Pour afﬁcher le niveau, elle demande les dimensions de la fenêtre avec initQuads().Puis, pour chaque cellule du niveau, elle ﬁxe leur position avec setQuadPosition() et leur tuile avec setQuadTextureCoordinates(). 
+    
+    \paragraphe{}\textbf{Surfaces:} Chaque surface contient une texture du plan et une liste de paires de quadruplets de vecteurs 2D. Les éléments texCoords de chaque quadruplet contient les coordonnées des quatre coins de la tuile à sélectionner dans la texture. Les éléments position de chaque quadruplet contient les coordonnées des quatre coins du carré où doit être dessiné la tuile à l’écran. 
+    
+    \paragraphe{}\textbf{Tuiles:} La classe TileSet contient un tableau de toutes les tuiles d’un même plan. Elle peut grâce à la méthode getTile(), récupérer la tuile correspondant à un indice de son tableau, et à partir de cette tuile on peut savoir ses dimensions ainsi que l'emplacement de sa texture dans nos dossiers. Pour obtenir ces informations, un client dispose des méthodes getWidth(), getHeight() et getAdressFile(). 
+
+    
+    \newpage
+\thispagestyle{empty}
+\begin{landscape}
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[scale=0.50]{render.png}
+    \end{center}
+    \caption{Diagramme du rendu}
+\end{figure}
+\end{landscape}
+    
+\newpage
 \end{document}
+
