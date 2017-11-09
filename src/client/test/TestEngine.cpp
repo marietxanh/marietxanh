@@ -3,18 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+#include <SFML/Graphics/RenderWindow.hpp>
+
 #include "TestEngine.h"
-#include "../engine.h"
+#include "../../shared/engine.h"
+#include "../../shared/status.h"
 
 using namespace std;
 using namespace engine;
+using namespace status;
 
 void TestEngine::testEngine(){
     
-    Engine moteur();
+    Engine moteur;
     
     cout<<"Chargement du niveau\n"<< endl;
-    LoadCommand niveau("../../../res/test_render.txt");
+    moteur.getState() = new State("../../../res/test_render.txt");
+    sf::Window window;
+    sf::Event event;
+
+    while(window.pollEvent(event))
+    {
+        if (event.type == sf::Event::KeyPressed)
+        {
+            if(event.key.code == sf::Keyboard::Escape)
+            {
+                moteur.addCommand(0, (CreateCharacter*)())
+            }
+        }
+    }
+    
     moteur.addCommand(1,niveau);
     
     cout << "Sélection d'un personnage\n" << endl;

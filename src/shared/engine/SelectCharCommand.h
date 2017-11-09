@@ -22,7 +22,7 @@ namespace engine {
     int character;
     // Operations
   public:
-    SelectCharCommand (int c, state::Unit u);
+    SelectCharCommand (int c, status::Unit u);
     CommandTypeId getTypeId () const;
     void execute (status::State& state);
     // Setters and Getters

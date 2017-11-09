@@ -24,8 +24,8 @@ namespace engine {
     // Operations
   public:
     int attackTarget (status::State& state, int target, int character);
-    killTarget (status::State& state, int target);
-    killCharacter (status::State& state, int character);
+    void killTarget (status::State& state, int target);
+    void killCharacter (status::State& state, int character);
     CommandTypeId getTypeId () const;
     void execute (status::State& state);
     // Setters and Getters

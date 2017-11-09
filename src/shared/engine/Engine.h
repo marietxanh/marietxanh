@@ -12,7 +12,6 @@ namespace engine {
   class Command;
 }
 
-#include "status/State.h"
 #include "Command.h"
 
 namespace engine {
@@ -23,14 +22,15 @@ namespace engine {
     // Attributes
   private:
     std::map<int,std::unique_ptr<Command>> currentCommands;
-    status::State currentState;
+    status::State* currentState;
     // Operations
   public:
     Engine ();
     ~Engine ();
-    status::State& getState () const;
+    status::State* getState () const;
     void addCommand (int priority, Command* cmd);
     void update ();
+    void setCurrentState (status::State* state);
     // Setters and Getters
   };
 
