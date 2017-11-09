@@ -34,13 +34,9 @@ namespace render {
     // Operations
   public:
     Layer (char* text_file_name, char* type_layer);
-    void setLayerArray (char* text_file_name);
     void setSpritesPositions ();
-    void display ();
     int getWidth () const;
     int getHeight () const;
-    int getTile_width () const;
-    int getTile_height () const;
     sf::Sprite getSprite (int i, int j) const;
     TexturesPack getTextures_pack () const;
     int getLayer_array (int i, int j) const;

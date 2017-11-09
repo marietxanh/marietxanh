@@ -11,10 +11,7 @@ void testSFML() {
 
 #include "test/TestState.h"
 #include "test/TestRender.h"
-<<<<<<< HEAD
-=======
 #include "test/TestEngine.h"
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 
 using namespace std;
 using namespace status;
@@ -30,19 +27,20 @@ int main(int argc,char* argv[])
             TestState::testState();
         }
         else if(std::string(argv[1]) == "render"){
-<<<<<<< HEAD
             TestRender::testRender();
-=======
             TestRender::testRender("res/test_render.txt");
         }
         else if(std::string(argv[1]) == "engine"){
-            cout<< "Appuyer sur la barre d'espace pour charger un nouvel état:\n"<< endl;
-            cin >> answer;
-            if(answer ==' ')
-                TestEngine::testEngine();
-            else cout<<"erreur : Vous n'avez pas appuyé sur la bonne touche\n"<< endl;
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
+            TestEngine::testEngine();
         }
+    }
+    else
+    {
+        cout << "Commandes disponibles :\n" <<
+                "hello : affiche un message de bienvenue\n" <<
+                "state : instancie un etat du jeu\n" <<
+                "render : affiche le rendu d'un etat du jeu\n" <<
+                "engine : affiche une succession d'etats du jeu en passant des commandes\n" << endl;
     }
     return 0;
 }

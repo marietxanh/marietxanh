@@ -15,7 +15,6 @@ void TestState::testState(){
     cout <<  "Test of state in game." << endl;
     /*creation d'un objet State contenant
      deux tableaux d'Element* de taille 2*2*/
-<<<<<<< HEAD
     string file = "res/test_render.txt";
     State* state = new State(file);
     
@@ -25,7 +24,6 @@ void TestState::testState(){
     CHECK(((Building*)(state->getBuildings()->getElement(2, 3)))->getType_building() == TOWN);
     /*verfication que les instanciations se sont bien deroulees*/
     cout << "Check types..." << endl;
-=======
     State* state = new State(2, 2);
     
     /*instanciation des Elements des tableaux*/
@@ -60,7 +58,6 @@ void TestState::testState(){
     
     CHECK(((Unit*)(state->getCharacters()->getElement(0, 0)))->getType_unit() == INFANTRY);
     CHECK(((Transport*)(state->getCharacters()->getElement(0, 1)))->getType_transport() == HELICOPTER_T);
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
     
     cout << "All objects are created and correct." << endl;
     

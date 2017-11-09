@@ -15,7 +15,6 @@
 #define TESTRENDER_H
 
 #include "../shared/status.h"
-<<<<<<< HEAD
 #include "render.h"
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
@@ -25,20 +24,15 @@
 
 #define FRAMERATE 60
 #define PERIOD (1 / FRAMERATE)
-=======
 #include "../render.h"
 #include <SFML/Window.hpp>
 #include <iostream>
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 
 class TestRender
 {
 public:
-<<<<<<< HEAD
     static void testRender();
-=======
     static void testRender(std::string file_name);
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 };
 
 
