@@ -3,10 +3,14 @@
 #define ENGINE__HANDLEATTACKCOMMAND__H
 
 
+namespace status {
+  class State;
+};
 namespace engine {
   class Command;
 }
 
+#include "CommandTypeId.h"
 #include "Command.h"
 
 namespace engine {
@@ -14,7 +18,7 @@ namespace engine {
   /// class HandleAttackCommand - 
   class HandleAttackCommand : public engine::Command {
     // Attributes
-  protected:
+  private:
     int character;
     int target;
     // Operations
@@ -22,13 +26,9 @@ namespace engine {
     int attackTarget (status::State& state, int target, int character);
     killTarget (status::State& state, int target);
     killCharacter (status::State& state, int character);
-    CommandTypeId const getTypeId ();
+    CommandTypeId getTypeId () const;
     void execute (status::State& state);
     // Setters and Getters
-    int getCharacter() const;
-    void setCharacter(int character);
-    int getTarget() const;
-    void setTarget(int target);
   };
 
 };

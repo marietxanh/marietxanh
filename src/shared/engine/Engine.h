@@ -5,10 +5,14 @@
 #include <map>
 #include <memory>
 
+namespace status {
+  class State;
+};
 namespace engine {
   class Command;
 }
 
+#include "status/State.h"
 #include "Command.h"
 
 namespace engine {
@@ -24,7 +28,7 @@ namespace engine {
   public:
     Engine ();
     ~Engine ();
-    const status::State& const getState ();
+    status::State& getState () const;
     void addCommand (int priority, Command* cmd);
     void update ();
     // Setters and Getters

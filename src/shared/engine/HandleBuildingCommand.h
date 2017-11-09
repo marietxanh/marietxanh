@@ -3,19 +3,22 @@
 #define ENGINE__HANDLEBUILDINGCOMMAND__H
 
 
+namespace status {
+  class State;
+};
 namespace engine {
   class Command;
 }
 
-#include "Command.h"
 #include "status/TypeCommander.h"
+#include "Command.h"
 
 namespace engine {
 
   /// class HandleBuildingCommand - 
   class HandleBuildingCommand : public engine::Command {
     // Attributes
-  protected:
+  private:
     int building;
     // Operations
   public:
@@ -23,8 +26,6 @@ namespace engine {
     CommandTypeId const getTypeId ();
     void execute (status::State& state);
     // Setters and Getters
-    int getBuilding() const;
-    void setBuilding(int building);
   };
 
 };

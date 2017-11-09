@@ -3,10 +3,14 @@
 #define ENGINE__ATTACKCHARCOMMAND__H
 
 
+namespace status {
+  class State;
+};
 namespace engine {
   class Command;
 }
 
+#include "CommandTypeId.h"
 #include "Command.h"
 
 namespace engine {
@@ -14,16 +18,14 @@ namespace engine {
   /// class AttackCharCommand - 
   class AttackCharCommand : public engine::Command {
     // Attributes
-  protected:
+  private:
     int character;
     // Operations
   public:
     AttackCharCommand (int c);
-    CommandTypeId const getTypeId ();
+    CommandTypeId getTypeId () const;
     void execute (status::State& state);
     // Setters and Getters
-    int getCharacter() const;
-    void setCharacter(int character);
   };
 
 };

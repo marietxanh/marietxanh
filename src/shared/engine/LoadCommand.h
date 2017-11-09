@@ -4,10 +4,14 @@
 
 #include <string>
 
+namespace status {
+  class State;
+};
 namespace engine {
   class Command;
 }
 
+#include "CommandTypeId.h"
 #include "Command.h"
 
 namespace engine {
@@ -15,16 +19,14 @@ namespace engine {
   /// class LoadCommand - 
   class LoadCommand : public engine::Command {
     // Attributes
-  protected:
+  private:
     std::string file_name;
     // Operations
   public:
     LoadCommand (const char* f);
-    CommandTypeId const getTypeId ();
+    CommandTypeId getTypeId () const;
     void execute (status::State& state);
     // Setters and Getters
-    const std::string& getFile_name() const;
-    void setFile_name(const std::string& file_name);
   };
 
 };

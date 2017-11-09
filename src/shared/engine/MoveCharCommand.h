@@ -3,10 +3,14 @@
 #define ENGINE__MOVECHARCOMMAND__H
 
 
+namespace status {
+  class State;
+};
 namespace engine {
   class Command;
 }
 
+#include "CommandTypeId.h"
 #include "Command.h"
 
 namespace engine {
@@ -14,16 +18,14 @@ namespace engine {
   /// class MoveCharCommand - 
   class MoveCharCommand : public engine::Command {
     // Attributes
-  protected:
+  private:
     int character;
     // Operations
   public:
     MoveCharCommand (int c);
-    CommandTypeId const getTyepId ();
+    CommandTypeId getTyepId () const;
     void execute (status::State& state);
     // Setters and Getters
-    int getCharacter() const;
-    void setCharacter(int character);
   };
 
 };

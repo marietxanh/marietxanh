@@ -3,10 +3,14 @@
 #define ENGINE__SELECTCHARCOMMAND__H
 
 
+namespace status {
+  class State;
+};
 namespace engine {
   class Command;
 }
 
+#include "CommandTypeId.h"
 #include "Command.h"
 
 namespace engine {
@@ -14,12 +18,12 @@ namespace engine {
   /// class SelectCharCommand - 
   class SelectCharCommand : public engine::Command {
     // Attributes
-  public:
+  private:
     int character;
     // Operations
   public:
-    SelectCharCommand (int c, status::Unit u);
-    CommandTypeId const getTypeId ();
+    SelectCharCommand (int c, state::Unit u);
+    CommandTypeId getTypeId () const;
     void execute (status::State& state);
     // Setters and Getters
   };

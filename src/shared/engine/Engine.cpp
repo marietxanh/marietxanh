@@ -8,13 +8,16 @@
 #include "Command.h"
 #include "Engine.h"
 
+using namespace engine;
+using namespace status;
+
 Engine::Engine (){
     
 }
 Engine::~Engine (){
     
 }
-const status::State& Engine::getState ()const{
+const State& Engine::getState ()const{
     return this->currentState;
 }
 

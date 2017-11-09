@@ -3,28 +3,30 @@
 #define ENGINE__WILDCOLLISIONCOMMAND__H
 
 
+namespace status {
+  class State;
+};
 namespace engine {
   class Command;
 }
 
-#include "Command.h"
 #include "status/TypeLand.h"
+#include "CommandTypeId.h"
+#include "Command.h"
 
 namespace engine {
 
   /// class WildCollisionCommand - 
   class WildCollisionCommand : public engine::Command {
     // Attributes
-  protected:
+  private:
     int character;
     // Operations
   public:
-    WildCollisionCommand (int c, status::TypeLand l);
-    CommandTypeId const getTypeId ();
+    WildCollisionCommand (int c, status::TypeLand land);
+    CommandTypeId getTypeId () const;
     void execute (status::State& state);
     // Setters and Getters
-    int getCharacter() const;
-    void setCharacter(int character);
   };
 
 };
