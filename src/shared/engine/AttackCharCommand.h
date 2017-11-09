@@ -3,9 +3,6 @@
 #define ENGINE__ATTACKCHARCOMMAND__H
 
 
-namespace status {
-  class State;
-};
 namespace engine {
   class Command;
 }
@@ -17,14 +14,12 @@ namespace engine {
 
   /// class AttackCharCommand - 
   class AttackCharCommand : public engine::Command {
-    // Attributes
-  private:
-    int character;
     // Operations
   public:
-    AttackCharCommand (int c);
+    AttackCharCommand ();
+    AttackCharCommand (status::Unit* shooter, status::Unit* receiver);
+    ~AttackCharCommand ();
     CommandTypeId getTypeId () const;
-    void execute (status::State& state);
     // Setters and Getters
   };
 

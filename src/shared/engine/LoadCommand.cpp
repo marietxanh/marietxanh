@@ -5,18 +5,24 @@
  */
 #include "LoadCommand.h"
 
-
-LoadCommand::LoadCommand (const char* f){
+LoadCommand::LoadCommand()
+{
     
 }
 
-CommandTypeId const LoadCommand::getTypeId (){
-    return CommandTypeId(LOAD);
+LoadCommand::LoadCommand (const char* f)
+{
+    
 }
 
-void LoadCommand::execute (status::State& state){
-    state.State(file_name);
+LoadCommand::~LoadCommand()
+{
     
+}
+
+CommandTypeId LoadCommand::getTypeId () const
+{
+    return LOAD;
 }
     
 // Setters and Getters

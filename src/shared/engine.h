@@ -7,9 +7,6 @@
 #include "engine/Engine.h"
 #include "engine/LoadCommand.h"
 #include "engine/MoveCharCommand.h"
-#include "engine/SelectCharCommand.h"
 #include "engine/AttackCharCommand.h"
-#include "engine/HandleAttackCommand.h"
-#include "engine/WildCollisionCommand.h"
-#include "engine/HandleBuildingCommand.h"
+#include "engine/CreateCharacterCommand.h"
 #endif

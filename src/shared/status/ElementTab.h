@@ -18,7 +18,7 @@ namespace status {
     // Associations
     // Attributes
   private:
-    std::vector<std::vector<Element*>> element_array;
+    std::vector<std::vector<Element*> > element_array;
     std::vector<std::vector<int> > layer_array;
     std::vector<std::string> textures_references;
     // Operations

@@ -4,7 +4,7 @@
 
 
 namespace status {
-  class State;
+  class ElementTab;
 };
 namespace engine {
   class Command;
@@ -17,14 +17,12 @@ namespace engine {
 
   /// class MoveCharCommand - 
   class MoveCharCommand : public engine::Command {
-    // Attributes
-  private:
-    int character;
     // Operations
   public:
-    MoveCharCommand (int c);
+    MoveCharCommand ();
+    MoveCharCommand (status::ElementTab* unit_tab, status::Land* destination, status::Unit* unit_to_move);
+    ~MoveCharCommand ();
     CommandTypeId getTyepId () const;
-    void execute (status::State& state);
     // Setters and Getters
   };
 

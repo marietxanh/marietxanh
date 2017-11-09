@@ -4,9 +4,6 @@
 
 #include <string>
 
-namespace status {
-  class State;
-};
 namespace engine {
   class Command;
 }
@@ -23,9 +20,10 @@ namespace engine {
     std::string file_name;
     // Operations
   public:
+    LoadCommand ();
     LoadCommand (const char* f);
+    ~LoadCommand ();
     CommandTypeId getTypeId () const;
-    void execute (status::State& state);
     // Setters and Getters
   };
 

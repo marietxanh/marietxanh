@@ -4,10 +4,14 @@
 
 
 namespace status {
+  class Element;
+  class ElementTab;
   class State;
 }
 
 #include "CommandTypeId.h"
+#include "status/Element.h"
+#include "status/ElementTab.h"
 #include "status/State.h"
 
 namespace engine {
@@ -17,8 +21,7 @@ namespace engine {
     // Operations
   public:
     virtual ~Command ();
-    virtual CommandTypeId const getTypeId () = 0;
-    virtual void execute (status::State& state) = 0;
+    virtual CommandTypeId getTypeId () const = 0;
     // Setters and Getters
   };
 

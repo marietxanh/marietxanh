@@ -26,3 +26,13 @@ void Element::setType_id(TypeID id)
 {
     type_id = id;
 }
+
+int Element::getHeight_position() const
+{
+    return this->height_position;
+}
+
+int Element::getWidth_position() const
+{
+    return this->width_position;
+}

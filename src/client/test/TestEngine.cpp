@@ -6,8 +6,9 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 #include "TestEngine.h"
-#include "../../shared/engine.h"
-#include "../../shared/status.h"
+
+#define CHECK(expr) \
+    if (!(expr)) throw std::runtime_error("Echec " #expr);
 
 using namespace std;
 using namespace engine;
@@ -19,42 +20,31 @@ void TestEngine::testEngine(){
     
     cout<<"Chargement du niveau\n"<< endl;
     moteur.getState() = new State("../../../res/test_render.txt");
+    moteur.getState()->getUnits()->setElement(2, 3, new Unit(INFANTRY));
     sf::Window window;
     sf::Event event;
-
-    while(window.pollEvent(event))
+    for(int i(0); i < 3; i++)
     {
-        if (event.type == sf::Event::KeyPressed)
+        while(window.pollEvent(event))
         {
-            if(event.key.code == sf::Keyboard::Escape)
+            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 0)
             {
-                moteur.addCommand(0, (CreateCharacter*)())
+                    moteur.addCommand(0, new CreateCharacterCommand(moteur.getState()->getBuildings()->getElement(2,1), moteur.getState()->getUnits()));
+                    CHECK(((Unit*)(moteur.getState()->getUnits()->getElement(2,1)))->getType_unit() == INFANTRY);
             }
+            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 1)
+            {
+                    moteur.addCommand(0, new MoveCharCommand(moteur.getState()->getUnits()->getElement(2,1), moteur.getState()->getLands()->getElement(2,2)));
+                    CHECK(((Unit*)(moteur.getState()->getUnits()->getElement(2,1))) == NULL);
+                    CHECK(((Unit*)(moteur.getState()->getUnits()->getElement(2,2)))->getType_unit() == INFANTRY);
+            }
+            else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 2)
+            {
+                moteur.addCommand(0, new AttackCharCommand(((Unit*)(moteur.getState()->getUnits()->getElement(2,2))), ((Unit*)(moteur.getState()->getUnits()->getElement(2,3)))));
+            }
+            
+            
         }
     }
-    
-    moteur.addCommand(1,niveau);
-    
-    cout << "Sélection d'un personnage\n" << endl;
-    SelectCharCommand select();
-    moteur.addCommand(2,select);
-    
-    if(grid + (select.character.range_mvmt)== /*emlacement ennemi*/){   /*si un ennemi est à portée*/
-        cout << "Attaque ennemi\n" << endl;
-        AttackCharCommand attaque();
-        moteur.addCommand(4,attaque);
-    }
-    else {
-        cout << "Déplacement d'un personnage\n" << endl;
-        MoveCharCommand deplacement();
-        moteur.addCommand(3,deplacement);
-    }
-    
-    cout << "Récupération des taxes\n" << endl;
-    HandleBuildingCommand taxes();
-    moteur.addCommand(5,taxes);
-    
-    cout << "Fin d'un jour\n" << endl;
-    moteur.update();
    
 }

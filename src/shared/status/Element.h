@@ -13,6 +13,8 @@ namespace status {
     // Attributes
   protected:
     TypeID type_id;
+    int width_position;
+    int height_position;
     // Operations
   public:
     Element (TypeID id);
@@ -22,6 +24,10 @@ namespace status {
     // Setters and Getters
     TypeID getType_id() const;
     void setType_id(TypeID type_id);
+    int getWidth_position() const;
+    void setWidth_position(int width_position);
+    int getHeight_position() const;
+    void setHeight_position(int height_position);
   };
 
 };

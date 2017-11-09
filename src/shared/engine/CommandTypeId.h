@@ -10,7 +10,7 @@ namespace engine {
     SELECT_CHAR     = 2,
     MOVE_CHAR     = 3,
     ATTACK     = 4,
-    HANDLE_ATK     = 5,
+    CREATE_CHARACTER     = 5,
     WILD_COLLISION     = 6,
     HANDLE_BUILDING     = 7
   };

@@ -15,6 +15,7 @@
 #define TESTENGINE_H
 
 #include <iostream>
+#include "../../shared/status.h"
 #include "../../shared/engine.h"
 #include <SFML/Window.hpp>
 

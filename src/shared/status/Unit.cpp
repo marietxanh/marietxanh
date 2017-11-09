@@ -107,5 +107,6 @@ int Unit :: getHealth() const
 
 void Unit :: setHealth(int health)
 {
-    this->health = health;
+    this->health += health;
+    if(this->health > 10) this->health = 10;
 }

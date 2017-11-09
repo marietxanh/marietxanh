@@ -30,6 +30,5 @@ void Engine::update (){
         pair.second.execute();
     }
     currentState.day +=1;
-    currentCommands.clear();
-    
+    currentCommands.clear();   
 }
