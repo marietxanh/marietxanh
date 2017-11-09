@@ -219,5 +219,34 @@ ElementTab & Contient un tableau 2D d'éléments\\
 \end{landscape}
     
 \newpage
+
+\chapter{Règles de changement d'état et moteur du jeu}
+\section{Tours et horloges}
+\paragraph{}Lors du tour d'un joueur, plusieurs actions peuvent être effectuées (il est tout à fait possible de passer sont tour). Une action entraîne un changement d'état. Un changement d'état est instantané mais l'animation d'un déplacement ou d'une attaque introduit un temps de pause pendant lequel le joueur ne peut pas effectuer une autre action. Afin de ne pas bloquer la partie, un temps total par tour doit être imposé. Le jeu introduira donc deux horloges : une pour le décompte du temps de tour, une autre pour afficher un changement d'état qui a déjà été effectué.
+
+\section{Changement extérieurs}
+\paragraph{}Ce sont les changements demandés par une entrée externe (pression de touche ou réseau).
+Les différents changements extérieurs peuvent être un chargement de carte, une attaque, un déplacement, la création d'une nouvelle unité, la capture d'un bâtiment, la fusion de deux unités ou encore la fin d'un tour.
+
+\section{Changements autonomes}
+\paragraph{}Les différents changements autonomes qui peuvent avoir lieux sont :
+\begin{itemize}
+    \item la capture d'un bâtiment fait diminuer le nombre de points de capture restant avant qu'il soit acquis
+    \item l'attaque d'une unité par une autre fait diminuer les points de vie de l'unité attaquée et les munitions de l'unité attaquante si les munitions sont spécifiques
+    \item le déplacement d'une unité fait diminuer ses points de carburant/rations en plus de ceux obligatoires à chaque tour
+    \item la fusion d'une unité avec une autre identique fait disparaître l'une des deux, additionne les points de vie et crée une rentrée d'argent si la somme des points de vie dépasse la limite maximale
+    \item un changement de tour crée une rentrée d'argent proportionnelle au nombre de villes possédées
+\end{itemize}
+
+    \newpage
+\thispagestyle{empty}
+\begin{landscape}
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[scale=0.50]{engine.png}
+    \end{center}
+    \caption{Diagramme de l'engine}
+\end{figure}
+\end{landscape}
 \end{document}
 
