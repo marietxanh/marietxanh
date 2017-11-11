@@ -22,8 +22,9 @@ void TestEngine::testEngine(){
     string file_name = "res/test_render.txt";
     Engine *moteur = new Engine(file_name);
     sf::Window window;
-    window.create(sf::VideoMode(100, 100), "TestEngine");
+    window.create(sf::VideoMode(500, 200), "TestEngine");
     int i = 0;
+    cout << "\n\nPRESS SPACE TO CHANGE STATE\n" << endl;
     while(window.isOpen())
     {
         //cout << i << endl;
