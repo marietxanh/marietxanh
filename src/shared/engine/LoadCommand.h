@@ -21,8 +21,8 @@ namespace engine {
     // Operations
   public:
     LoadCommand ();
-    LoadCommand (const char* f);
     ~LoadCommand ();
+    LoadCommand (const char* f);
     CommandTypeId getTypeId () const;
     // Setters and Getters
   };

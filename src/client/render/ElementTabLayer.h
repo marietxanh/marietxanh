@@ -24,6 +24,7 @@ namespace render {
   public:
     ElementTabLayer (char* text_file_name, char* type_layer);
     status::ElementTab* getElement_tab () const;
+    ~ElementTabLayer ();
     // Setters and Getters
   };
 

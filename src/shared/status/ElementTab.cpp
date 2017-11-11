@@ -17,9 +17,12 @@ ElementTab::ElementTab (string& text_file_name, int width, int height, string& t
             element_array[i].resize(width);
             layer_array[i].resize(width);
         }
-    setLayer_array(text_file_name, type_element);
-    setTextures_references(text_file_name, type_element);
-    setElement_array(type_element);
+    if(type_element == "Lands" || type_element == "Buildings")
+    {
+        setLayer_array(text_file_name, type_element);
+        setTextures_references(text_file_name, type_element);
+        setElement_array(type_element);
+    }
 }
 
 ElementTab::~ElementTab()
@@ -34,16 +37,6 @@ ElementTab::~ElementTab()
              et repointage sur l'adresse 0*/
             delete element_array[i][j];
             element_array[i][j] = 0;
-        }
-    }
-    for(int i(0); i < width; i++)
-    {
-        for(int j(0); j < height; j++)
-        {
-            /*suppression des contenus des pointeurs
-             et repointage sur l'adresse 0*/
-            delete array[i][j];
-            array[i][j] = 0;
         }
     }
     //cout << "Suppression du tableau terminée." << endl;
@@ -249,16 +242,5 @@ void ElementTab::setElement_array(string& type_layer)
                 }
             }
         }
-    }
-}
-
-void ElementTab::setElement(int i, int j, Element* element)
-{
-    if(array[i][j] == NULL) array[i][j] = element;
-    else
-    {
-        printf("An element is already using this space.\n");
-        delete element;
-        element = 0;
     }
 }

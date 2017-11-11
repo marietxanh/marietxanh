@@ -19,7 +19,9 @@ void TestEngine::testEngine(){
     Engine moteur;
     
     cout<<"Chargement du niveau\n"<< endl;
-    moteur.getState() = new State("../../../res/test_render.txt");
+    string file_name = "../../../res/test_render.txt";
+    
+    moteur.setState(new State(file_name));
     moteur.getState()->getUnits()->setElement(2, 3, new Unit(INFANTRY));
     sf::Window window;
     sf::Event event;
@@ -29,18 +31,18 @@ void TestEngine::testEngine(){
         {
             if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 0)
             {
-                    moteur.addCommand(0, new CreateCharacterCommand(moteur.getState()->getBuildings()->getElement(2,1), moteur.getState()->getUnits()));
+                    moteur.addCommand(new CreateCharacterCommand(((Building*)(moteur.getState()->getBuildings()->getElement(2,1))), moteur.getState()->getUnits()));
                     CHECK(((Unit*)(moteur.getState()->getUnits()->getElement(2,1)))->getType_unit() == INFANTRY);
             }
             else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 1)
             {
-                    moteur.addCommand(0, new MoveCharCommand(moteur.getState()->getUnits()->getElement(2,1), moteur.getState()->getLands()->getElement(2,2)));
+                    moteur.addCommand(new MoveCharCommand(moteur.getState()->getUnits(), (Land*)(moteur.getState()->getLands()->getElement(2,2)), (Unit*)(moteur.getState()->getUnits()->getElement(2,1))));
                     CHECK(((Unit*)(moteur.getState()->getUnits()->getElement(2,1))) == NULL);
                     CHECK(((Unit*)(moteur.getState()->getUnits()->getElement(2,2)))->getType_unit() == INFANTRY);
             }
             else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 2)
             {
-                moteur.addCommand(0, new AttackCharCommand(((Unit*)(moteur.getState()->getUnits()->getElement(2,2))), ((Unit*)(moteur.getState()->getUnits()->getElement(2,3)))));
+                moteur.addCommand(new AttackCharCommand(((Unit*)(moteur.getState()->getUnits()->getElement(2,2))), ((Unit*)(moteur.getState()->getUnits()->getElement(2,3)))));
             }
             
             

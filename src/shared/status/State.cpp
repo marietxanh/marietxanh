@@ -1,32 +1,25 @@
 #include "../status/State.h"
-<<<<<<< HEAD
 #include "../status.h"
 #include <iostream>
 #include <fstream>
-=======
 #include <iostream>
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 using namespace status;
 using namespace std;
 
 
 State::State(string& text_file_name) : text_file_name(text_file_name)
 {
-<<<<<<< HEAD
         setDimensions(text_file_name);
         string lands_s = "Lands";
         string buildings_s = "Buildings";
+        string units_s = "Units";
         lands = new ElementTab(text_file_name, this->width, this->height, lands_s);
         buildings = new ElementTab(text_file_name, this->width, this->height, buildings_s);
-=======
-        grid = new ElementTab(width, height, LAND);
-        units = new ElementTab(width, height, UNIT);
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
+        units = new ElementTab(text_file_name, this->width, this->height, units_s);
 }
 
 State::~State()
 {
-<<<<<<< HEAD
     delete lands;
     delete buildings;
     delete units;
@@ -44,23 +37,11 @@ ElementTab* State::getBuildings() const
 }
 
 ElementTab* State::getUnits() const
-=======
-    delete grid;
-    delete units;
-    //cout << "Suppression des tableaux d'unités et terrains terminée." << endl;
-}
-
-ElementTab* State::getGrid()
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 {
     return units;
 }
 
-<<<<<<< HEAD
 void State::setDimensions(string& text_file_name)
-=======
-ElementTab* State::getCharacters()
->>>>>>> 6c7cf3bd3aaf1838714150f0f4fd4f0eeb184a42
 {
     std::cout << "Accessing text file " << text_file_name << std::endl;
     ifstream file_access(text_file_name);

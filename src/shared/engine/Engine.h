@@ -28,9 +28,10 @@ namespace engine {
     Engine ();
     ~Engine ();
     status::State* getState () const;
-    void addCommand (int priority, Command* cmd);
+    void addCommand (Command* cmd);
     void update ();
     void setCurrentState (status::State* state);
+    void setState (status::State* state);
     // Setters and Getters
   };
 

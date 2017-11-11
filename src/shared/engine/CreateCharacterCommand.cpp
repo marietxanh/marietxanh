@@ -15,7 +15,7 @@ CreateCharacterCommand::CreateCharacterCommand()
     
 }
 
-CreateCharacterCommand::CreateCharacterCommand(Building* factory, ElementTab* units_tab)
+CreateCharacterCommand::CreateCharacterCommand (Building* factory, ElementTab* units_tab)
 {
     int height = factory->getHeight_position();
     int width = factory->getWidth_position();

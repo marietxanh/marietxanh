@@ -20,9 +20,9 @@ namespace engine {
     // Operations
   public:
     MoveCharCommand ();
-    MoveCharCommand (status::ElementTab* unit_tab, status::Land* destination, status::Unit* unit_to_move);
     ~MoveCharCommand ();
-    CommandTypeId getTyepId () const;
+    MoveCharCommand (status::ElementTab* unit_tab, status::Land* destination, status::Unit* unit_to_move);
+    CommandTypeId getTypeId () const;
     // Setters and Getters
   };
 

@@ -11,6 +11,31 @@ Building::Building(TypeBuilding type_building) : Land(BUILDING)
 {
     this->health = 20;
     this->type_building = type_building;
+    switch(type_building)
+    {
+        case TOWN:
+            this->defense = 4;
+            this->cost_mvmt = 1;
+            break;
+        case FACTORY:
+            this->defense = 3;
+            this->cost_mvmt = 1;
+            break;
+        case AIRPORT:
+            this->defense = 3;
+            this->cost_mvmt = 1;
+            break;
+        case HQ:
+            this->defense = 4;
+            this->cost_mvmt = 1;
+            break;
+        case PORT:
+            this->defense = 3;
+            this->cost_mvmt = 1;
+            break;
+        default:
+            break;
+    }
 }
 
 Building::~Building()

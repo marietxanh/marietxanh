@@ -18,11 +18,16 @@ namespace engine {
 
   /// class Command - 
   class Command {
+    // Attributes
+  protected:
+    CommandTypeId type_id;
     // Operations
   public:
     virtual ~Command ();
     virtual CommandTypeId getTypeId () const = 0;
     // Setters and Getters
+    CommandTypeId getType_id() const;
+    void setType_id(CommandTypeId type_id);
   };
 
 };

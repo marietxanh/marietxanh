@@ -17,8 +17,8 @@ namespace engine {
     // Operations
   public:
     AttackCharCommand ();
-    AttackCharCommand (status::Unit* shooter, status::Unit* receiver);
     ~AttackCharCommand ();
+    AttackCharCommand (status::Unit* shooter, status::Unit* receiver);
     CommandTypeId getTypeId () const;
     // Setters and Getters
   };

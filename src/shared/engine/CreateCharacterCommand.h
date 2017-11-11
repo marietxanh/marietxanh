@@ -20,8 +20,8 @@ namespace engine {
     // Operations
   public:
     CreateCharacterCommand ();
-    CreateCharacterCommand (status::Building* factory, status::ElementTab* units_tab);
     ~CreateCharacterCommand ();
+    CreateCharacterCommand (status::Building* factory, status::ElementTab* units_tab);
     CommandTypeId getTypeId () const;
     // Setters and Getters
   };

@@ -11,6 +11,19 @@ using namespace std;
 Land::Land(TypeLand type_land): Element(LAND)
 {
     this->type_land = type_land;
+    switch(type_land)
+    {
+        case PLAIN:
+            this->defense = 1;
+            this->cost_mvmt = 1;
+            break;
+        case FOREST:
+            this->defense = 2;
+            this->cost_mvmt = 2;
+            break;
+        default:
+            break;
+    }
 }
 
 bool Land::isBuilding() const

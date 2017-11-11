@@ -34,6 +34,7 @@ namespace render {
     // Operations
   public:
     Layer (char* text_file_name, char* type_layer);
+    ~Layer ();
     void setSpritesPositions ();
     int getWidth () const;
     int getHeight () const;

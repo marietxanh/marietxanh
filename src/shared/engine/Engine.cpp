@@ -17,7 +17,7 @@ Engine::Engine (){
 Engine::~Engine (){
     
 }
-const State& Engine::getState ()const{
+State& Engine::getState ()const{
     return this->currentState;
 }
 
@@ -31,4 +31,9 @@ void Engine::update (){
     }
     currentState.day +=1;
     currentCommands.clear();   
+}
+
+void Engine::setState(State* state)
+{
+    this->currentState = state;
 }
