@@ -810,7 +810,7 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
         ||	strstr(name,"status::TypeLand")
         ||	strstr(name,"status::TypeBuilding")
         ||	strstr(name,"status::TypeCommander")
-        ||	strstr(name,"status::State")){
+        ||	strstr(name,"status::State"))){
             print ("#include \"status.h\"\n");
             si->status = 1;
         }
