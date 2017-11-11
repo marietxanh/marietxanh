@@ -49,7 +49,8 @@ Element* ElementTab::getElement(int i, int j)
 
 void ElementTab::setElement(int i, int j, Element* element)
 {
-    if(element_array[i][j] == NULL) element_array[i][j] = element;
+    if(element == NULL) element_array[i][j] = element;
+    else if(element_array[i][j] == NULL) element_array[i][j] = element;
     else
     {
         printf("An element is already using this space.\n");

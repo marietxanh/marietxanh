@@ -36,6 +36,8 @@ namespace status {
     ElementTab* getBuildings () const;
     ElementTab* getUnits () const;
     void setDimensions (std::string& text_file_name);
+    size_t getDay () const;
+    void setDay (size_t day);
     // Setters and Getters
   };
 

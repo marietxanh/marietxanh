@@ -2,11 +2,5 @@
 #ifndef __ENGINE__H
 #define __ENGINE__H
 
-#include "engine/CommandTypeId.h"
-#include "engine/Command.h"
 #include "engine/Engine.h"
-#include "engine/LoadCommand.h"
-#include "engine/MoveCharCommand.h"
-#include "engine/AttackCharCommand.h"
-#include "engine/CreateCharacterCommand.h"
 #endif

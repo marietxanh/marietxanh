@@ -3,6 +3,10 @@
 #define STATUS__ELEMENT__H
 
 
+namespace status {
+  class Element;
+}
+
 #include "TypeID.h"
 
 namespace status {
@@ -18,6 +22,7 @@ namespace status {
     // Operations
   public:
     Element (TypeID id);
+    Element (Element* old_element);
     virtual ~Element ();
     virtual bool isStatic () const = 0;
     virtual void affiche () const = 0;

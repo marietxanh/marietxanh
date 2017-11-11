@@ -32,7 +32,6 @@ class TestRender
 {
 public:
     static void testRender();
-    static void testRender(std::string file_name);
 };
 
 

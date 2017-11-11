@@ -81,3 +81,13 @@ void State::setDimensions(string& text_file_name)
     
     file_access.close();
 }
+
+size_t State::getDay() const
+{
+    return day;
+}
+
+void State::setDay (size_t day)
+{
+    this->day = day;
+}

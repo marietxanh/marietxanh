@@ -2,36 +2,31 @@
 #ifndef ENGINE__ENGINE__H
 #define ENGINE__ENGINE__H
 
-#include <map>
-#include <memory>
+#include <string>
 
 namespace status {
   class State;
-};
-namespace engine {
-  class Command;
 }
 
-#include "Command.h"
+#include "status/State.h"
 
 namespace engine {
 
   /// class Engine - 
   class Engine {
-    // Associations
     // Attributes
   private:
-    std::map<int,std::unique_ptr<Command>> currentCommands;
-    status::State* currentState;
+    status::State* state;
     // Operations
   public:
-    Engine ();
+    Engine (std::string& file_name);
     ~Engine ();
+    void createUnit (status::TypeUnits type_unit, int height, int width);
+    void moveUnit (int height_start, int width_start, int height_end, int width_end);
+    void attackUnit (int height_shooter, int width_shooter, int height_target, int width_target);
+    void captureBuilding (int height, int width);
     status::State* getState () const;
-    void addCommand (Command* cmd);
-    void update ();
-    void setCurrentState (status::State* state);
-    void setState (status::State* state);
+    void setState (status::State* new_state);
     // Setters and Getters
   };
 

@@ -55,6 +55,11 @@ int Building::getHealth() const
     return this->health;
 }
 
+void Building::setHealth(int health)
+{
+    this->health += health;
+}
+
 TypeBuilding Building::getType_building() const
 {
     return this->type_building;

@@ -42,6 +42,12 @@ void Layer::setSpritesPositions()
     }
 }
 
+Layer::~Layer()
+{
+    delete text_file_name;
+    delete type_layer;
+}
+
 sf::Sprite Layer::getSprite(int i, int j) const
 {
     return sprites[i][j];
@@ -60,4 +66,9 @@ int Layer::getHeight()const
 int Layer::getWidth() const
 {
     return width;
+}
+
+int Layer::getLayer_array (int i, int j) const
+{
+    return this->layer_array[i][j];
 }

@@ -28,7 +28,6 @@ int main(int argc,char* argv[])
         }
         else if(std::string(argv[1]) == "render"){
             TestRender::testRender();
-            TestRender::testRender("res/test_render.txt");
         }
         else if(std::string(argv[1]) == "engine"){
             TestEngine::testEngine();

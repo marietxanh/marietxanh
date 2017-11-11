@@ -28,6 +28,7 @@ namespace status {
     bool canCraft () const;
     int getHealth () const;
     TypeBuilding getType_building () const;
+    void setHealth (int health);
     // Setters and Getters
   };
 
