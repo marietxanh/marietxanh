@@ -799,7 +799,7 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
        }       
        if (!si->iostream
         && (strstr(name,"std::cout")
-        ||	strstr(name,"std::endl"){
+        ||	strstr(name,"std::endl"))){
             print ("#include <iostream>\n");
             si->iostream = 1;
         }
