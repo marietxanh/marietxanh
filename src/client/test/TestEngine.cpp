@@ -19,31 +19,52 @@ void TestEngine::testEngine(){
 
     
     cout<<"Chargement du niveau\n"<< endl;
-    string file_name = "../../../res/test_render.txt";
+    string file_name = "res/test_render.txt";
     Engine *moteur = new Engine(file_name);
     sf::Window window;
-    sf::Event event;
-    for(int i(0); i < 3; i++)
+    window.create(sf::VideoMode(100, 100), "TestEngine");
+    int i = 0;
+    while(window.isOpen())
     {
+        //cout << i << endl;
+        sf::Event event;
         while(window.pollEvent(event))
         {
-            if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 0)
+            switch(event.type)
             {
-                moteur->createUnit(INFANTRY, 2, 1);
-                CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1)))->getType_unit() == INFANTRY);
+                case sf::Event::KeyReleased:
+                    if(event.key.code == sf::Keyboard::Space && i == 0)
+                    {
+                        cout << "Space entered : creation of two units" << endl;
+                        moteur->createUnit(INFANTRY, 2, 1);
+                        CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1)))->getType_unit() == INFANTRY);
+                        moteur->createUnit(INFANTRY, 2, 3);
+                        CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,3)))->getType_unit() == INFANTRY);
+                        
+                        i++;
+                    }
+                    else if(event.key.code == sf::Keyboard::Space && i == 1)
+                    {
+                        cout << "Space entered : moving created unit" << endl;
+                        moteur->moveUnit(2, 1, 2, 2);
+                        CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1))) == NULL);
+                        CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,2)))->getType_unit() == INFANTRY);
+                        i++;
+                    }
+                    else if(event.key.code == sf::Keyboard::Space && i == 2)
+                    {
+                        cout << "Space entered : created unit attack" << endl;
+                        moteur->attackUnit(2, 2, 2, 3);
+                        i++;
+                    }
+                    break;
+                case sf::Event::Closed:
+                    window.close();
+                    break;
+                default:
+                    break;
             }
-            else if (event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 1)
-            {
-                moteur->moveUnit(2, 1, 2, 2);
-                CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1))) == NULL);
-                CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,2)))->getType_unit() == INFANTRY);
-            }
-            else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Escape && i == 2)
-            {
-                moteur->attackUnit(2, 2, 2, 3);
-            }
-            
-            
+            if(i == 3) window.close();
         }
     }
     

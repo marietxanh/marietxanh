@@ -226,7 +226,6 @@ void ElementTab::setElement_array(string& type_layer)
                     }
                     found = textures_references[layer_array[i][j]].find('/', found + 1);
                     stock = textures_references[layer_array[i][j]].substr(temp, found - temp);
-                    cout << stock << endl;
                     for(int k(0); k < 3; k++)
                     {
                         found = stock.find('_', found + 1);
@@ -234,7 +233,6 @@ void ElementTab::setElement_array(string& type_layer)
                     }
                     found = stock.find('_', found + 1);
                     stock = stock.substr(temp, found - temp);
-                    cout << stock << "\n" << endl;
                     if(stock == "city") setElement(i, j, new Building(TOWN));
                     else if(stock == "hq") setElement(i, j, new Building(HQ));
                     else if(stock == "factory") setElement(i, j, new Building(FACTORY));

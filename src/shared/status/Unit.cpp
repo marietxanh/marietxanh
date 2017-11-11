@@ -11,6 +11,8 @@ using namespace std;
 Unit::Unit(TypeUnits type_units): Element(UNIT)
 {
     this->type_unit = type_units;
+    this->attack = 2;
+    this->health = 10;
 }
 
 void Unit::affiche() const

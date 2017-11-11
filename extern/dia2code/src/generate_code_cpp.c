@@ -696,6 +696,7 @@ struct stdlib_includes {
    int sfmlGraphics;
    int jsoncpp;
    int iostream;
+   int status;
 };
 
 void print_include_stdlib(struct stdlib_includes* si,char* name) {
@@ -798,10 +799,20 @@ void print_include_stdlib(struct stdlib_includes* si,char* name) {
        }       
        if (!si->iostream
         && (strstr(name,"std::cout")
-        ||  strstr(name,"std::cin")
-        ||  strstr(name,"std::endl"))){
+        ||	strstr(name,"std::endl"){
             print ("#include <iostream>\n");
             si->iostream = 1;
+        }
+        if (!si->status
+        && (strstr(name,"status::TypeID")
+        ||	strstr(name,"status::TypeUnits")
+        ||	strstr(name,"status::TypeTransport")
+        ||	strstr(name,"status::TypeLand")
+        ||	strstr(name,"status::TypeBuilding")
+        ||	strstr(name,"status::TypeCommander")
+        ||	strstr(name,"status::State")){
+            print ("#include \"status.h\"\n");
+            si->status = 1;
         }
     }
 }

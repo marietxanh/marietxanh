@@ -12,6 +12,9 @@ void testSFML() {
 #include "test/TestState.h"
 #include "test/TestRender.h"
 #include "test/TestEngine.h"
+#include "render.h"
+#include "../shared/engine.h"
+#include "../shared/status.h"
 
 using namespace std;
 using namespace status;

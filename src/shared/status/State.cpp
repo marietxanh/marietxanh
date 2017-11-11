@@ -2,7 +2,6 @@
 #include "../status.h"
 #include <iostream>
 #include <fstream>
-#include <iostream>
 using namespace status;
 using namespace std;
 
@@ -13,9 +12,13 @@ State::State(string& text_file_name) : text_file_name(text_file_name)
         string lands_s = "Lands";
         string buildings_s = "Buildings";
         string units_s = "Units";
+        cout << "Setting lands..." << endl;
         lands = new ElementTab(text_file_name, this->width, this->height, lands_s);
+        cout << "Setting buildings..." << endl;
         buildings = new ElementTab(text_file_name, this->width, this->height, buildings_s);
+        cout << "Setting units..." << endl;
         units = new ElementTab(text_file_name, this->width, this->height, units_s);
+        cout << "Done" << endl;
 }
 
 State::~State()

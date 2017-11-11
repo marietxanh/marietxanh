@@ -16,7 +16,8 @@ void TestRender::testRender()
          la texture d'un sprite*/
 	Layer buildings(text_file_name, cbuildings);        
 	Layer lands(text_file_name, clands);
-	int width, height;
+	int width = 0;
+        int height = 0;
         sf::Texture texttest[2];
         sf::Sprite sprittest[2];
         texttest[0].loadFromFile("res/advance_wars_sprites_lands/plain.png");

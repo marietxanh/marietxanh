@@ -18,15 +18,11 @@
 #include "render.h"
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-#include <SFML/OpenGL.hpp>
 #include <iostream>
 #include <unistd.h>
 
 #define FRAMERATE 60
 #define PERIOD (1 / FRAMERATE)
-#include "../render.h"
-#include <SFML/Window.hpp>
-#include <iostream>
 
 class TestRender
 {
