@@ -37,6 +37,6 @@ void Engine::addCommand (Command* command)
     currentCommands.push_back(command);
 }
 void Engine::update ()
-{
-    for(auto command : currentCommands) command.execute();
+{   
+    for(Command command : currentCommands) command.execute(this->state);
 }
