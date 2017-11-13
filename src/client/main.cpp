@@ -35,6 +35,9 @@ int main(int argc,char* argv[])
         else if(std::string(argv[1]) == "engine"){
             TestEngine::testEngine();
         }
+        else if(std::string(argv[1]) == "random_ai"){
+            //TestAI::testAI();
+        }
     }
     else
     {
@@ -42,7 +45,8 @@ int main(int argc,char* argv[])
                 "hello : affiche un message de bienvenue\n" <<
                 "state : instancie un etat du jeu\n" <<
                 "render : affiche le rendu d'un etat du jeu\n" <<
-                "engine : affiche une succession d'etats du jeu en passant des commandes\n" << endl;
+                "engine : affiche une succession d'etats du jeu en passant des commandes\n" << 
+                "random_ai : affiche une succession d'etats du jeu engendrée par les commandes d'une AI\n" << endl;
     }
     return 0;
 }

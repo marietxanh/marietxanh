@@ -14,11 +14,9 @@ using namespace status;
 
 Engine::Engine ()
 {
-    this->state = new State();
 }
 Engine::~Engine ()
 {
-    delete state;
 }
 
 status::State* Engine::getState () const
