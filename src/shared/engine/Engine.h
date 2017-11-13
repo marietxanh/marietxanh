@@ -2,18 +2,18 @@
 #ifndef ENGINE__ENGINE__H
 #define ENGINE__ENGINE__H
 
-#include <vector>
 #include "status.h"
+#include <vector>
 
-namespace engine {
-  class Command;
-};
 namespace status {
   class State;
+};
+namespace engine {
+  class Command;
 }
 
-#include "Command.h"
 #include "status/State.h"
+#include "Command.h"
 
 namespace engine {
 
@@ -21,10 +21,9 @@ namespace engine {
   class Engine {
     // Associations
     // Attributes
-  public:
-    std::vector<Command> currentCommands;
   private:
     status::State state;
+    std::vector<Command> currentCommands;
     // Operations
   public:
     Engine ();
