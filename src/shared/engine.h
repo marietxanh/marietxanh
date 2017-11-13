@@ -2,5 +2,12 @@
 #ifndef __ENGINE__H
 #define __ENGINE__H
 
+#include "engine/CommandTypeID.h"
+#include "engine/Command.h"
 #include "engine/Engine.h"
+#include "engine/LoadMap.h"
+#include "engine/MoveUnit.h"
+#include "engine/AttackUnit.h"
+#include "engine/CreateUnit.h"
+#include "engine/CaptureBuilding.h"
 #endif
