@@ -21,10 +21,9 @@ namespace engine {
   class Engine {
     // Associations
     // Attributes
-  public:
-    std::vector<Command> currentCommands;
   private:
     status::State state;
+    std::vector<Command> currentCommands;
     // Operations
   public:
     Engine ();
