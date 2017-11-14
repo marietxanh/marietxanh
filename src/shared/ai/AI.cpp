@@ -4,9 +4,12 @@
 using namespace engine;
 using namespace status;
 
+using namespace ai{
+
 void AI::listCommands (std::vector<engine::Command*>& list, const status::State& state)
 {
 	engine.setState(state);
 	list.add(engine.currentCommands);
 }
 
+}
