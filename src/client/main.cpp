@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time>
 
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
@@ -37,6 +38,7 @@ int main(int argc,char* argv[])
             TestEngine::testEngine();
         }
         else if(std::string(argv[1]) == "random_ai"){
+		srand(time(NULL));
             //TestAI::testAI();
         }
     }
