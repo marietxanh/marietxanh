@@ -20,7 +20,7 @@ void TestEngine::testEngine(){
     
     cout<<"Chargement du niveau\n"<< endl;
     string file_name = "res/test_render.txt";
-    Engine *moteur = new Engine(file_name);
+    Engine moteur(file_name);
     sf::Window window;
     window.create(sf::VideoMode(500, 200), "TestEngine");
     int i = 0;
@@ -37,25 +37,27 @@ void TestEngine::testEngine(){
                     if(event.key.code == sf::Keyboard::Space && i == 0)
                     {
                         cout << "Space entered : creation of two units" << endl;
-                        moteur->createUnit(INFANTRY, 2, 1);
-                        CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1)))->getType_unit() == INFANTRY);
-                        moteur->createUnit(INFANTRY, 2, 3);
-                        CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,3)))->getType_unit() == INFANTRY);
+                        moteur.addCommand(new CreateUnit(INFANTRY, 2, 1));
+                        moteur.addCommand(new CreateUnit(INFANTRY, 2, 1));
+						moteur.update();
+                        CHECK(((Unit*)(moteur.getState().getUnits()->getElement(2,1)))->getType_unit() == INFANTRY);
+                        CHECK(((Unit*)(moteur.getState().getUnits()->getElement(2,3)))->getType_unit() == INFANTRY);
                         
                         i++;
                     }
                     else if(event.key.code == sf::Keyboard::Space && i == 1)
                     {
                         cout << "Space entered : moving created unit" << endl;
-                        moteur->moveUnit(2, 1, 2, 2);
-                        CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1))) == NULL);
-                        CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,2)))->getType_unit() == INFANTRY);
+                        moteur.addCommand(new MoveUnit(2, 1, 2, 2));
+						moteur.update();
+                        CHECK(((Unit*)(moteur.getState().getUnits()->getElement(2,1))) == NULL);
+                        CHECK(((Unit*)(moteur.getState().getUnits()->getElement(2,2)))->getType_unit() == INFANTRY);
                         i++;
                     }
                     else if(event.key.code == sf::Keyboard::Space && i == 2)
                     {
                         cout << "Space entered : created unit attack" << endl;
-                        moteur->attackUnit(2, 2, 2, 3);
+                        moteur.addCommand(new AttackUnit(2, 2, 2, 3));
                         i++;
                     }
                     break;
@@ -68,7 +70,4 @@ void TestEngine::testEngine(){
             if(i == 3) window.close();
         }
     }
-    
-    delete moteur;
-   
 }
