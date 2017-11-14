@@ -15,6 +15,7 @@ void testSFML() {
 #include "render.h"
 #include "../shared/engine.h"
 #include "../shared/status.h"
+#include "../shared/ai.h"
 
 using namespace std;
 using namespace status;
