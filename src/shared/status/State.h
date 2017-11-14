@@ -30,8 +30,9 @@ namespace status {
     int tile_height;
     // Operations
   public:
-    State (std::string& text_file_name);
+    State ();
     ~State ();
+    void initialisation (std::string& file_name);
     ElementTab* getLands () const;
     ElementTab* getBuildings () const;
     ElementTab* getUnits () const;
