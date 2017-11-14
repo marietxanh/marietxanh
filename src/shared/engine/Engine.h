@@ -23,13 +23,13 @@ namespace engine {
     // Attributes
   private:
     status::State state;
-    std::vector<Command> currentCommands;
+    std::vector<Command*> currentCommands;
     // Operations
   public:
     Engine ();
     ~Engine ();
     status::State getState () const;
-    void setState (status::State new_state);
+    void setState (status::State& new_state);
     void addPassiveCommands ();
     void addCommand (Command* command);
     void update ();

@@ -25,6 +25,7 @@ namespace engine {
     // Operations
   public:
     CaptureBuilding (int height, int width);
+    ~CaptureBuilding ();
     CommandTypeID getTypeID () const;
     void execute (status::State& state);
     // Setters and Getters

@@ -5,7 +5,7 @@
  */
 #include <iostream>
 #include "../status/Building.h"
-using namespace status;
+namespace status {
 
 Building::Building(TypeBuilding type_building) : Land(BUILDING)
 {
@@ -64,3 +64,7 @@ TypeBuilding Building::getType_building() const
 {
     return this->type_building;
 }
+
+}
+
+

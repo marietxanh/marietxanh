@@ -1,5 +1,5 @@
 #include <iostream>
-#include <time>
+#include <time.h>
 
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
@@ -13,16 +13,13 @@ void testSFML() {
 #include "test/TestState.h"
 #include "test/TestRender.h"
 #include "test/TestEngine.h"
-#include "render.h"
-#include "../shared/engine.h"
-#include "../shared/status.h"
-#include "../shared/ai.h"
 
 using namespace std;
 using namespace status;
 
 int main(int argc,char* argv[]) 
 {
+	srand(time(NULL));
     if(argc == 2){
         if(std::string(argv[1]) == "hello"){
             cout << "Hello everyone !" << endl;

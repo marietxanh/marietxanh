@@ -16,7 +16,7 @@ void TestState::testState(){
     /*creation d'un objet State contenant
      deux tableaux d'Element* de taille 2*2*/
     string file = "res/test_render.txt";
-    State* state = new State(file);
+    State* state = new State();
     /*verfication que les instanciations se sont bien deroulees*/
     cout << "Check types..." << endl;   
     CHECK(((Land*)(state->getLands()->getElement(0, 0)))->getType_land() == ROAD);

@@ -20,7 +20,9 @@ void TestEngine::testEngine(){
     
     cout<<"Chargement du niveau\n"<< endl;
     string file_name = "res/test_render.txt";
-    Engine moteur(file_name);
+    Engine moteur;
+    moteur.addCommand(new LoadMap(file_name));
+    moteur.update();
     sf::Window window;
     window.create(sf::VideoMode(500, 200), "TestEngine");
     int i = 0;

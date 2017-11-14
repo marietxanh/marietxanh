@@ -24,7 +24,8 @@ namespace engine {
     std::string file_name;
     // Operations
   public:
-    LoadMap (const char* file_name);
+    LoadMap (const std::string& file_name);
+    ~LoadMap ();
     CommandTypeID getTypeID () const;
     void execute (status::State& state);
     // Setters and Getters

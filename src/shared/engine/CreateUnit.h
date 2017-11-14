@@ -21,14 +21,21 @@ namespace engine {
     // Attributes
   protected:
     status::TypeUnits type_unit;
+    int height;
+    int width;
     // Operations
   public:
-    CreateUnit (status::TypeUnits type_unit);
+    CreateUnit (status::TypeUnits type_unit, int height, int width);
+    ~CreateUnit ();
     CommandTypeID getTypeID () const;
     void execute (status::State& state);
     // Setters and Getters
     const status::TypeUnits& getType_unit() const;
     void setType_unit(const status::TypeUnits& type_unit);
+    int getHeight() const;
+    void setHeight(int height);
+    int getWidth() const;
+    void setWidth(int width);
   };
 
 };
