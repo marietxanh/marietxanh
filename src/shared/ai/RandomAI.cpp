@@ -12,6 +12,12 @@ RandomAI::RandomAI (int randomSeed)
 }
 
 void RandomAI::run (engine::Engine& engine)
-{
+{	
+	std::vector<std::unique_ptr<engine::Command>> list;
+	
+	// ElementTab* tab = engine.getState().getUnits();
+	listCommands(list,engine.getState()); 
+	engine.addCommand(list[randgen]);
+	engine.update();
 	
 }
