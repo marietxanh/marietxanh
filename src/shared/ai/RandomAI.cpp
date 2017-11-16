@@ -13,15 +13,15 @@ namespace ai{
 	void RandomAI::run (engine::Engine* engine)
 	{
 		/* on prend une commande random dans la liste et on 			l'applique au tableau d'elements visé */
-		int width = engine->getState()->getUnits().size();
-		int heigth = engine->getState()->getUnits()[0].size();
+		int width = engine->getState()->getUnits()->getTab().size();
+		int height = engine->getState()->getUnits()->getTab()[0].size();
 		for(int i(0); i < height; i++)
 		{
 			for(int j(0); j < width; j++)
 			{
 				if(engine->getState()->getUnits()->getElement(i,j)!=NULL)
 				{
-					engine->addCommand(list[randgen]);
+					engine->addCommand(getCommand(randgen));
 					engine->update();
 					std::cout << "Unit has moved" << std::endl;
 				}

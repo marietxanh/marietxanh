@@ -20,9 +20,21 @@ void TestAI::testAI()
 
 	RandomAI david(5);
 	cout<<"AI en jeu\n"<< endl;
+	vector<Command*> lCommandUnit;
 
 	string file_name = "res/test_render.txt";
     	Engine* moteur;
+
+	
+	moteur->addCommand(new CreateUnit(INFANTRY, 2, 1));
+	moteur->update();
+
+	lCommandUnit.push_back(new MoveUnit(2,1,3,4));
+	lCommandUnit.push_back(new MoveUnit(2,1,1,2));
+	lCommandUnit.push_back(new MoveUnit(2,1,4,3));			
+	
+	david.setlist(lCommandUnit);
+
 	moteur->addCommand(new LoadMap(file_name));
 	moteur->update();
 	/* creation unites par les usines */

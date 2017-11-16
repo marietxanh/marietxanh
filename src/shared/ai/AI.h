@@ -9,6 +9,9 @@ namespace engine {
   class Engine;
 }
 
+#include "engine/Engine.h"
+#include "engine/Command.h"
+
 namespace ai {
 
   /// class AI - 
@@ -20,6 +23,7 @@ namespace ai {
   public:
     virtual void run (engine::Engine* engine) = 0;
     void setlist (std::vector<engine::Command*> listarg);
+    Command* getCommand (int randgen);
     // Setters and Getters
   };
 
