@@ -2,7 +2,6 @@
 #ifndef AI__RANDOMAI__H
 #define AI__RANDOMAI__H
 
-#include <random>
 
 namespace engine {
   class Engine;
@@ -19,7 +18,7 @@ namespace ai {
   class RandomAI : public ai::AI {
     // Attributes
   private:
-    std::mt19937 randgen;
+    int randgen;
     // Operations
   public:
     RandomAI (int randomSeed);

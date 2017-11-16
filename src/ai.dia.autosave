@@ -360,7 +360,7 @@
                 <dia:string>#randgen#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::mt19937&amp;#</dia:string>
+                <dia:string>#int#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>

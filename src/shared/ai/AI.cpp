@@ -14,15 +14,7 @@ namespace ai{
 	
 	Command* AI::getCommand (int randgen)
 	{	
-		if(ranfgen <= list.size())
-		{
-			return list[randgen];
-		}
-		else 
-		{
-			std::cout << "erreur randgen" << std::endl;
-        		exit(EXIT_FAILURE);
-		}
+		return list[randgen];
 	}
 
 };

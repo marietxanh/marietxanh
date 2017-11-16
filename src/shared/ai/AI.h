@@ -3,6 +3,7 @@
 #define AI__AI__H
 
 #include <vector>
+#include <random>
 
 namespace engine {
   class Command;
@@ -23,7 +24,7 @@ namespace ai {
   public:
     virtual void run (engine::Engine* engine) = 0;
     void setlist (std::vector<engine::Command*> listarg);
-    Command* getCommand (int randgen);
+    engine::Command* getCommand (std::mt19937& randgen);
     // Setters and Getters
   };
 
