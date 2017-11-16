@@ -13,8 +13,8 @@ namespace ai{
 	void RandomAI::run (engine::Engine* engine)
 	{
 		/* on prend une commande random dans la liste et on 			l'applique au tableau d'elements visé */
-		int width = engine->getState()->getUnits()->getElement().size();
-		int height = engine->getState()->getUnits()->getElement()[0].size();
+		int width = engine->getState()->getUnits().size();
+		int heigth = engine->getState()->getUnits()[0].size();
 		for(int i(0); i < height; i++)
 		{
 			for(int j(0); j < width; j++)

@@ -15,16 +15,26 @@ using namespace engine;
 using namespace status;
 using namespace ai;
 
-void TestAI::testAI(){
-	cout<<"AI en jeu\n"<< endl;
+void TestAI::testAI()
+{
 
 	RandomAI david(5);
-	string file_name = "res/test_render.txt";
-    	Engine moteur(file_name);
+	cout<<"AI en jeu\n"<< endl;
 
+	string file_name = "res/test_render.txt";
+    	Engine* moteur;
+	moteur->addCommand(new LoadMap(file_name));
+	moteur->update();
+	/* creation unites par les usines */
+	/* setlist() */
+
+	david.run(moteur);
 	cout<<"1er coup\n"<< endl;
+
+	david.set_randgen(5);
 	david.run(moteur);
 	cout<<"2ème coup\n"<< endl;
-	david(5);
-	david.run(moteur);
+
 }
+
+
