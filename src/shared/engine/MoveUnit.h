@@ -28,7 +28,7 @@ namespace engine {
   public:
     MoveUnit (int height_start, int width_start, int height_end, int width_end);
     CommandTypeID getTypeID () const;
-    void execute (status::State& state);
+    void execute (status::State* state);
     ~MoveUnit ();
     // Setters and Getters
     int getHeight_start() const;

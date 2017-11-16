@@ -22,9 +22,9 @@ namespace engine {
 	{
 		return CREATE;
 	}
-	void CreateUnit::execute (status::State& state)
+	void CreateUnit::execute (status::State* state)
 	{
-		state.getUnits()->setElement(height, width, new Unit(type_unit));
+		state->getUnits()->setElement(height, width, new Unit(type_unit));
 		std::cout << "Unit created in (" << height << ", " << width << ")" << std::endl;	
 	}
 	

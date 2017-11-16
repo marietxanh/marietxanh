@@ -13,18 +13,18 @@ namespace engine {
 
 	Engine::Engine ()
 	{
-
+		state = new State();
 	}
 	Engine::~Engine ()
 	{
 
 	}
 
-	status::State Engine::getState () const
+	status::State* Engine::getState () const
 	{
 		return this->state;
 	}
-	void Engine::setState (status::State& new_state)
+	void Engine::setState (status::State* new_state)
 	{
 		this->state = new_state;
 	}
@@ -42,6 +42,7 @@ namespace engine {
 		for(int i(0); i < ((int)(currentCommands.size())); i++)
 		{
 			currentCommands[i]->execute(this->state);
+			std::cout << "state OK" << std::endl;
 			delete currentCommands[i];
 			currentCommands[i] = 0;
 		}

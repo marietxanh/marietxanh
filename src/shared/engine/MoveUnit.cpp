@@ -23,11 +23,11 @@ namespace engine {
 		return MOVE;
 	}
 
-	void MoveUnit::execute (status::State& state)
+	void MoveUnit::execute (status::State* state)
 	{
-		state.getUnits()->setElement(height_end, width_end, state.getUnits()->getElement(height_start, width_start));
+		state->getUnits()->setElement(height_end, width_end, state->getUnits()->getElement(height_start, width_start));
 		std::cout << "Move units from (" << height_start << ", " << width_start << ") to (" << height_end << ", " << width_end << ")" << std::endl;
-		state.getUnits()->setElement(height_start, width_start, NULL);
+		state->getUnits()->setElement(height_start, width_start, NULL);
 	}
 	
 };

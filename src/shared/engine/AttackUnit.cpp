@@ -24,12 +24,12 @@ namespace engine {
 		return ATTACK;
 	}
 
-	void AttackUnit::execute (status::State& state)
+	void AttackUnit::execute (status::State* state)
 	{
-		int attack = ((Unit*)(state.getUnits()->getElement(height_shooter, width_shooter)))->getAttack();
-		((Unit*)(state.getUnits()->getElement(height_target, width_target)))->setHealth(-attack); 
+		int attack = ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getAttack();
+		((Unit*)(state->getUnits()->getElement(height_target, width_target)))->setHealth(-attack); 
 		std::cout << "Unit from (" << height_shooter << ", " << width_shooter << ") attack unit in (" << height_target << ", " << width_target << ")" << std::endl;
-		std::cout << "Health of attacked unit : " << ((Unit*)(state.getUnits()->getElement(height_target, width_target)))->getHealth() << std::endl;
+		std::cout << "Health of attacked unit : " << ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth() << std::endl;
 	}
 
 };

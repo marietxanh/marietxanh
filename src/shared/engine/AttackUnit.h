@@ -29,7 +29,7 @@ namespace engine {
     AttackUnit (int height_shooter, int width_shooter, int height_target, int width_target);
     ~AttackUnit ();
     CommandTypeID getTypeID () const;
-    void execute (status::State& state);
+    void execute (status::State* state);
     // Setters and Getters
     int getHeight_shooter() const;
     void setHeight_shooter(int height_shooter);

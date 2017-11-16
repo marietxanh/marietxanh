@@ -18,7 +18,7 @@ namespace engine {
   public:
     virtual ~Command ();
     virtual CommandTypeID getTypeID () const = 0;
-    virtual void execute (status::State& state) = 0;
+    virtual void execute (status::State* state) = 0;
     // Setters and Getters
   };
 

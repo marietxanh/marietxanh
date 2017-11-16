@@ -60,7 +60,6 @@ void ElementTab::setElement(int i, int j, Element* element)
 }
 void ElementTab::setLayer_array(std::string& text_file_name, std::string& type_layer)
 {
-    std::cout << "Accessing text file " << text_file_name << std::endl;
     ifstream file_access(text_file_name);
     if(!file_access)
     {
@@ -114,12 +113,10 @@ void ElementTab::setLayer_array(std::string& text_file_name, std::string& type_l
     cout << layer_array[height - 1][width - 1] << endl;
 
     file_access.close();
-    cout << text_file_name << " closed" << endl;
 }
 
 void ElementTab::setTextures_references(std::string& text_file_name, std::string& type_layer)
 {
-    std::cout << "Accessing text file " << text_file_name << std::endl;
     ifstream file_access(text_file_name);
     if(!file_access)
     {
@@ -167,7 +164,6 @@ void ElementTab::setTextures_references(std::string& text_file_name, std::string
     }while(line != "\0");
     
     file_access.close();
-    cout << text_file_name << " closed" << endl;
 }
 
 void ElementTab::setElement_array(string& type_layer)

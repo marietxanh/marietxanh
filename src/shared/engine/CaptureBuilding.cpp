@@ -21,16 +21,16 @@ namespace engine {
 	{
 		return CAPTURE;
 	}
-	void CaptureBuilding::execute (status::State& state)
+	void CaptureBuilding::execute (status::State* state)
 	{
-		((Building*)(state.getBuildings()->getElement(height, width)))->setHealth(- ((Unit*)(state.getUnits()->getElement(height, width)))->getHealth());
-		if(((Building*)(state.getBuildings()->getElement(height, width)))->getHealth() <= 0)
+		((Building*)(state->getBuildings()->getElement(height, width)))->setHealth(- ((Unit*)(state->getUnits()->getElement(height, width)))->getHealth());
+		if(((Building*)(state->getBuildings()->getElement(height, width)))->getHealth() <= 0)
 		{
-			((Building*)(state.getBuildings()->getElement(height, width)))->setHealth(20);
+			((Building*)(state->getBuildings()->getElement(height, width)))->setHealth(20);
 			std::cout << "Building captured !" << std::endl;
 		}
 		else
-			std::cout << "Health remaining : " << ((Building*)(state.getBuildings()->getElement(height, width)))->getHealth() << std::endl;
+			std::cout << "Health remaining : " << ((Building*)(state->getBuildings()->getElement(height, width)))->getHealth() << std::endl;
 	}
 	
 };

@@ -53,7 +53,6 @@ ElementTab* State::getUnits() const
 
 void State::setDimensions(string& text_file_name)
 {
-    std::cout << "Accessing text file " << text_file_name << std::endl;
     ifstream file_access(text_file_name);
     if(!file_access)
     {

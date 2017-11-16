@@ -28,7 +28,7 @@ namespace engine {
     CreateUnit (status::TypeUnits type_unit, int height, int width);
     ~CreateUnit ();
     CommandTypeID getTypeID () const;
-    void execute (status::State& state);
+    void execute (status::State* state);
     // Setters and Getters
     const status::TypeUnits& getType_unit() const;
     void setType_unit(const status::TypeUnits& type_unit);

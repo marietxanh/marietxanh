@@ -27,7 +27,7 @@ namespace engine {
     CaptureBuilding (int height, int width);
     ~CaptureBuilding ();
     CommandTypeID getTypeID () const;
-    void execute (status::State& state);
+    void execute (status::State* state);
     // Setters and Getters
     int getHeight() const;
     void setHeight(int height);

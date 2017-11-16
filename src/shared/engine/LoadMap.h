@@ -27,7 +27,7 @@ namespace engine {
     LoadMap (const std::string& file_name);
     ~LoadMap ();
     CommandTypeID getTypeID () const;
-    void execute (status::State& state);
+    void execute (status::State* state);
     // Setters and Getters
   };
 

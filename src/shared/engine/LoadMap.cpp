@@ -19,9 +19,9 @@ namespace engine{
 	{
 		return LOAD;
 	}
-	void LoadMap::execute (status::State& state)
+	void LoadMap::execute (status::State* state)
 	{
-		state.initialisation(file_name);
+		state->initialisation(file_name);
 		std::cout << "Map loaded" << std::endl;
 	}
 

@@ -106,13 +106,13 @@
         <dia:point val="13.49,3.65"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="13.44,3.6;39.45,7.7"/>
+        <dia:rectangle val="13.44,3.6;33.29,7.7"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="13.49,3.65"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="25.91"/>
+        <dia:real val="19.75"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="4"/>
@@ -240,7 +240,7 @@
                 <dia:string>#list#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#std::vector&lt;std::unique_ptr&lt;engine::Command&gt;&gt;&amp;#</dia:string>
+                <dia:string>#std::vector&lt;engine::Command*&gt;&amp;#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -560,19 +560,30 @@
     </dia:object>
     <dia:object type="UML - Generalization" version="1" id="O3">
       <dia:attribute name="obj_pos">
-        <dia:point val="26.445,7.70025"/>
+        <dia:point val="23.365,7.70025"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
+<<<<<<< HEAD
         <dia:rectangle val="21.545,7.65025;27.295,11.95"/>
+=======
+        <dia:rectangle val="20.695,7.65025;24.215,11.25"/>
+>>>>>>> b41c5e0710cc917897d8cdbf98b1590c232a1197
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
+<<<<<<< HEAD
         <dia:point val="26.445,7.70025"/>
         <dia:point val="26.445,10.2001"/>
         <dia:point val="21.595,10.2001"/>
         <dia:point val="21.595,11.9"/>
+=======
+        <dia:point val="23.365,7.70025"/>
+        <dia:point val="23.365,9.85013"/>
+        <dia:point val="20.745,9.85013"/>
+        <dia:point val="20.745,11.2"/>
+>>>>>>> b41c5e0710cc917897d8cdbf98b1590c232a1197
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
