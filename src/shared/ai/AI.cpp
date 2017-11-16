@@ -2,17 +2,15 @@
 #include <iostream>
 
 using namespace engine;
-using namespace status;
 
+namespace ai{
 
-using namespace ai{
+	void AI::setlist(std::vector<Command*> listarg)
+	{
+		list.resize(listarg.size());
+		list = listarg;
 
-void AI::listCommands (std::vector<engine::Command*>& list, const status::State& state)
+	}
 
-{
-	engine.setState(state);
-	list.push_back(engine.currentCommands);
-}
-
-}
+};
 

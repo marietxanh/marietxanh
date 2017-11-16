@@ -3,25 +3,23 @@
 #define AI__AI__H
 
 #include <vector>
-#include "status.h"
 
 namespace engine {
-  class Engine;
   class Command;
-};
-namespace status {
-  class State;
+  class Engine;
 }
 
 namespace ai {
 
   /// class AI - 
   class AI {
+    // Attributes
+  private:
+    std::vector<engine::Command*> list;
     // Operations
   public:
-    virtual void run (engine::Engine& engine) = 0;
-  protected:
-    void listCommands (std::vector<engine::Command*>& list, status::State& state);
+    virtual void run (engine::Engine* engine) = 0;
+    void setlist (std::vector<engine::Command*> listarg);
     // Setters and Getters
   };
 

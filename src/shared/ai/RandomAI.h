@@ -23,7 +23,8 @@ namespace ai {
     // Operations
   public:
     RandomAI (int randomSeed);
-    void run (engine::Engine& engine);
+    void run (engine::Engine* engine);
+    void set_randgen (int randomSeed);
     // Setters and Getters
   };
 
