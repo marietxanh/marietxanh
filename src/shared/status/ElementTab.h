@@ -30,6 +30,7 @@ namespace status {
     void setLayer_array (std::string& text_file_name, std::string& type_layer);
     void setElement_array (std::string& type_layer);
     void setTextures_references (std::string& text_file_name, std::string& type_layer);
+    std::vector<std::vector<int> > getTab () const;
     // Setters and Getters
   };
 

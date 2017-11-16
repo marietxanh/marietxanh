@@ -239,3 +239,8 @@ void ElementTab::setElement_array(string& type_layer)
         }
     }
 }
+
+std::vector<std::vector<int> > ElementTab::getTab () const
+{
+	return this->layer_array;
+}
