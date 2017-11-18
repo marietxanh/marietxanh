@@ -17,6 +17,7 @@
 #include <iostream>
 #include "../../shared/ai.h"
 #include "../../shared/engine.h"
+#include "../../shared/status.h"
 #include <SFML/Window.hpp>
 
 class TestAI

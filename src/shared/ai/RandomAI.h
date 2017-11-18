@@ -16,14 +16,10 @@ namespace ai {
 
   /// class RandomAI - 
   class RandomAI : public ai::AI {
-    // Attributes
-  private:
-    int randgen;
     // Operations
   public:
-    RandomAI (int randomSeed);
+    RandomAI ();
     void run (engine::Engine* engine);
-    void set_randgen (int randomSeed);
     // Setters and Getters
   };
 

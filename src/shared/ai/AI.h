@@ -2,12 +2,12 @@
 #ifndef AI__AI__H
 #define AI__AI__H
 
+#include <string>
 #include <vector>
-#include <random>
 
 namespace engine {
-  class Command;
   class Engine;
+  class Command;
 }
 
 #include "engine/Engine.h"
@@ -19,12 +19,12 @@ namespace ai {
   class AI {
     // Attributes
   private:
-    std::vector<engine::Command*> list;
+    std::vector<std::string> list;
     // Operations
   public:
     virtual void run (engine::Engine* engine) = 0;
-    void setlist (std::vector<engine::Command*> listarg);
-    engine::Command* getCommand (std::mt19937& randgen);
+    engine::Command* getCommand (int i, int j, int height, int width) const;
+    void addCommand (std::string& command);
     // Setters and Getters
   };
 

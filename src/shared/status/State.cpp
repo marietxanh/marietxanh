@@ -100,3 +100,13 @@ void State::setDay (size_t day)
 {
     this->day = day;
 }
+
+int State::getHeight() const
+{
+	return this->height;
+}
+
+int State::getWidth() const
+{
+	return this->width;
+}

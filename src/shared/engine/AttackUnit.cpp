@@ -26,10 +26,14 @@ namespace engine {
 
 	void AttackUnit::execute (status::State* state)
 	{
-		int attack = ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getAttack();
-		((Unit*)(state->getUnits()->getElement(height_target, width_target)))->setHealth(-attack); 
-		std::cout << "Unit from (" << height_shooter << ", " << width_shooter << ") attack unit in (" << height_target << ", " << width_target << ")" << std::endl;
-		std::cout << "Health of attacked unit : " << ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth() << std::endl;
+		if(state->getUnits()->getElement(height_target, width_target) != NULL)
+		{
+			int attack = ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getAttack();
+			((Unit*)(state->getUnits()->getElement(height_target, width_target)))->setHealth(-attack); 
+			std::cout << "Unit from (" << height_shooter << ", " << width_shooter << ") attack unit in (" << height_target << ", " << width_target << ")" << std::endl;
+			std::cout << "Health of attacked unit : " << ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth() << std::endl;
+		}
+		else std::cout << "No target in (" << height_target << ", " << width_target << ")" << std::endl;
 	}
 
 };

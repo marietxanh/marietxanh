@@ -39,6 +39,8 @@ namespace status {
     void setDimensions (std::string& text_file_name);
     size_t getDay () const;
     void setDay (size_t day);
+    int getHeight () const;
+    int getWidth () const;
     // Setters and Getters
   };
 
