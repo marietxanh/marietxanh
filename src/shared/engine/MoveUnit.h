@@ -2,7 +2,7 @@
 #ifndef ENGINE__MOVEUNIT__H
 #define ENGINE__MOVEUNIT__H
 
-#include "status.h"
+#include "../status.h"
 
 namespace status {
   class State;
