@@ -24,12 +24,6 @@ namespace ai{
 				{
 					engine->addCommand(this->getCommand(i, j, height, width));
 					engine->update();
-					std::cout << "Unit has moved" << std::endl;
-				}
-				else 
-				{
-					std::cout << "No Unit on the ElementTab " << std::endl;
-        				exit(EXIT_FAILURE);
 				}
 			}
 		}

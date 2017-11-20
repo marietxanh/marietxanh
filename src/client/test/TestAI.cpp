@@ -34,9 +34,12 @@ void TestAI::testAI()
 	{
 		for(int j(0); j < width; j++)
 		{
-			if(((Building*)(moteur->getState()->getBuildings()->getElement(i, j)))->getType_building() == FACTORY)
+			if(moteur->getState()->getBuildings()->getElement(i, j) != NULL)
 			{
-				moteur->addCommand(new CreateUnit(INFANTRY, i, j));
+				if(((Building*)(moteur->getState()->getBuildings()->getElement(i, j)))->getType_building() == FACTORY)
+				{
+					moteur->addCommand(new CreateUnit(INFANTRY, i, j));
+				}
 			}
 		}
 	}

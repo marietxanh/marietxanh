@@ -42,7 +42,6 @@ namespace engine {
 		for(int i(0); i < ((int)(currentCommands.size())); i++)
 		{
 			currentCommands[i]->execute(this->state);
-			std::cout << "state OK" << std::endl;
 			delete currentCommands[i];
 			currentCommands[i] = 0;
 		}

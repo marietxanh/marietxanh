@@ -22,9 +22,9 @@ namespace ai {
 			do
 			{
 				vertical = rand() % 3 - 1;
-				sleep(0.5);
+				sleep(2);
 				horizontal= rand() % 3 - 1;
-				sleep(0.5);
+				sleep(2);
 			}while( ((vertical + i) >= height || (vertical + i) < 0) || ((horizontal + j) >= width || (horizontal + j) < 0) );
 			
 			MoveUnit *new_move = new MoveUnit(i, j, i + vertical, j + horizontal);
@@ -40,14 +40,14 @@ namespace ai {
 				{
 					case 0:
 						vertical = rand() % 3 - 1;
-						sleep(0.5);
+						sleep(2);
 						break;
 					case 1:
 						horizontal = rand() % 3 - 1;
-						sleep(0.5);
+						sleep(2);
 						break;
 					default:
-						sleep(0.5);
+						sleep(2);
 						break;
 				}
 			}while( ((vertical + i) >= height || (vertical + i) < 0) || ((horizontal + j) >= width || (horizontal + j) < 0) );
