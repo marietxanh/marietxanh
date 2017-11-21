@@ -2,7 +2,7 @@
 #ifndef ENGINE__COMMAND__H
 #define ENGINE__COMMAND__H
 
-#include "../status.h"
+#include "status.h"
 
 namespace status {
   class State;

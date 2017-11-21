@@ -2,7 +2,7 @@
 #ifndef ENGINE__ENGINE__H
 #define ENGINE__ENGINE__H
 
-#include "../status.h"
+#include "status.h"
 #include <vector>
 
 namespace status {
@@ -12,7 +12,7 @@ namespace engine {
   class Command;
 }
 
-#include "../status/State.h"
+#include "status/State.h"
 #include "Command.h"
 
 namespace engine {

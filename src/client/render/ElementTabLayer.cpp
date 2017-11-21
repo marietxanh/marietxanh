@@ -16,6 +16,7 @@ ElementTabLayer::ElementTabLayer(ElementTab* element_tab) : Layer()
     this->element_tab = element_tab;
     this->setTextures();
     this->setSpritesPositions();
+    std::cout << std::endl;
 }
 
 ElementTabLayer::~ElementTabLayer()
@@ -32,7 +33,7 @@ void ElementTabLayer::setSpritesPositions()
     this->setHeight(((int)(this->element_tab->getTab().size())));
     this->setWidth(((int)(this->element_tab->getTab()[0].size())));
     this->setSpritesTabDim();
-    std::cout << "height : " << height << " width : " << width << std::endl;
+    //std::cout << "height : " << height << " width : " << width << std::endl;
     for(int i(0); i < height; i++)
     {
             for(int j(0); j < width; j++)
@@ -40,17 +41,18 @@ void ElementTabLayer::setSpritesPositions()
                 if(element_tab->getElement(i, j) > 0){
                     int width_t = (int)(this->getTextures_pack()->getText(element_tab->getLayerArray(i, j)).getSize().x);
                     int height_t = (int)(this->getTextures_pack()->getText(element_tab->getLayerArray(i, j)).getSize().y);
-                    std::cout << width_t << '\t' << height_t << '\t';
-                    this->getSprite(i, j).setPosition(sf::Vector2f(width * j - (width_t - width), height * i - (height_t - height)));
-                    this->getSprite(i, j).setTexture(this->getTextures_pack()->getText(element_tab->getLayerArray(i, j) - 1));
+                    //std::cout << width_t << '\t' << height_t << '\t';
+                    this->getSprite(i, j).setPosition(sf::Vector2f(16 * j - (width_t - 16), 16 * i - (height_t - 16)));
+                    //this->getSprite(i, j).setPosition(sf::Vector2f(16,48));
+                    this->getSprite(i, j).setTexture(this->getTextures_pack()->getText(element_tab->getLayerArray(i, j)));
                 }
                 else
                 {
-                    std::cout << "-1\t-1\t";
+                    //std::cout << "-1\t-1\t";
                     this->getSprite(i ,j).setPosition(sf::Vector2f(16 * j, 16 * i));
                 }
             }
-        std::cout << std::endl;
+        //std::cout << std::endl;
 
     }
     std::cout << "setSpritesPositions OK" << std::endl;

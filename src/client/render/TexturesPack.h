@@ -21,10 +21,10 @@ namespace render {
     // Operations
   public:
     TexturesPack ();
-    sf::Texture getText (int i);
-    void loadTextures (std::string& text_file_name, int i);
-    std::vector<sf::Texture> getTexturesArray () const;
-    void setTexturesArray (std::vector<std::string> references_array);
+    const sf::Texture& getText (int i);
+    void loadTextures (const std::string& text_file_name, int i);
+    const std::vector<sf::Texture>& getTexturesArray () const;
+    void setTexturesArray (const std::vector<std::string>& references_array);
     // Setters and Getters
   };
 

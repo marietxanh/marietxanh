@@ -34,7 +34,8 @@ namespace render {
     Layer ();
     ~Layer ();
     virtual void setSpritesPositions () = 0;
-    sf::Sprite getSprite (int i, int j) const;
+    sf::Sprite& getSprite (int i, int j);
+    const sf::Sprite& getSprite (int i, int j) const;
     TexturesPack* getTextures_pack () const;
     std::vector<std::vector<sf::Sprite> > getSpritesTab () const;
     void setSpritesTabDim ();
