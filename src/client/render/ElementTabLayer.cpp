@@ -11,12 +11,53 @@
 using namespace status;
 using namespace render;
 
-ElementTabLayer::ElementTabLayer(char* text_file_name, char* type_layer) : Layer(text_file_name, type_layer)
+ElementTabLayer::ElementTabLayer(ElementTab* element_tab) : Layer()
 {
-    
+    this->element_tab = element_tab;
+    this->setTextures();
+    this->setSpritesPositions();
+}
+
+ElementTabLayer::~ElementTabLayer()
+{
+    delete element_tab;
 }
 ElementTab* ElementTabLayer::getElement_tab() const
 {
     return element_tab;
+}
+
+void ElementTabLayer::setSpritesPositions()
+{
+    this->setHeight(((int)(this->element_tab->getTab().size())));
+    this->setWidth(((int)(this->element_tab->getTab()[0].size())));
+    this->setSpritesTabDim();
+    std::cout << "height : " << height << " width : " << width << std::endl;
+    for(int i(0); i < height; i++)
+    {
+            for(int j(0); j < width; j++)
+            {
+                if(element_tab->getElement(i, j) > 0){
+                    int width_t = (int)(this->getTextures_pack()->getText(element_tab->getLayerArray(i, j)).getSize().x);
+                    int height_t = (int)(this->getTextures_pack()->getText(element_tab->getLayerArray(i, j)).getSize().y);
+                    std::cout << width_t << '\t' << height_t << '\t';
+                    this->getSprite(i, j).setPosition(sf::Vector2f(width * j - (width_t - width), height * i - (height_t - height)));
+                    this->getSprite(i, j).setTexture(this->getTextures_pack()->getText(element_tab->getLayerArray(i, j) - 1));
+                }
+                else
+                {
+                    std::cout << "-1\t-1\t";
+                    this->getSprite(i ,j).setPosition(sf::Vector2f(16 * j, 16 * i));
+                }
+            }
+        std::cout << std::endl;
+
+    }
+    std::cout << "setSpritesPositions OK" << std::endl;
+}
+
+void ElementTabLayer::setTextures()
+{
+    this->getTextures_pack()->setTexturesArray(this->element_tab->getTextures_references());
 }
 

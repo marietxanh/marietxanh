@@ -24,6 +24,7 @@ namespace render {
     sf::Texture getText (int i);
     void loadTextures (std::string& text_file_name, int i);
     std::vector<sf::Texture> getTexturesArray () const;
+    void setTexturesArray (std::vector<std::string> references_array);
     // Setters and Getters
   };
 

@@ -37,3 +37,16 @@ void TexturesPack::loadTextures(string& image_file_name, int i)
         textures.push_back(texture);
     }
 }
+
+void TexturesPack::setTexturesArray (std::vector<std::string> references_array)
+{
+    int size = references_array.size();
+    this->textures.resize(size);    
+    for(int i(0); i < size; i++)
+    {
+        if(references_array[i].size() > 0){
+            this->textures[i].loadFromFile(references_array[i]);
+        }
+    }
+    std::cout << "setTexturesArray OK" << std::endl;
+}

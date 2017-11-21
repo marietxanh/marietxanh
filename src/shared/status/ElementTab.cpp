@@ -244,3 +244,13 @@ std::vector<std::vector<int> > ElementTab::getTab () const
 {
 	return this->layer_array;
 }
+
+int ElementTab::getLayerArray (int i, int j) const
+{
+    return this->layer_array[i][j];
+}
+
+std::vector<std::string> ElementTab::getTextures_references () const
+{
+    return this->textures_references;
+}

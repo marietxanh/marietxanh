@@ -21,27 +21,28 @@ namespace render {
     // Associations
     // Attributes
   private:
-    TexturesPack pack_textures;
-    std::vector<std::vector<int> > layer_array;
-    char* text_file_name;
-    char* type_layer;
-    int height;
-    int width;
+    TexturesPack* pack_textures;
     int tile_height;
     int tile_width;
     std::vector<std::vector<sf::Sprite> > sprites;
     std::vector<std::string> image_tab_name;
+  protected:
+    int height;
+    int width;
     // Operations
   public:
-    Layer (char* text_file_name, char* type_layer);
+    Layer ();
     ~Layer ();
-    void setSpritesPositions ();
-    int getWidth () const;
-    int getHeight () const;
+    virtual void setSpritesPositions () = 0;
     sf::Sprite getSprite (int i, int j) const;
-    TexturesPack getTextures_pack () const;
-    int getLayer_array (int i, int j) const;
+    TexturesPack* getTextures_pack () const;
+    std::vector<std::vector<sf::Sprite> > getSpritesTab () const;
+    void setSpritesTabDim ();
     // Setters and Getters
+    int getHeight() const;
+    void setHeight(int height);
+    int getWidth() const;
+    void setWidth(int width);
   };
 
 };

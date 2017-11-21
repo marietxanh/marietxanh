@@ -22,9 +22,11 @@ namespace render {
     status::ElementTab* element_tab;
     // Operations
   public:
-    ElementTabLayer (char* text_file_name, char* type_layer);
+    ElementTabLayer (status::ElementTab* element_tab);
     status::ElementTab* getElement_tab () const;
     ~ElementTabLayer ();
+    void setSpritesPositions ();
+    void setTextures ();
     // Setters and Getters
   };
 

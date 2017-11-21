@@ -21,7 +21,7 @@ State::~State()
 
 void State::initialisation(std::string& file_name)
 {
-	this->text_file_name = file_name;
+    this->text_file_name = file_name;
     setDimensions(text_file_name);
     string lands_s = "Lands";
     string buildings_s = "Buildings";

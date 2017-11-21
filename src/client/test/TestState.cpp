@@ -20,10 +20,10 @@ void TestState::testState(){
     state->initialisation(file);
     /*verfication que les instanciations se sont bien deroulees*/
     cout << "Check types..." << endl;   
-    CHECK(((Land*)(state->getLands()->getElement(0, 0)))->getType_land() == ROAD);
-    CHECK(((Building*)(state->getBuildings()->getElement(1, 0)))->getType_building() == FACTORY);
+    CHECK(((Land*)(state->getLands()->getElement(0, 0)))->getType_land() == PLAIN);
+    CHECK(((Building*)(state->getBuildings()->getElement(1, 0)))->getType_building() == TOWN);
     CHECK(((Land*)(state->getLands()->getElement(4, 2)))->getType_land() == MOUNTAIN);
-    CHECK(((Building*)(state->getBuildings()->getElement(2, 3)))->getType_building() == TOWN);
+    CHECK(((Land*)(state->getLands()->getElement(2, 3)))->getType_land() == PLAIN);
     
     cout << "All objects are created and correct." << endl;
     
