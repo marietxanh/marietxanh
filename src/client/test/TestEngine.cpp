@@ -60,7 +60,7 @@ void TestEngine::testEngine(){
                     {
                         cout << "Space entered : moving created unit" << endl;
                         moteur.addCommand(new MoveUnit(2, 1, 2, 2));
-						moteur.update();
+                        moteur.update();
                         CHECK(((Unit*)(moteur.getState()->getUnits()->getElement(2,1))) == NULL);
                         CHECK(((Unit*)(moteur.getState()->getUnits()->getElement(2,2)))->getType_unit() == INFANTRY);
                         i++;
