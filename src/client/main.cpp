@@ -23,7 +23,7 @@ using namespace status;
 
 int main(int argc,char* argv[]) 
 {
-	srand(time(NULL));
+	//srand(time(NULL));
     if(argc == 2){
         if(std::string(argv[1]) == "hello"){
             cout << "Hello everyone !" << endl;

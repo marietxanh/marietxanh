@@ -2,7 +2,7 @@
 #ifndef ENGINE__CAPTUREBUILDING__H
 #define ENGINE__CAPTUREBUILDING__H
 
-#include "status.h"
+#include "../status.h"
 
 namespace status {
   class State;
