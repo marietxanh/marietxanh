@@ -50,6 +50,7 @@ void TestAI::testAI()
 
 	RandomAI art_int;
 	art_int.addCommand(move);
+        art_int.addCommand(attack);
 
 	art_int.run(moteur);
 
