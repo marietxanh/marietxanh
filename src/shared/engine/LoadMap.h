@@ -3,7 +3,7 @@
 #define ENGINE__LOADMAP__H
 
 #include <string>
-#include "../status.h"
+#include "status.h"
 
 namespace status {
   class State;

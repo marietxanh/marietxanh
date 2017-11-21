@@ -16,7 +16,12 @@ Layer::~Layer()
     
 }
 
-sf::Sprite Layer::getSprite(int i, int j) const
+sf::Sprite& Layer::getSprite(int i, int j)
+{
+    return sprites[i][j];
+}
+
+const sf::Sprite& Layer::getSprite(int i, int j) const
 {
     return sprites[i][j];
 }

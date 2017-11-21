@@ -11,17 +11,17 @@ TexturesPack::TexturesPack()
 
 }
 
-Texture TexturesPack::getText(int i)
+const Texture& TexturesPack::getText(int i)
 {
 	return textures[i];
 }
 
-vector<Texture> TexturesPack::getTexturesArray() const
+const vector<Texture>& TexturesPack::getTexturesArray() const
 {
 	return textures;
 }
 
-void TexturesPack::loadTextures(string& image_file_name, int i)
+void TexturesPack::loadTextures(const string& image_file_name, int i)
 {
     if(textures.size() == 0)
     {
@@ -38,14 +38,18 @@ void TexturesPack::loadTextures(string& image_file_name, int i)
     }
 }
 
-void TexturesPack::setTexturesArray (std::vector<std::string> references_array)
+void TexturesPack::setTexturesArray (const std::vector<std::string>& references_array)
 {
     int size = references_array.size();
     this->textures.resize(size);    
     for(int i(0); i < size; i++)
     {
         if(references_array[i].size() > 0){
-            this->textures[i].loadFromFile(references_array[i]);
+            std::cout << i << " : " << references_array[i] << std::endl;
+            if(!this->textures[i].loadFromFile(references_array[i]))
+            {
+                std::cout << "loadFromFile failed" << std::endl;
+            }
         }
     }
     std::cout << "setTexturesArray OK" << std::endl;

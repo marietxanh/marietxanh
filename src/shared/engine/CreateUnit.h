@@ -2,7 +2,7 @@
 #ifndef ENGINE__CREATEUNIT__H
 #define ENGINE__CREATEUNIT__H
 
-#include "../status.h"
+#include "status.h"
 
 namespace status {
   class State;

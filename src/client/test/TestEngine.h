@@ -17,6 +17,7 @@
 #include <iostream>
 #include "../../shared/status.h"
 #include "../../shared/engine.h"
+#include "../render.h"
 #include <SFML/Window.hpp>
 
 class TestEngine
