@@ -19,6 +19,9 @@
 #include "../../shared/engine.h"
 #include "../render.h"
 #include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#include <time.h>
+#include <unistd.h>
 
 class TestEngine
 {

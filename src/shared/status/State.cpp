@@ -16,7 +16,6 @@ State::~State()
     delete lands;
     delete buildings;
     delete units;
-    //cout << "Suppression des tableaux d'unités et terrains terminée." << endl;
 }
 
 void State::initialisation(std::string& file_name)

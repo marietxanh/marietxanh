@@ -16,11 +16,6 @@ Layer::~Layer()
     
 }
 
-sf::Sprite& Layer::getSprite(int i, int j)
-{
-    return sprites[i][j];
-}
-
 const sf::Sprite& Layer::getSprite(int i, int j) const
 {
     return sprites[i][j];
@@ -63,5 +58,9 @@ void Layer::setSpritesTabDim ()
     {
         this->sprites[i].resize(width);
     }
-    std::cout << "SpritesTab OK" << std::endl;
+}
+
+sf::Sprite& Layer::getSprite(int i, int j)
+{
+    return this->sprites[i][j];
 }

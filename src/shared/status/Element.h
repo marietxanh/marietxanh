@@ -21,6 +21,7 @@ namespace status {
     int height_position;
     // Operations
   public:
+    Element ();
     Element (TypeID id);
     Element (Element* old_element);
     virtual ~Element ();

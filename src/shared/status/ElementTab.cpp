@@ -1,6 +1,7 @@
-#include "../status/ElementTab.h"
+#include "ElementTab.h"
 #include "../status.h"
 #include <iostream>
+#include <typeinfo>
 #include <fstream>
 
 using namespace status;
@@ -13,15 +14,80 @@ ElementTab::ElementTab (string& text_file_name, int width, int height, string& t
     element_array.resize(height);
     layer_array.resize(height);
     for(int i(0); i < width; i++)
-        {
-            element_array[i].resize(width);
-            layer_array[i].resize(width);
-        }
+    {
+        element_array[i].resize(width);
+        layer_array[i].resize(width);
+    }
     if(type_element == "Lands" || type_element == "Buildings")
     {
         setLayer_array(text_file_name, type_element);
         setTextures_references(text_file_name, type_element);
         setElement_array(type_element);
+    }
+    else if(type_element == "Units")
+    {
+        textures_references.resize(2 * 12);
+        std::string head = "advance_wars_sprites";
+        std::string type = "_units";
+        for(int j(0); j < 2; j++){
+            for(int i(0); i < 12; i++)
+            {
+                std::string colour;
+                switch(j){
+                    case 0:
+                        colour = "_orange";
+                        break;
+                    case 1:
+                        colour = "_blue";
+                        break;
+                    default:
+                        break;
+                }
+                std::string unit;
+                switch(i){
+                    case 0:
+                        unit = "_infantry";
+                        break;
+                    case 1:
+                        unit = "_bazooka";
+                        break;
+                    case 2:
+                        unit = "_recon";
+                        break;
+                    case 3:
+                        unit = "_tank";
+                        break;
+                    case 4:
+                        unit = "_tankm";
+                        break;
+                    case 5:
+                        unit = "_dca";
+                        break;
+                    case 6:
+                        unit = "_antia";
+                        break;
+                    case 7:
+                        unit = "_mortar";
+                        break;
+                    case 8:
+                        unit = "_ml";
+                        break;
+                    case 9:
+                        unit = "_fighter";
+                        break;
+                    case 10:
+                        unit = "_bomber";
+                        break;
+                    case 11:
+                        unit = "_destroyer";
+                        break;
+                    default:
+                        break;
+                }
+                textures_references[i + (j * 12)] = "res/" + head + type + "/" + head + type + colour + "/" + head + colour + unit + ".png";
+                cout << i + (j + 12) << " " << textures_references[i + j] << endl;
+            }
+        }
     }
 }
 
@@ -39,7 +105,6 @@ ElementTab::~ElementTab()
             element_array[i][j] = 0;
         }
     }
-    //cout << "Suppression du tableau terminée." << endl;
 }
 
 Element* ElementTab::getElement(int i, int j)
@@ -173,6 +238,8 @@ void ElementTab::setElement_array(string& type_layer)
     size_t found;
     size_t temp;
     string stock;
+    string type;
+    string team;
     if(type_layer == "Lands"){
         for(int i(0); i < height; i++)
         {
@@ -228,12 +295,50 @@ void ElementTab::setElement_array(string& type_layer)
                         temp = found + 1;
                     }
                     found = stock.find('_', found + 1);
-                    stock = stock.substr(temp, found - temp);
-                    if(stock == "city") setElement(i, j, new Building(TOWN));
-                    else if(stock == "hq") setElement(i, j, new Building(HQ));
-                    else if(stock == "factory") setElement(i, j, new Building(FACTORY));
-                    else if(stock == "port") setElement(i, j, new Building(PORT));
-                    else if(stock == "airport") setElement(i, j, new Building(AIRPORT));
+                    type = stock.substr(temp, found - temp);
+                    temp = found + 1;
+                    found = stock.find('.', found + 1);
+                    team = stock.substr(temp, found - temp);
+                    if(team == "orange")
+                    {
+                        if(type == "city") setElement(i, j, new Building(TOWN, ORANGE));
+                        else if(type == "hq") setElement(i, j, new Building(HQ, ORANGE));
+                        else if(type == "factory") setElement(i, j, new Building(FACTORY, ORANGE));
+                        else if(type == "port") setElement(i, j, new Building(PORT, ORANGE));
+                        else if(type == "airport") setElement(i, j, new Building(AIRPORT, ORANGE));
+                    }
+                    else if(team == "blue")
+                    {
+                        if(type == "city") setElement(i, j, new Building(TOWN, BLUE));
+                        else if(type == "hq") setElement(i, j, new Building(HQ, BLUE));
+                        else if(type == "factory") setElement(i, j, new Building(FACTORY, BLUE));
+                        else if(type == "port") setElement(i, j, new Building(PORT, BLUE));
+                        else if(type == "airport") setElement(i, j, new Building(AIRPORT, BLUE));
+                    }
+                    else if(team == "yellow")
+                    {
+                        if(type == "city") setElement(i, j, new Building(TOWN, YELLOW));
+                        else if(type == "hq") setElement(i, j, new Building(HQ, YELLOW));
+                        else if(type == "factory") setElement(i, j, new Building(FACTORY, YELLOW));
+                        else if(type == "port") setElement(i, j, new Building(PORT, YELLOW));
+                        else if(type == "airport") setElement(i, j, new Building(AIRPORT, YELLOW));
+                    }
+                    else if(team == "green")
+                    {
+                        if(type == "city") setElement(i, j, new Building(TOWN, GREEN));
+                        else if(type == "hq") setElement(i, j, new Building(HQ, GREEN));
+                        else if(type == "factory") setElement(i, j, new Building(FACTORY, GREEN));
+                        else if(type == "port") setElement(i, j, new Building(PORT, GREEN));
+                        else if(type == "airport") setElement(i, j, new Building(AIRPORT, GREEN));
+                    }
+                    else
+                    {
+                        if(type == "city") setElement(i, j, new Building(TOWN, GREY));
+                        else if(stock == "hq") setElement(i, j, new Building(HQ, GREY));
+                        else if(stock == "factory") setElement(i, j, new Building(FACTORY, GREY));
+                        else if(stock == "port") setElement(i, j, new Building(PORT, GREY));
+                        else if(stock == "airport") setElement(i, j, new Building(AIRPORT, GREY));
+                    }
                 }
             }
         }

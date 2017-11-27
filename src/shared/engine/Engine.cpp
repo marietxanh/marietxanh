@@ -15,6 +15,7 @@ namespace engine {
 	{
 		state = new State();
 	}
+        
 	Engine::~Engine ()
 	{
 
@@ -24,6 +25,7 @@ namespace engine {
 	{
 		return this->state;
 	}
+        
 	void Engine::setState (status::State* new_state)
 	{
 		this->state = new_state;
@@ -33,17 +35,19 @@ namespace engine {
 	{
 	
 	}
+        
 	void Engine::addCommand (Command* command)
 	{
 		currentCommands.push_back(command);
 	}
+        
 	void Engine::update ()
 	{
 		for(int i(0); i < ((int)(currentCommands.size())); i++)
 		{
 			currentCommands[i]->execute(this->state);
 			delete currentCommands[i];
-			currentCommands[i] = 0;
+                        currentCommands[i] = 0;
 		}
 		currentCommands.clear();
 	}

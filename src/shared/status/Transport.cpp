@@ -7,7 +7,7 @@
 #include "../status/Transport.h"
 using namespace status;
 
-Transport::Transport(TypeTransport type_transport):Unit(TRANSPORT)
+Transport::Transport(TypeTransport type_transport, TEAM team):Unit(TRANSPORT, team)
 {
     this->type_transport = type_transport;
 }

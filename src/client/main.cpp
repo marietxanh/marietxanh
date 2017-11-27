@@ -49,7 +49,7 @@ int main(int argc,char* argv[])
                 "state : instancie un etat du jeu\n" <<
                 "render : affiche le rendu d'un etat du jeu\n" <<
                 "engine : affiche une succession d'etats du jeu en passant des commandes\n" << 
-                "random_ai : affiche une succession d'etats du jeu engendres par les commandes d'une AI\n" << endl;
+                "random_ai : affiche une succession d'etats du jeu engendres par les commandes d'une AI\n";
     }
     return 0;
 }

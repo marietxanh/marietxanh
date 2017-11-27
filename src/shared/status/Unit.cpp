@@ -8,9 +8,10 @@
 using namespace status;
 using namespace std;
 
-Unit::Unit(TypeUnits type_units): Element(UNIT)
+Unit::Unit(TypeUnits type_units, TEAM team): Element(UNIT)
 {
     this->type_unit = type_units;
+    this->team = team;
     this->attack = 2;
     this->health = 10;
 }
@@ -111,4 +112,13 @@ void Unit :: setHealth(int health)
 {
     this->health += health;
     if(this->health > 10) this->health = 10;
+}
+
+TEAM Unit::getTeam() const
+{
+    return this->team;
+}
+void Unit::setTeam(TEAM team)
+{
+    this->team = team;
 }

@@ -24,5 +24,4 @@ namespace engine{
 		state->initialisation(file_name);
 		std::cout << "Map loaded" << std::endl;
 	}
-
 };

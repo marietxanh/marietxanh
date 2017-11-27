@@ -8,6 +8,7 @@ namespace status {
 }
 
 #include "TypeTransport.h"
+#include "TEAM.h"
 #include "Unit.h"
 
 namespace status {
@@ -22,7 +23,8 @@ namespace status {
     TypeTransport type_transport;
     // Operations
   public:
-    Transport (TypeTransport type_transport);
+    Transport ();
+    Transport (TypeTransport type_transport, TEAM team);
     ~Transport ();
     int getOnBoard () const;
     int getMaximumCharge () const;

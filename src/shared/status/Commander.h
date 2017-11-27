@@ -8,6 +8,7 @@ namespace status {
   class Building;
 }
 
+#include "TEAM.h"
 #include "TypeCommander.h"
 #include "Unit.h"
 #include "Building.h"
@@ -18,6 +19,8 @@ namespace status {
   class Commander {
     // Associations
     // Attributes
+  public:
+    TEAM team;
   private:
     int bonusMvmt;
     int bonusRange;
@@ -30,6 +33,8 @@ namespace status {
   public:
     Commander (int bonusMvmt = 0, int bonusRange = 0, int bonusAtk = 0);
     ~Commander ();
+    TEAM getTeam () const;
+    void setTeam (TEAM team);
     // Setters and Getters
   };
 
