@@ -82,15 +82,13 @@ void ElementTabLayer::setTextures()
 }
 
 void ElementTabLayer::refresh_array ()
-{
-    
+{ 
     for(int i(0); i < height; i++)
     {
         for(int j(0); j < width; j++)
         {
             if(this->element_tab->getElement(i, j) != NULL)
             {
-                //this->getSprite(i, j).setColor(sf::Color::Transparent);
                 this->getSprite(i, j).setPosition(sf::Vector2f(16 * j, 16 * i));
                 if(((status::Unit*)(element_tab->getElement(i, j)))->getType_unit() != TRANSPORT)
                 {
@@ -103,12 +101,6 @@ void ElementTabLayer::refresh_array ()
                 {
                     this->getSprite(i, j).setTexture(this->getTextures_pack()->getText(((status::Transport*)(element_tab->getElement(i, j)))->getType_transport() - 1));
                 }
-                std::cout << "new sprite in (" << i << ", " << j << ")" << std::endl;
-            }
-            else
-            {
-                //this->getSprite(i, j).setColor(sf::Color::Transparent);
-                std::cout << "new transparent sprite in (" << i << ", " << j << ")" << std::endl;
             }
         }
     }

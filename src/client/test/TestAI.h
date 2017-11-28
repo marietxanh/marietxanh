@@ -15,9 +15,11 @@
 #define TESTAI_H
 
 #include <iostream>
+#include <unistd.h>
 #include "../../shared/ai.h"
 #include "../../shared/engine.h"
 #include "../../shared/status.h"
+#include "../client/render.h"
 #include <SFML/Window.hpp>
 
 class TestAI

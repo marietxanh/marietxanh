@@ -27,11 +27,11 @@ namespace engine {
 	{
 		if(height_start != height_end || width_start != width_end)
 		{
+			std::cout << "Move units from (" << height_start << ", " << width_start << ") to (" << height_end << ", " << width_end << ")\n" << std::endl;
 			state->getUnits()->setElement(height_end, width_end, state->getUnits()->getElement(height_start, width_start));
-			std::cout << "Move units from (" << height_start << ", " << width_start << ") to (" << height_end << ", " << width_end << ")" << std::endl;
-			state->getUnits()->setElement(height_start, width_start, NULL);
+                        state->getUnits()->setElement(height_start, width_start, NULL);
 		}
-		else std::cout << "Unit already use this place" << std::endl;
+		else std::cout << "Unit already use this place\n" << std::endl;
 	}
 	
 };

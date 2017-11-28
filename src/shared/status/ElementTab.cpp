@@ -85,7 +85,7 @@ ElementTab::ElementTab (string& text_file_name, int width, int height, string& t
                         break;
                 }
                 textures_references[i + (j * 12)] = "res/" + head + type + "/" + head + type + colour + "/" + head + colour + unit + ".png";
-                cout << i + (j + 12) << " " << textures_references[i + j] << endl;
+                cout << i + (j * 12) << " " << textures_references[i + j] << endl;
             }
         }
     }

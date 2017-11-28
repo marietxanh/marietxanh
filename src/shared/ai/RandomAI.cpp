@@ -1,6 +1,7 @@
 #include "RandomAI.h"
 #include <iostream>
 #include <random>
+#include <unistd.h>
 
 using namespace engine;
 
@@ -13,7 +14,8 @@ namespace ai{
 
 	void RandomAI::run (engine::Engine* engine)
 	{
-		/* on prend une commande random dans la liste et on 			l'applique au tableau d'elements visé */
+		/* on prend une commande random dans la liste et on
+                 * l'applique au tableau d'elements vise */
 		int height = engine->getState()->getHeight();
 		int width = engine->getState()->getWidth();
 		for(int i(0); i < height; i++)
