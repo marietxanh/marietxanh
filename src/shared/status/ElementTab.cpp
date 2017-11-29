@@ -112,15 +112,22 @@ Element* ElementTab::getElement(int i, int j)
         return element_array[i][j];
 }
 
-void ElementTab::setElement(int i, int j, Element* element)
+bool ElementTab::setElement(int i, int j, Element* element)
 {
-    if(element == NULL) element_array[i][j] = element;
-    else if(element_array[i][j] == NULL) element_array[i][j] = element;
+    if(element == NULL)
+    {
+        element_array[i][j] = element;
+        return true;
+    }
+    else if(element_array[i][j] == NULL) 
+    {
+        element_array[i][j] = element;
+        return true;
+    }
     else
     {
         printf("An element is already using this space.\n");
-        delete element;
-        element = 0;
+        return false;
     }
 }
 void ElementTab::setLayer_array(std::string& text_file_name, std::string& type_layer)
@@ -358,4 +365,16 @@ int ElementTab::getLayerArray (int i, int j) const
 std::vector<std::string> ElementTab::getTextures_references () const
 {
     return this->textures_references;
+}
+
+void ElementTab::newElement (int i, int j, Element* element)
+{
+    if(element == NULL) element_array[i][j] = element;
+    else if(element_array[i][j] == NULL) element_array[i][j] = element;
+    else
+    {
+        printf("An element is already using this space.\n");
+        delete element;
+        element = 0;
+    }
 }

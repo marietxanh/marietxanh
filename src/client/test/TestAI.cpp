@@ -62,12 +62,16 @@ void TestAI::testAI()
             sf::Event event;
             while(window.pollEvent(event))
             {
-                if(event.type == sf::Event::Closed) window.close();
-                cout << "Window closed" << endl;
+                if(event.type == sf::Event::Closed)
+                {
+                    window.close();
+                    cout << "Window closed" << endl;
+                }
             }
                         
             window.clear();
             units->refresh_array();
+
             moteur->addCommand(new ResetUnits());
             moteur->update();
             for(int i = 0; i < moteur->getState()->getHeight(); i++)
@@ -82,11 +86,10 @@ void TestAI::testAI()
                             window.draw(units->getSprite(i, j));
                     }
             }
-            
-            art_int.run(moteur);
-            cout << "\nend of run\n" << endl;
-            sleep(2);
             window.display();
+            sleep(2);           
+            art_int.run(moteur);
+            cout << "--------------------------------------------" << endl;
         }
 }
 

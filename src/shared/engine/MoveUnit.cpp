@@ -31,8 +31,12 @@ namespace engine {
                     {
 			std::cout << "Move units from (" << height_start << ", " << width_start << ") to (" << height_end << ", " << width_end << ")\n" << std::endl;
 			((Unit*)(state->getUnits()->getElement(height_start, width_start)))->setTurn_move(true);
-                        state->getUnits()->setElement(height_end, width_end, state->getUnits()->getElement(height_start, width_start));
-                        state->getUnits()->setElement(height_start, width_start, NULL);
+                        if(((Unit*)(state->getUnits()->getElement(height_start, width_start)))->getDouble_action() == false)
+                        {
+                            ((Unit*)(state->getUnits()->getElement(height_start, width_start)))->setTurn_attack(true);
+                        }
+                        if(state->getUnits()->setElement(height_end, width_end, state->getUnits()->getElement(height_start, width_start)))
+                            state->getUnits()->setElement(height_start, width_start, NULL);
                     }
 		}
 		else std::cout << "Unit already use this place\n" << std::endl;

@@ -26,7 +26,7 @@ namespace engine {
 	{
             if (state->getBuildings()->getElement(height, width) != NULL)
             {
-		state->getUnits()->setElement(height, width, new Unit(type_unit, ((Building*)(state->getBuildings()->getElement(height, width)))->getTeam()));
+		state->getUnits()->newElement(height, width, new Unit(type_unit, ((Building*)(state->getBuildings()->getElement(height, width)))->getTeam()));
 		std::cout << "Unit created in (" << height << ", " << width << ")" << std::endl;
             }
 	}

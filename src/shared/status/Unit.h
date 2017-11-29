@@ -29,6 +29,7 @@ namespace status {
     TEAM team;
     bool turn_attack;
     bool turn_move;
+    bool double_action;
     // Operations
   public:
     Unit ();
@@ -61,6 +62,8 @@ namespace status {
     void setTurn_attack(bool turn_attack);
     bool getTurn_move() const;
     void setTurn_move(bool turn_move);
+    bool getDouble_action() const;
+    void setDouble_action(bool double_action);
   };
 
 };
