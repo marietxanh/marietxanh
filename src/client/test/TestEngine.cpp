@@ -44,7 +44,7 @@ void TestEngine::testEngine(){
                     {
                         cout << "\n\nSpace entered : creation of two units" << endl;
                         moteur->addCommand(new CreateUnit(INFANTRY, 2, 1));
-                        moteur->getState()->getUnits()->setElement(2, 3, new Unit(INFANTRY, BLUE));
+                        moteur->getState()->getUnits()->newElement(2, 3, new Unit(INFANTRY, BLUE));
 			moteur->update();
 						
                         CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1)))->getType_unit() == INFANTRY);

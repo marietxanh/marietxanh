@@ -5,4 +5,5 @@
 #include "render/TexturesPack.h"
 #include "render/Layer.h"
 #include "render/ElementTabLayer.h"
+#include "render/Display.h"
 #endif
