@@ -10,4 +10,5 @@
 #include "engine/AttackUnit.h"
 #include "engine/CreateUnit.h"
 #include "engine/CaptureBuilding.h"
+#include "engine/ResetUnits.h"
 #endif

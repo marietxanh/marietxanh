@@ -14,6 +14,8 @@ Unit::Unit(TypeUnits type_units, TEAM team): Element(UNIT)
     this->team = team;
     this->attack = 2;
     this->health = 10;
+    this->turn_attack = false;
+    this->turn_move = false;
 }
 
 void Unit::affiche() const
@@ -121,4 +123,21 @@ TEAM Unit::getTeam() const
 void Unit::setTeam(TEAM team)
 {
     this->team = team;
+}
+
+bool Unit::getTurn_attack() const
+{
+    return turn_attack;
+}
+void Unit::setTurn_attack(bool turn_attack)
+{
+    this->turn_attack = turn_attack;
+}
+bool Unit::getTurn_move() const
+{
+    return turn_move;
+}
+void Unit::setTurn_move(bool turn_move)
+{
+    this->turn_move = turn_move;
 }

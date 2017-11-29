@@ -27,6 +27,8 @@ namespace status {
     int health;
     TypeUnits type_unit;
     TEAM team;
+    bool turn_attack;
+    bool turn_move;
     // Operations
   public:
     Unit ();
@@ -55,6 +57,10 @@ namespace status {
     void setType_unit(TypeUnits type_unit);
     TEAM getTeam() const;
     void setTeam(TEAM team);
+    bool getTurn_attack() const;
+    void setTurn_attack(bool turn_attack);
+    bool getTurn_move() const;
+    void setTurn_move(bool turn_move);
   };
 
 };

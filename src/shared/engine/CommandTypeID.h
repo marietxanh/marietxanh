@@ -10,7 +10,8 @@ namespace engine {
     CREATE     = 2,
     MOVE     = 3,
     ATTACK     = 4,
-    CAPTURE     = 5
+    CAPTURE     = 5,
+    RESET     = 6
   };
 
 };
