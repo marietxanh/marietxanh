@@ -27,6 +27,7 @@ namespace render {
     ~ElementTabLayer ();
     void setSpritesPositions ();
     void setTextures ();
+    void refresh_array ();
     // Setters and Getters
   };
 

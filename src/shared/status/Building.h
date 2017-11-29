@@ -7,6 +7,7 @@ namespace status {
   class Land;
 }
 
+#include "TEAM.h"
 #include "TypeBuilding.h"
 #include "Land.h"
 
@@ -16,6 +17,8 @@ namespace status {
   class Building : public status::Land {
     // Associations
     // Attributes
+  public:
+    TEAM team;
   private:
     int tax_inc     = 1000;
     int const healer     = 2;
@@ -23,12 +26,15 @@ namespace status {
     TypeBuilding type_building;
     // Operations
   public:
-    Building (TypeBuilding type_building);
+    Building ();
+    Building (TypeBuilding type_building, TEAM team);
     ~Building ();
     bool canCraft () const;
     int getHealth () const;
     TypeBuilding getType_building () const;
     void setHealth (int health);
+    void setTeam (TEAM team);
+    TEAM getTeam () const;
     // Setters and Getters
   };
 

@@ -8,6 +8,7 @@ namespace status {
 }
 
 #include "TypeUnits.h"
+#include "TEAM.h"
 #include "Element.h"
 
 namespace status {
@@ -25,10 +26,11 @@ namespace status {
     int attack;
     int health;
     TypeUnits type_unit;
-    int team;
+    TEAM team;
     // Operations
   public:
-    Unit (TypeUnits type_units);
+    Unit ();
+    Unit (TypeUnits type_units, TEAM team);
     TypeUnits getTypeUnit () const;
     void setTypeUnit (TypeUnits type);
     bool isStatic () const;
@@ -51,8 +53,8 @@ namespace status {
     void setHealth(int health);
     TypeUnits getType_unit() const;
     void setType_unit(TypeUnits type_unit);
-    int getTeam() const;
-    void setTeam(int team);
+    TEAM getTeam() const;
+    void setTeam(TEAM team);
   };
 
 };

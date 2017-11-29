@@ -6,6 +6,7 @@
 #include "status/Element.h"
 #include "status/TypeLand.h"
 #include "status/Land.h"
+#include "status/TEAM.h"
 #include "status/TypeBuilding.h"
 #include "status/Building.h"
 #include "status/TypeTransport.h"

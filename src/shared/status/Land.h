@@ -22,6 +22,7 @@ namespace status {
     TypeLand type_land;
     // Operations
   public:
+    Land ();
     Land (TypeLand type_land);
     ~Land ();
     bool isBuilding () const;

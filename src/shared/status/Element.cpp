@@ -7,9 +7,13 @@
 #include "Element.h"
 using namespace status;
 
+Element::Element()
+{
+    
+}
 Element::Element(TypeID id)
 {
-        setType_id(id);
+    
 }
 
 Element::Element(Element* old_element)

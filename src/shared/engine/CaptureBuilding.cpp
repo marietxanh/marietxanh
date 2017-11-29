@@ -23,6 +23,8 @@ namespace engine {
 	}
 	void CaptureBuilding::execute (status::State* state)
 	{
+            if(((Building*)(state->getBuildings()->getElement(height, width)))->getTeam() != ((Unit*)(state->getUnits()->getElement(height, width)))->getTeam())
+            {
 		((Building*)(state->getBuildings()->getElement(height, width)))->setHealth(- ((Unit*)(state->getUnits()->getElement(height, width)))->getHealth());
 		if(((Building*)(state->getBuildings()->getElement(height, width)))->getHealth() <= 0)
 		{
@@ -31,6 +33,7 @@ namespace engine {
 		}
 		else
 			std::cout << "Health remaining : " << ((Building*)(state->getBuildings()->getElement(height, width)))->getHealth() << std::endl;
+            }
 	}
 	
 };

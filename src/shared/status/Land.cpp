@@ -8,9 +8,14 @@
 using namespace status;
 using namespace std;
 
-Land::Land(TypeLand type_land): Element(LAND)
+Land::Land()
 {
-    this->type_land = type_land;
+    
+}
+Land::Land(TypeLand type_land)
+{
+    this->setType_id(LAND);
+    this->setType_land(type_land);
     switch(type_land)
     {
         case PLAIN:
