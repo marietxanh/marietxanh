@@ -12,32 +12,32 @@ PathMap::PathMap ()
 
 int  PathMap::getWeight (const Point& p) const
 {
-	return p.weight;
+	return p.getWeight();
 }
 
 void PathMap::setWeight (const Point& p)
 {
-	p.weight = this->weights;
+	this->weights.push_back(p.getWeight());
 }
 
 const int* PathMap::getWeights () const
 {
-	return this->weights;
+	//return this->weights.back();
 }
 
-void PathMap::init (const status::ElementTab& grid)
+void PathMap::init (status::ElementTab* grid)
 {
 	this->queue.push(Point{0,0,0});
 	while(!this->queue.empty())
 	{
 		auto p = this->queue.top();
 		this->queue.pop();
-		for(Direction d : Direction)
+		for(Direction d = NORTH; d <= WEST; d = static_cast<Direction>(d+1))
 		{
 			auto pp = p.transform(d);
-			if(grid.getElement(pp.x,pp.y) == NULL)
-				pp.weight = p.weight + 1;
-			if(getWeight(pp) > pp.weight)
+			if(grid->getElement(pp.getX(),pp.getY()) == NULL)
+				pp.setWeight(p.getWeight() + 1);
+			if(this->getWeight(pp) > pp.getWeight())
 				this->queue.push(pp);
 		}
 	}
