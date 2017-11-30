@@ -25,10 +25,7 @@ void TestAI::testAI()
         Engine* moteur = new Engine();
         moteur->addCommand(new LoadMap(file_name));
         moteur->update();
-        ElementTabLayer *lands = new ElementTabLayer(moteur->getState()->getLands());
-        ElementTabLayer *buildings = new ElementTabLayer(moteur->getState()->getBuildings());
-        ElementTabLayer *units = new ElementTabLayer(moteur->getState()->getUnits());
-	
+	Display display(moteur->getState());
 	int height = moteur->getState()->getHeight();
 	int width = moteur->getState()->getWidth();
 	
@@ -47,9 +44,6 @@ void TestAI::testAI()
 		}
 	}
 	moteur->update();
-        
-        sf::RenderWindow window(sf::VideoMode(moteur->getState()->getWidth() * 16, moteur->getState()->getHeight() * 16), "TestEngine");
-        //window.setFramerateLimit(30);
 	string move = "move";
 	string attack = "attack";
 
@@ -57,36 +51,21 @@ void TestAI::testAI()
 	art_int.addCommand(move);
         art_int.addCommand(attack);
         cout << "Window opens" << endl;
-        while(window.isOpen())
+        while(display.getWindow().isOpen())
         {
             sf::Event event;
-            while(window.pollEvent(event))
+            while(display.checkEvent(event))
             {
                 if(event.type == sf::Event::Closed)
                 {
-                    window.close();
+                    display.closeWindow();
                     cout << "Window closed" << endl;
                 }
             }
-                        
-            window.clear();
-            units->refresh_array();
-
+            display.getUnits()->refresh_array();
             moteur->addCommand(new ResetUnits());
             moteur->update();
-            for(int i = 0; i < moteur->getState()->getHeight(); i++)
-            {
-                    for(int j(0); j < moteur->getState()->getWidth(); j++)
-                    {
-                        if(moteur->getState()->getLands()->getLayerArray(i, j) > 0)
-                            window.draw(lands->getSprite(i ,j));
-                        if(moteur->getState()->getBuildings()->getLayerArray(i, j) > 0)
-                            window.draw(buildings->getSprite(i, j));
-                        if(moteur->getState()->getUnits()->getElement(i, j) != NULL)
-                            window.draw(units->getSprite(i, j));
-                    }
-            }
-            window.display();
+            display.refreshWindow();
             sleep(2);           
             art_int.run(moteur);
             cout << "--------------------------------------------" << endl;
