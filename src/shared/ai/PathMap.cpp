@@ -1,7 +1,9 @@
-
+#include "../status.h"
 #include <stdio.h>
 #include <unistd.h>
 #include "PathMap.h"
+
+using namespace status;
 
 namespace ai {
 
@@ -27,20 +29,20 @@ const std::vector<int>& PathMap::getWeights () const
 
 void PathMap::init (status::ElementTab* grid)
 {
-	this->queue.push(Point{0,0,0});
-	while(!this->queue.empty())
-	{
-		auto p = this->queue.top();
-		this->queue.pop();
-		for(Direction d = NORTH; d <= WEST; d = static_cast<Direction>(d+1))
-		{
-			auto pp = p.transform(d);
-			if(grid->getElement(pp.getX(),pp.getY()) == NULL)
-				pp.setWeight(p.getWeight() + 1);
-			if(this->getWeight(pp) > pp.getWeight())
-				this->queue.push(pp);
-		}
-	}
+    this->queue.push(Point{0,0,0});
+    while(!this->queue.empty())
+    {
+        auto p = this->queue.top();
+        this->queue.pop();
+        for(Direction d = NORTH; d <= WEST; d = static_cast<Direction>(d+1))
+        {
+            auto pp = p.transform(d);
+            if(grid->getElement(pp.getX(),pp.getY()) == NULL && (((Unit*)(grid->getElement(pp.getX(),pp.getY())))->getAmplitude_mvmt()) <= p.getWeight() + 1)
+                pp.setWeight(p.getWeight() + 1);
+            if(this->getWeight(pp) > pp.getWeight())
+                this->queue.push(pp);
+        }
+    }
 }
 
 };

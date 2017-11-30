@@ -17,11 +17,11 @@ using namespace render;
 using namespace ai;
 using namespace sf;
 
-void TestAI::testAI()
+void TestAI::testRandom()
 {
 	cout<<"AI en jeu\n"<< endl;
 
-	string file_name = "res/test_render.txt";
+	string file_name = "res/test_ai.txt";
         Engine* moteur = new Engine();
         moteur->addCommand(new LoadMap(file_name));
         moteur->update();
@@ -70,6 +70,58 @@ void TestAI::testAI()
             art_int.run(moteur);
             cout << "--------------------------------------------" << endl;
         }
+}
+
+void TestAI::testHeuristic(){
+    string file_name = "res/test_ai.txt";
+    Engine* moteur = new Engine();
+    moteur->addCommand(new LoadMap(file_name));
+    moteur->update();
+    Display display(moteur->getState());
+    int height = moteur->getState()->getHeight();
+    int width = moteur->getState()->getWidth();
+
+    /*creation d'unites pour faire tourner l'intelligence artificielle*/
+    for(int i(0); i <  height; i++)
+    {
+            for(int j(0); j < width; j++)
+            {
+                    if(moteur->getState()->getBuildings()->getElement(i, j) != NULL)
+                    {
+                            if(((Building*)(moteur->getState()->getBuildings()->getElement(i, j)))->getType_building() == FACTORY)
+                            {
+                                    moteur->addCommand(new CreateUnit(INFANTRY, i, j));
+                            }
+                    }
+            }
+    }
+    moteur->update();
+    string move = "move";
+    string attack = "attack";
+
+    HeuristicAI art_int;
+    art_int.addCommand(move);
+    art_int.addCommand(attack);
+    cout << "Window opens" << endl;
+    while(display.getWindow().isOpen())
+    {
+        sf::Event event;
+        while(display.checkEvent(event))
+        {
+            if(event.type == sf::Event::Closed)
+            {
+                display.closeWindow();
+                cout << "Window closed" << endl;
+            }
+        }
+        display.getUnits()->refresh_array();
+        moteur->addCommand(new ResetUnits());
+        moteur->update();
+        display.refreshWindow();
+        sleep(2);           
+        art_int.run(moteur);
+        cout << "--------------------------------------------" << endl;
+    }
 }
 
 

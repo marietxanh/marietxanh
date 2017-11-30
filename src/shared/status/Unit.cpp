@@ -17,6 +17,8 @@ namespace status{
         this->health = 10;
         this->turn_attack = false;
         this->turn_move = false;
+        this->range_mvmt = 1;
+        this->amplitude_mvmt = 3;
         if(type_unit == ANTI_AIR_TANK || type_unit == ANTI_AIR_ML || type_unit == ARTILLERY || type_unit == ROCKET_L)
         {
             this->double_action = false;

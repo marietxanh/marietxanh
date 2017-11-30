@@ -23,7 +23,6 @@ using namespace status;
 
 int main(int argc,char* argv[]) 
 {
-	//srand(time(NULL));
     if(argc == 2){
         if(std::string(argv[1]) == "hello"){
             cout << "Hello everyone !" << endl;
@@ -39,7 +38,10 @@ int main(int argc,char* argv[])
             TestEngine::testEngine();
         }
         else if(std::string(argv[1]) == "random_ai"){
-            TestAI::testAI();
+            TestAI::testRandom();
+        }
+        else if(std::string(argv[1]) == "heuristic_ai"){
+            TestAI::testHeuristic();
         }
     }
     else
@@ -49,7 +51,8 @@ int main(int argc,char* argv[])
                 "state : instancie un etat du jeu\n" <<
                 "render : affiche le rendu d'un etat du jeu\n" <<
                 "engine : affiche une succession d'etats du jeu en passant des commandes\n" << 
-                "random_ai : affiche une succession d'etats du jeu engendres par les commandes d'une AI\n";
+                "random_ai : affiche une succession d'etats du jeu engendres par les commandes d'une AI\n" <<
+                "heuristic_ai : affiche une IA dirigee par une fonction de recherche\n";
     }
     return 0;
 }
