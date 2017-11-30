@@ -12,12 +12,12 @@ PathMap::PathMap ()
 
 int  PathMap::getWeight (const Point& p) const
 {
-	return p.weight;
+	return p.getWeight();
 }
 
 void PathMap::setWeight (const Point& p)
 {
-	p.weight = this->weights;
+	this->weights = p.getWeight();
 }
 
 const int* PathMap::getWeights () const
@@ -35,9 +35,9 @@ void PathMap::init (const status::ElementTab& grid)
 		for(Direction d : Direction)
 		{
 			auto pp = p.transform(d);
-			if(grid.getElement(pp.x,pp.y) == NULL)
-				pp.weight = p.weight + 1;
-			if(getWeight(pp) > pp.weight)
+			if(grid.getElement(pp.getX(),pp.getY()) == NULL)
+				pp.setWeight() = p.getWeight() + 1;
+			if(getWeight(pp) > pp.getWeight())
 				this->queue.push(pp);
 		}
 	}
