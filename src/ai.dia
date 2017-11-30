@@ -1502,7 +1502,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#int #</dia:string>
+            <dia:string>#int#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -1598,7 +1598,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#const int*#</dia:string>
+            <dia:string>#const std::vector&lt;int&gt;&amp;#</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
             <dia:enum val="0"/>
@@ -1654,7 +1654,7 @@
                 <dia:string>#grid#</dia:string>
               </dia:attribute>
               <dia:attribute name="type">
-                <dia:string>#const status::ElementTab&amp;#</dia:string>
+                <dia:string>#status::ElementTab*#</dia:string>
               </dia:attribute>
               <dia:attribute name="value">
                 <dia:string>##</dia:string>
@@ -2937,16 +2937,16 @@
         <dia:point val="44.2484,29.462"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="20.328,25.3661;44.2984,29.512"/>
+        <dia:rectangle val="18.6841,25.3229;44.2984,29.512"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="44.2484,29.462"/>
-        <dia:point val="32.7132,29.462"/>
-        <dia:point val="32.7132,25.8161"/>
-        <dia:point val="20.778,25.8161"/>
+        <dia:point val="31.8912,29.462"/>
+        <dia:point val="31.8912,25.7729"/>
+        <dia:point val="19.1341,25.7729"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="0"/>
@@ -2973,7 +2973,7 @@
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O9" connection="26"/>
-        <dia:connection handle="1" to="O12" connection="8"/>
+        <dia:connection handle="1" to="O13" connection="8"/>
       </dia:connections>
     </dia:object>
   </dia:layer>

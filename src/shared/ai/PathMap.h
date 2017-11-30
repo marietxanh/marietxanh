@@ -15,6 +15,7 @@ namespace ai {
   class PcompW;
 }
 
+#include "status/ElementTab.h"
 #include "PcompW.h"
 #include "Point.h"
 
@@ -32,10 +33,10 @@ namespace ai {
     // Operations
   public:
     PathMap ();
-    int  getWeight (const Point& p) const;
+    int getWeight (const Point& p) const;
     void setWeight (const Point& p);
-    const int* getWeights () const;
-    void init (const status::ElementTab& grid);
+    const std::vector<int>& getWeights () const;
+    void init (status::ElementTab* grid);
     // Setters and Getters
   };
 
