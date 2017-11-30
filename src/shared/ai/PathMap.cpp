@@ -20,9 +20,9 @@ void PathMap::setWeight (const Point& p)
 	this->weights.push_back(p.getWeight());
 }
 
-const int* PathMap::getWeights () const
+const std::vector<int>& PathMap::getWeights () const
 {
-	//return this->weights.back();
+	return this->weights;
 }
 
 void PathMap::init (status::ElementTab* grid)

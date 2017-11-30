@@ -7,7 +7,7 @@ namespace ai {
 
 bool PcompW::operator() (const Point& a, const Point& b)
 {
-	return a.weight < b.weight;
+	return a.getWeight() < b.getWeight();
 }
 
 };

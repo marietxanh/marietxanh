@@ -11,12 +11,12 @@ HeuristicAI::HeuristicAI ()
 
 const PathMap&  HeuristicAI::getAdvUnitsMap () const
 {
-	return this->advUnitsMap;
+	return this->adv_units_map;
 }
 
 const PathMap&  HeuristicAI::getBuildingMap () const
 {
-	return this->buildingMap;
+	return this->building_map;
 }
 
 void HeuristicAI::run (engine::Engine* engine)

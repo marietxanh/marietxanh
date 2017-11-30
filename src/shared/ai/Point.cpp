@@ -5,18 +5,19 @@
 
 namespace ai {
 
-Point::Point (int x = 0, int y = 0, int w = 0)
+Point::Point (int x, int y, int w)
 {
 
 }
 
 Point Point::transform (Direction d)
 {
-	if(d == NORTH) this->x = x-1;
-	else if(d == SOUTH) this->x = x+1;
-	else if(d == EAST) this->y = y-1;
-	else if(d == WEST) this->y = y+1;
-	return this;
+        Point point(this->getX(), this->getY(), this->getWeight());
+	if(d == NORTH) point.x = x-1;
+	else if(d == SOUTH) point.x = x+1;
+	else if(d == EAST) point.y = y-1;
+	else if(d == WEST) point.y = y+1;
+	return point;
 }
     
 int Point::getX() const

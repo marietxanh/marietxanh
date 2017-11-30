@@ -26,8 +26,8 @@ namespace ai {
     // Associations
     // Attributes
   private:
-    int width     = 0;
-    int height     = 0;
+    int width;
+    int height;
     std::vector<int> weights;
     std::priority_queue<Point,std::vector<Point>,PcompW> queue;
     // Operations
