@@ -20,15 +20,16 @@ namespace ai {
 
   /// class HeuristicAI - 
   class HeuristicAI : public ai::AI {
+    // Associations
     // Attributes
   private:
-    ai::PathMap advUnitsMap;
-    ai::PathMap buildingMap;
+    PathMap adv_units_map;
+    PathMap building_map;
     // Operations
   public:
     HeuristicAI ();
-    const PathMap&  getAdvUnitsMap () const;
-    const PathMap&  getBuildingMap () const;
+    const PathMap& getAdvUnitsMap () const;
+    const PathMap& getBuildingMap () const;
     void run (engine::Engine* engine);
     // Setters and Getters
   };

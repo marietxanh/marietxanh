@@ -13,13 +13,10 @@ namespace status {
 };
 namespace ai {
   class PcompW;
-  class HeuristicAI;
 }
 
-#include "status/ElementTab.h"
-#include "Point.h"
 #include "PcompW.h"
-#include "HeuristicAI.h"
+#include "Point.h"
 
 namespace ai {
 

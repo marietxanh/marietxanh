@@ -13,6 +13,7 @@ namespace ai {
 
   /// class Point - 
   class Point {
+    // Associations
     // Attributes
   protected:
     int x;
