@@ -177,9 +177,7 @@ ElementTab & Contient un tableau 2D d'éléments\\
 \thispagestyle{empty}
 \begin{landscape}
 \begin{figure}[h]
-    \begin{center}
-    \includegraphics[scale=0.38]{Status.png}
-    \end{center}
+    \includegraphics[scale=0.43]{Status.png}
     \caption{Diagramme des classes d'état}
 \end{figure}
 \end{landscape}
@@ -211,8 +209,8 @@ ElementTab & Contient un tableau 2D d'éléments\\
 \thispagestyle{empty}
 \begin{landscape}
 \begin{figure}[h]
-    \begin{center}
-    \includegraphics[scale=0.50]{render.png}
+\begin{center}
+    \includegraphics[scale=0.48]{render.png}
     \end{center}
     \caption{Diagramme du rendu}
 \end{figure}
@@ -243,9 +241,42 @@ Les différents changements extérieurs peuvent être un chargement de carte, un
 \begin{landscape}
 \begin{figure}[h]
     \begin{center}
-    \includegraphics[scale=0.50]{engine.png}
+    \includegraphics[scale=0.6]{engine.png}
     \end{center}
     \caption{Diagramme de l'engine}
+\end{figure}
+\end{landscape}
+
+\chapter{Intelligence Artificielle}
+\section{Stratégie}
+\subsection{Intelligence artificielle bas-niveau}
+\paragraph{}Le principe consiste à donner une liste de commandes possibles aux unités et de parcourir le tableau des unités afin qu'elles effectuent une action choisie aléatoirement dans la liste de commandes passées en argument. Pour respecter le concept de carte vide au premier tour, un passage dans le tableau des bâtiments sera effectué afin de générer des unités (aléatoirement si possible) et ensuite de parcourir le tableau des unités créées pour effectuer des commandes aléatoires.
+\subsection{Intelligence basée sur des heuristiques}
+\paragraph{}Pour obtenir un comportement meilleur que le hasard, nous voulons permettre à l'IA de rechercher l'ennemi le plus proche pour l'attaquer ou de chercher le bâtiment le plus proche pour le capturer ou soigner l'unité en déplacement.Pour cela nous allons fabriquer des cartes de distances.
+Pour calculer ces cartes, nous utilisons l’algorithme de Dijkstra.
+    \newpage
+\section{Conception logiciel}
+\paragraphe{}Le diagramme des classes pour l’intelligence artificielle est présenté en Figure 5.1.
+\paragraphe{}\textbf{Classes AI:}Les classes filles de la classe AI implante différentes stratégies d’IA :
+\begin{itemize}
+    \item RandomAI : Intelligence aléatoire
+    \item HeuristicAI : Intelligence heuristique
+\end{itemize}
+\paragraphe{}\textbf{PathMap:}La classe PathMap permet de calculer une carte des distances à plusieurs unités. Pour chaque case « espace » du niveau, on peut demander un poids qui représente la distance à ces objectifs. Pour s’approcher d’un objectif lorsqu’on est sur une case, il suffit de choisir la case
+adjacente qui a un plus petit poids. Deux cartes de distantes
+sont crées en début de tour :
+\begin{itemize}
+    \item adv\_units\_map : Objectif cases unités adverses, pour pouvoir attaquer l'unité la plus proche
+    \item building\_map : Objectif building, pour s’emparer des building ennemis ou se soigner si le building nous appartient
+\end{itemize}
+    \newpage
+\thispagestyle{empty}
+\begin{landscape}
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[scale=0.6]{ai.png}
+    \end{center}
+    \caption{Diagramme de l'intelligence artificielle bas-niveau}
 \end{figure}
 \end{landscape}
 \end{document}
