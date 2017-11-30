@@ -48,9 +48,20 @@ namespace render{
     
     const sf::RenderWindow& Display::getWindow () const
     {
-        return this->window;
+        return window;
     }
-    checkEvent (const sf::Event& event);
-    void closeWindow ();
+    bool Display::checkEvent (sf::Event& event)
+    {
+        return this->window.pollEvent(event);
+    }
+    void Display::closeWindow ()
+    {
+        this->window.close();
+    }
+    
+    ElementTabLayer* Display::getUnits () const
+    {
+        return this->units;
+    }
 };
 

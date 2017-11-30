@@ -16,10 +16,10 @@ void TestRender::testRender()
         while(display.getWindow().isOpen())
 	{
 		sf::Event event;
-		while(display.getWindow().pollEvent(event))
+		while(display.checkEvent(event))
 		{
 			if(event.type == sf::Event::Closed)
-				display.getWindow().close();
+				display.closeWindow();
 		}
                 
                 display.refreshWindow();

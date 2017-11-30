@@ -36,8 +36,9 @@ namespace render {
     ~Display ();
     void refreshWindow ();
     const sf::RenderWindow& getWindow () const;
-    checkEvent (const sf::Event& event);
+    bool checkEvent (sf::Event& event);
     void closeWindow ();
+    ElementTabLayer* getUnits () const;
     // Setters and Getters
   };
 

@@ -25,17 +25,13 @@ void TestEngine::testEngine(){
     Engine *moteur = new Engine();
     moteur->addCommand(new LoadMap(file_name));
     moteur->update();
-    ElementTabLayer *lands = new ElementTabLayer(moteur->getState()->getLands());
-    ElementTabLayer *buildings = new ElementTabLayer(moteur->getState()->getBuildings());
-    ElementTabLayer *units = new ElementTabLayer(moteur->getState()->getUnits());
-    sf::RenderWindow window(sf::VideoMode(moteur->getState()->getWidth() * 16, moteur->getState()->getHeight() * 16), "TestEngine");
-    window.setFramerateLimit(30);
+    Display display(moteur->getState());
     int k = 0;
     cout << "\nPRESS SPACE TO CHANGE STATE\n" << endl;
-    while(window.isOpen())
+    while(display.getWindow().isOpen())
     {
         sf::Event event;
-        while(window.pollEvent(event))
+        while(display.checkEvent(event))
         {
             switch(event.type)
             {
@@ -49,7 +45,7 @@ void TestEngine::testEngine(){
 						
                         CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1)))->getType_unit() == INFANTRY);
                         CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,3)))->getType_unit() == INFANTRY);
-                        units->refresh_array();
+                        display.getUnits()->refresh_array();
                         k++;
                         
                     }
@@ -60,7 +56,7 @@ void TestEngine::testEngine(){
                         moteur->update();
                         CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,1))) == NULL);
                         CHECK(((Unit*)(moteur->getState()->getUnits()->getElement(2,2)))->getType_unit() == INFANTRY);
-                        units->refresh_array();
+                        display.getUnits()->refresh_array();
                         k++;
                     }
                     else if(event.key.code == sf::Keyboard::Space && k == 2)
@@ -68,33 +64,19 @@ void TestEngine::testEngine(){
                         cout << "\n\nSpace entered : created unit attack" << endl;
                         moteur->addCommand(new AttackUnit(2, 2, 2, 3));
                         moteur->update();
-                        units->refresh_array();
+                        display.getUnits()->refresh_array();
                         k++;
                     }
                     break;
                 case sf::Event::Closed:
-                    window.close();
+                    display.closeWindow();
                     break;
                 default:
                     break;
             }
-            if(k == 3) window.close();
+            if(k == 3) display.closeWindow();
         }
         
-        window.clear();
-        for(int i = 0; i < moteur->getState()->getHeight(); i++)
-        {
-                for(int j(0); j < moteur->getState()->getWidth(); j++)
-                {
-                    if(moteur->getState()->getLands()->getLayerArray(i, j) > 0)
-                        window.draw(lands->getSprite(i ,j));
-                    if(moteur->getState()->getBuildings()->getLayerArray(i, j) > 0)
-                        window.draw(buildings->getSprite(i, j));
-                    if(moteur->getState()->getUnits()->getElement(i, j) != NULL)
-                        window.draw(units->getSprite(i, j));
-                }
-        }
-
-        window.display();
+        display.refreshWindow();
     }
 }
