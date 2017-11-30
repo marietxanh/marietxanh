@@ -13,8 +13,6 @@
 #include "status/TypeUnits.h"
 #include "status/Unit.h"
 #include "status/Transport.h"
-#include "status/TypeCommander.h"
-#include "status/Commander.h"
 #include "status/ElementTab.h"
 #include "status/State.h"
 #endif
