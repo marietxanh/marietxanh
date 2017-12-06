@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 #include <stdlib.h>
+#include <iostream>
 #include "Element.h"
 using namespace status;
 
@@ -13,7 +14,7 @@ Element::Element()
 }
 Element::Element(TypeID id)
 {
-    
+    this->type_id = id;
 }
 
 Element::Element(Element* old_element)

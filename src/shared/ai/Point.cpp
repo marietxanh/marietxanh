@@ -7,12 +7,14 @@ namespace ai {
 
 Point::Point (int x, int y, int w)
 {
-
+    this->x = x;
+    this->y = y;
+    this->weight = w;
 }
 
 Point Point::transform (Direction d)
 {
-        Point point(this->getX(), this->getY(), this->getWeight());
+        Point point(this->getX(), this->getY(), this->getWeight() + 1);
 	if(d == NORTH) point.x = x-1;
 	else if(d == SOUTH) point.x = x+1;
 	else if(d == EAST) point.y = y-1;

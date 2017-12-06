@@ -7,8 +7,8 @@ namespace status {
   class Land;
 }
 
-#include "TEAM.h"
 #include "TypeBuilding.h"
+#include "TEAM.h"
 #include "Land.h"
 
 namespace status {
@@ -17,13 +17,12 @@ namespace status {
   class Building : public status::Land {
     // Associations
     // Attributes
-  public:
-    TEAM team;
   private:
     int tax_inc     = 1000;
     int const healer     = 2;
     int health;
     TypeBuilding type_building;
+    TEAM team;
     // Operations
   public:
     Building ();

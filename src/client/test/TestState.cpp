@@ -30,4 +30,5 @@ void TestState::testState(){
     /*suppression de l'objet State permettant de détruire les pointeurs des tableaux*/
     delete state;
     //cout << "Suppression des pointeurs de TestState terminée." << endl;
+    delete state;
 }

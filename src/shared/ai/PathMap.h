@@ -30,13 +30,14 @@ namespace ai {
     int height;
     std::vector<int> weights;
     std::priority_queue<Point,std::vector<Point>,PcompW> queue;
+    std::vector<std::vector<int> > map;
     // Operations
   public:
     PathMap ();
     int getWeight (const Point& p) const;
     void setWeight (const Point& p);
     const std::vector<int>& getWeights () const;
-    void init (status::ElementTab* grid);
+    void setMapDistances (status::ElementTab* grid, int height, int width);
     // Setters and Getters
   };
 

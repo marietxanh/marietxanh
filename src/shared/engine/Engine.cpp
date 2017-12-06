@@ -18,7 +18,7 @@ namespace engine {
         
 	Engine::~Engine ()
 	{
-
+            delete state;
 	}
 
 	status::State* Engine::getState () const

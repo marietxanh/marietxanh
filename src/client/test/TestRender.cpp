@@ -24,4 +24,5 @@ void TestRender::testRender()
                 
                 display.refreshWindow();
 	}
+        delete state;
 }

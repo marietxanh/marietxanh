@@ -79,4 +79,5 @@ void TestEngine::testEngine(){
         
         display.refreshWindow();
     }
+    delete moteur;
 }

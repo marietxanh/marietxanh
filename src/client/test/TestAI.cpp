@@ -59,17 +59,20 @@ void TestAI::testRandom()
                 if(event.type == sf::Event::Closed)
                 {
                     display.closeWindow();
-                    cout << "Window closed" << endl;
+                    cout << "Window close request" << endl;
                 }
             }
             display.getUnits()->refresh_array();
             moteur->addCommand(new ResetUnits());
             moteur->update();
             display.refreshWindow();
-            sleep(2);           
+            sleep(2);
+            cout << "--------------------------------------------" << endl;
             art_int.run(moteur);
             cout << "--------------------------------------------" << endl;
         }
+        delete moteur;
+        std::cout << "Window closed" << std::endl;
 }
 
 void TestAI::testHeuristic(){
@@ -111,17 +114,21 @@ void TestAI::testHeuristic(){
             if(event.type == sf::Event::Closed)
             {
                 display.closeWindow();
-                cout << "Window closed" << endl;
+                cout << "Window close request" << endl;
             }
         }
         display.getUnits()->refresh_array();
         moteur->addCommand(new ResetUnits());
         moteur->update();
         display.refreshWindow();
-        sleep(2);           
+        sleep(2);
+        cout << "--------------------------------------------" << endl;
         art_int.run(moteur);
         cout << "--------------------------------------------" << endl;
     }
+    
+    delete moteur;
+    std::cout << "Window closed" << std::endl;
 }
 
 
