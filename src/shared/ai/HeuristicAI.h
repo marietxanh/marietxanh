@@ -2,6 +2,7 @@
 #ifndef AI__HEURISTICAI__H
 #define AI__HEURISTICAI__H
 
+#include <vector>
 
 namespace ai {
   class PathMap;
@@ -11,10 +12,13 @@ namespace engine {
 };
 namespace ai {
   class AI;
+  class Point;
 }
 
 #include "PathMap.h"
+#include "status/TEAM.h"
 #include "AI.h"
+#include "Point.h"
 
 namespace ai {
 
@@ -23,13 +27,13 @@ namespace ai {
     // Associations
     // Attributes
   private:
-    PathMap adv_units_map;
-    PathMap building_map;
+    std::vector<PathMap> units_map;
+    std::vector<PathMap> buildings_map;
     // Operations
   public:
     HeuristicAI ();
-    const PathMap& getAdvUnitsMap () const;
-    const PathMap& getBuildingMap () const;
+    const PathMap& getAdvUnitsMap (status::TEAM team) const;
+    const PathMap& getBuildingMap (status::TEAM team) const;
     void run (engine::Engine* engine);
     // Setters and Getters
   };

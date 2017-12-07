@@ -36,12 +36,17 @@ namespace engine {
                         int attack = ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getAttack();
                         ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->setTurn_attack(true);
                         ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->setTurn_move(true);
-                        ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->setHealth(-attack); 
+                        ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->setHealth(-attack);
                         std::cout << "Unit from (" << height_shooter << ", " << width_shooter << ") attack unit in (" << height_target << ", " << width_target << ")" << std::endl;
                         std::cout << "Health of attacked unit : " << ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth() << std::endl;
+                        if(((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth() <= 0)
+                        {
+                            delete state->getUnits()->getElement(height_target, width_target);
+                            state->getUnits()->setElement(height_target, width_target, NULL);
+                            std::cout << "Unit in (" << height_target << ", " << width_target <<") destroyed" << std::endl;
+                        }
                     }
                 }
-                else std::cout << "Units are same team" << std::endl;
             }
             else std::cout << "No target in (" << height_target << ", " << width_target << ")\n" << std::endl;
 	}

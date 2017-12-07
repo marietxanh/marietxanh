@@ -27,11 +27,20 @@ namespace ai {
     {
             return this->weights;
     }
+    
+    int PathMap::getMapWeight (int i, int j) const
+    {
+        return this->map[i][j];
+    }
 
-    void PathMap::setMapDistances (status::ElementTab* grid, int height, int width)
+    void PathMap::setMapDistances (status::ElementTab* grid, int height, int width, status::TEAM team)
     {
         //*
+        std::cout << "resize... ";
+        
         this->map.resize(height);
+        
+        std::cout << "OK" << std::endl;
         for(int i(0); i < height; i++)
         {
             this->map[i].resize(width);
@@ -41,12 +50,16 @@ namespace ai {
                 {
                     if(grid->getElement(i, j)->getType_id() == LAND)
                     {
-                        this->queue.push(Point{i, j, 0});
-                        map[i][j] = 0;
+                        if(((Building*)(grid->getElement(i, j)))->getTeam() == team)
+                        {
+                            this->queue.push(Point{i, j, 0});
+                            map[i][j] = 0;
+                        }
+                        else map[i][j] = 99;
                     }
                     else if(grid->getElement(i ,j)->getType_id() == UNIT)
                     {
-                        if(((Unit*)(grid->getElement(i, j)))->getTeam() == BLUE)
+                        if(((Unit*)(grid->getElement(i, j)))->getTeam() == team)
                         {
                             this->queue.push(Point{i, j, 0});
                             map[i][j] = 0;
@@ -57,15 +70,7 @@ namespace ai {
                 else map[i][j] = 99;
             }
         }
-        //*/
-        for(int i(0); i < height; i++)
-        {
-            for(int j(0); j < width; j++)
-            {
-                std::cout << map[i][j] << "\t";
-            }
-            std::cout << std::endl;
-        }
+        std::cout << "begin heuristic search" << std::endl;
         int k = 0;
         while(!this->queue.empty())
         {

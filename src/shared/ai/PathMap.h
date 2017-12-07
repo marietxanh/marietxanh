@@ -15,6 +15,7 @@ namespace ai {
   class PcompW;
 }
 
+#include "status/TEAM.h"
 #include "status/ElementTab.h"
 #include "PcompW.h"
 #include "Point.h"
@@ -29,15 +30,16 @@ namespace ai {
     int width;
     int height;
     std::vector<int> weights;
-    std::priority_queue<Point,std::vector<Point>,PcompW> queue;
     std::vector<std::vector<int> > map;
+    std::priority_queue<Point,std::vector<Point>,PcompW> queue;
     // Operations
   public:
     PathMap ();
     int getWeight (const Point& p) const;
     void setWeight (const Point& p);
     const std::vector<int>& getWeights () const;
-    void setMapDistances (status::ElementTab* grid, int height, int width);
+    void setMapDistances (status::ElementTab* grid, int height, int width, status::TEAM team);
+    int getMapWeight (int i, int j) const;
     // Setters and Getters
   };
 
