@@ -24,7 +24,7 @@ namespace engine {
 		return ATTACK;
 	}
 
-	void AttackUnit::execute (status::State* state)
+	void AttackUnit::execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state)
 	{
             if(state->getUnits()->getElement(height_target, width_target) != NULL)
             {

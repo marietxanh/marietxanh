@@ -41,7 +41,7 @@ namespace engine {
 		currentCommands.push_back(command);
 	}
         
-	void Engine::update ()
+	std::stack<std::shared_ptr<Action> >& actions Engine::update ()
 	{
 		for(int i(0); i < ((int)(currentCommands.size())); i++)
 		{
@@ -50,6 +50,13 @@ namespace engine {
                         currentCommands[i] = 0;
 		}
 		currentCommands.clear();
+		return ;
 	}
+
+ 	void Engine::undo (std::stack<std::shared_ptr<Action>>& actions)
+      {
+            
+        
+      }
 	
 };

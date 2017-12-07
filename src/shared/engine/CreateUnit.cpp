@@ -22,7 +22,7 @@ namespace engine {
 	{
 		return CREATE;
 	}
-	void CreateUnit::execute (status::State* state)
+	void CreateUnit::execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state)
 	{
             if (state->getBuildings()->getElement(height, width) != NULL)
             {

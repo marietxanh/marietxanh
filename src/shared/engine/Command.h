@@ -2,13 +2,19 @@
 #ifndef ENGINE__COMMAND__H
 #define ENGINE__COMMAND__H
 
+#include <stack>
+#include <memory>
 #include "status.h"
 
+namespace engine {
+  class Action;
+};
 namespace status {
   class State;
 }
 
 #include "CommandTypeID.h"
+#include "Action.h"
 
 namespace engine {
 
@@ -18,7 +24,7 @@ namespace engine {
   public:
     virtual ~Command ();
     virtual CommandTypeID getTypeID () const = 0;
-    virtual void execute (status::State* state) = 0;
+    virtual void execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state) = 0;
     // Setters and Getters
   };
 
