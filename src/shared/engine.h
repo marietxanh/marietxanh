@@ -2,6 +2,7 @@
 #ifndef __ENGINE__H
 #define __ENGINE__H
 
+#include "engine/Action.h"
 #include "engine/CommandTypeID.h"
 #include "engine/Command.h"
 #include "engine/Engine.h"
@@ -11,4 +12,9 @@
 #include "engine/CreateUnit.h"
 #include "engine/CaptureBuilding.h"
 #include "engine/ResetUnits.h"
+#include "engine/MoveUnitAction.h"
+#include "engine/AttackUnitAction.h"
+#include "engine/CaptureBuildingAction.h"
+#include "engine/CreateUnitAction.h"
+#include "engine/ResetUnitsAction.h"
 #endif

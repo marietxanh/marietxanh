@@ -41,7 +41,7 @@ namespace engine {
 		currentCommands.push_back(command);
 	}
         
-	std::stack<std::shared_ptr<Action> >& actions Engine::update ()
+	std::stack<std::shared_ptr<Action> > Engine::update ()
 	{
 		for(int i(0); i < ((int)(currentCommands.size())); i++)
 		{
