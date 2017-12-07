@@ -12,13 +12,10 @@ namespace engine {
 };
 namespace ai {
   class AI;
-  class Point;
 }
 
 #include "PathMap.h"
-#include "status/TEAM.h"
 #include "AI.h"
-#include "Point.h"
 
 namespace ai {
 

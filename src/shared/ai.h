@@ -9,4 +9,5 @@
 #include "ai/PcompW.h"
 #include "ai/PathMap.h"
 #include "ai/HeuristicAI.h"
+#include "ai/DeepAI.h"
 #endif

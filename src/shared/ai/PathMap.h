@@ -15,7 +15,6 @@ namespace ai {
   class PcompW;
 }
 
-#include "status/TEAM.h"
 #include "status/ElementTab.h"
 #include "PcompW.h"
 #include "Point.h"
@@ -30,8 +29,8 @@ namespace ai {
     int width;
     int height;
     std::vector<int> weights;
-    std::vector<std::vector<int> > map;
     std::priority_queue<Point,std::vector<Point>,PcompW> queue;
+    std::vector<std::vector<int> > map;
     // Operations
   public:
     PathMap ();
