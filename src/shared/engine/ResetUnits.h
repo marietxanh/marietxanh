@@ -2,8 +2,13 @@
 #ifndef ENGINE__RESETUNITS__H
 #define ENGINE__RESETUNITS__H
 
+#include <stack>
+#include <memory>
 #include "status.h"
 
+namespace engine {
+  class Action;
+};
 namespace status {
   class State;
 };
@@ -12,6 +17,7 @@ namespace engine {
 }
 
 #include "CommandTypeID.h"
+#include "Action.h"
 #include "Command.h"
 
 namespace engine {
@@ -22,7 +28,7 @@ namespace engine {
   public:
     ResetUnits ();
     CommandTypeID getTypeID () const;
-    void execute (status::State* state);
+    void execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state);
     // Setters and Getters
   };
 
