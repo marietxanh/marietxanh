@@ -14,8 +14,8 @@ namespace engine {
   class Action {
     // Operations
   public:
-    virtual void apply (status::State* state);
-    virtual void undo (status::State* state);
+    virtual void apply (status::State* state) = 0;
+    virtual void undo (status::State* state) = 0;
     // Setters and Getters
   };
 

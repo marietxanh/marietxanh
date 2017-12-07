@@ -4,7 +4,6 @@
 
 #include <string>
 #include <stack>
-#include <memory>
 #include "status.h"
 
 namespace engine {
@@ -18,7 +17,6 @@ namespace engine {
 }
 
 #include "CommandTypeID.h"
-#include "Action.h"
 #include "Command.h"
 
 namespace engine {
@@ -33,7 +31,7 @@ namespace engine {
     LoadMap (const std::string& file_name);
     ~LoadMap ();
     CommandTypeID getTypeID () const;
-    void execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state);
+    void execute (std::stack<Action*>& actions, status::State* state);
     // Setters and Getters
   };
 

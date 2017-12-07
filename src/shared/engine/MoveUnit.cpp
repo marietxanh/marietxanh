@@ -23,7 +23,7 @@ namespace engine {
 		return MOVE;
 	}
 
-	void MoveUnit::execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state)
+	void MoveUnit::execute (std::stack<Action*>& actions, status::State* state)
 	{
 		if(height_start != height_end || width_start != width_end)
 		{

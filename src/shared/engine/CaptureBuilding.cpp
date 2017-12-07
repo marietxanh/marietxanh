@@ -21,7 +21,7 @@ namespace engine {
 	{
 		return CAPTURE;
 	}
-	void CaptureBuilding::execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state)
+	void CaptureBuilding::execute (std::stack<Action*>& actions, status::State* state)
 	{
             if(((Building*)(state->getBuildings()->getElement(height, width)))->getTeam() != ((Unit*)(state->getUnits()->getElement(height, width)))->getTeam())
             {

@@ -41,22 +41,23 @@ namespace engine {
 		currentCommands.push_back(command);
 	}
         
-	std::stack<std::shared_ptr<Action> > Engine::update ()
+	const std::stack<Action*>& Engine::update ()
 	{
+            std::stack<Action*> pile;
 		for(int i(0); i < ((int)(currentCommands.size())); i++)
 		{
-			currentCommands[i]->execute(this->state);
-			delete currentCommands[i];
+			currentCommands[i]->execute(0, this->state);
+			pile.push(currentCommands[i]);
                         currentCommands[i] = 0;
 		}
 		currentCommands.clear();
-		return ;
+		return pile;
 	}
 
- 	void Engine::undo (std::stack<std::shared_ptr<Action>>& actions)
-      {
+ 	void Engine::undo (std::stack<Action*>& actions)
+        {
             
         
-      }
+        }
 	
 };

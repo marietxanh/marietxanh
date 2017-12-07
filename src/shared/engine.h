@@ -2,8 +2,8 @@
 #ifndef __ENGINE__H
 #define __ENGINE__H
 
-#include "engine/Action.h"
 #include "engine/CommandTypeID.h"
+#include "engine/Action.h"
 #include "engine/Command.h"
 #include "engine/Engine.h"
 #include "engine/LoadMap.h"

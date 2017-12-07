@@ -3,7 +3,6 @@
 #define ENGINE__MOVEUNIT__H
 
 #include <stack>
-#include <memory>
 #include "status.h"
 
 namespace engine {
@@ -17,7 +16,6 @@ namespace engine {
 }
 
 #include "CommandTypeID.h"
-#include "Action.h"
 #include "Command.h"
 
 namespace engine {
@@ -34,7 +32,7 @@ namespace engine {
   public:
     MoveUnit (int height_start, int width_start, int height_end, int width_end);
     CommandTypeID getTypeID () const;
-    void execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state);
+    void execute (std::stack<Action*>& actions, status::State* state);
     ~MoveUnit ();
     // Setters and Getters
     int getHeight_start() const;

@@ -3,7 +3,6 @@
 #define ENGINE__CAPTUREBUILDING__H
 
 #include <stack>
-#include <memory>
 #include "status.h"
 
 namespace engine {
@@ -17,7 +16,6 @@ namespace engine {
 }
 
 #include "CommandTypeID.h"
-#include "Action.h"
 #include "Command.h"
 
 namespace engine {
@@ -33,7 +31,7 @@ namespace engine {
     CaptureBuilding (int height, int width);
     ~CaptureBuilding ();
     CommandTypeID getTypeID () const;
-    void execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state);
+    void execute (std::stack<Action*>& actions, status::State* state);
     // Setters and Getters
     int getHeight() const;
     void setHeight(int height);

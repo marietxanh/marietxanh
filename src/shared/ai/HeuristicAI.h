@@ -15,6 +15,7 @@ namespace ai {
 }
 
 #include "PathMap.h"
+#include "status/TEAM.h"
 #include "AI.h"
 
 namespace ai {

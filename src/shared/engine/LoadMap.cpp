@@ -19,7 +19,7 @@ namespace engine{
 	{
 		return LOAD;
 	}
-	void LoadMap::execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state)
+	void LoadMap::execute (std::stack<Action*>& actions, status::State* state)
 	{
 		state->initialisation(file_name);
 		std::cout << "Map loaded" << std::endl;

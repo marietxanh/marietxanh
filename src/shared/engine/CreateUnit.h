@@ -4,7 +4,6 @@
 
 #include "status.h"
 #include <stack>
-#include <memory>
 
 namespace engine {
   class Action;
@@ -17,7 +16,6 @@ namespace engine {
 }
 
 #include "CommandTypeID.h"
-#include "Action.h"
 #include "Command.h"
 
 namespace engine {
@@ -34,7 +32,7 @@ namespace engine {
     CreateUnit (status::TypeUnits type_unit, int height, int width);
     ~CreateUnit ();
     CommandTypeID getTypeID () const;
-    void execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state);
+    void execute (std::stack<Action*>& actions, status::State* state);
     // Setters and Getters
     const status::TypeUnits& getType_unit() const;
     void setType_unit(const status::TypeUnits& type_unit);

@@ -17,7 +17,7 @@ namespace engine {
     {
         return RESET;
     }
-    void ResetUnits::execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state)
+    void ResetUnits::execute (std::stack<Action*>& actions, status::State* state)
     {
         for(int i(0); i < state->getHeight(); i++)
             for(int j(0); j < state->getWidth(); j++)

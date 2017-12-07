@@ -3,7 +3,6 @@
 #define ENGINE__ATTACKUNIT__H
 
 #include <stack>
-#include <memory>
 #include "status.h"
 
 namespace engine {
@@ -17,7 +16,6 @@ namespace engine {
 }
 
 #include "CommandTypeID.h"
-#include "Action.h"
 #include "Command.h"
 
 namespace engine {
@@ -35,7 +33,7 @@ namespace engine {
     AttackUnit (int height_shooter, int width_shooter, int height_target, int width_target);
     ~AttackUnit ();
     CommandTypeID getTypeID () const;
-    void execute (std::stack<std::shared_ptr<Action> >& actions, status::State* state);
+    void execute (std::stack<Action*>& actions, status::State* state);
     // Setters and Getters
     int getHeight_shooter() const;
     void setHeight_shooter(int height_shooter);

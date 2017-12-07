@@ -15,6 +15,7 @@ namespace ai {
   class PcompW;
 }
 
+#include "status/TEAM.h"
 #include "status/ElementTab.h"
 #include "PcompW.h"
 #include "Point.h"
