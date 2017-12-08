@@ -2,7 +2,6 @@
 #ifndef ENGINE__ATTACKUNITACTION__H
 #define ENGINE__ATTACKUNITACTION__H
 
-#include <memory>
 #include "status.h"
 
 namespace status {
@@ -13,8 +12,8 @@ namespace engine {
   class Action;
 }
 
-#include "status/Element.h"
 #include "Action.h"
+#include "status/Element.h"
 
 namespace engine {
 
@@ -22,8 +21,8 @@ namespace engine {
   class AttackUnitAction : public engine::Action {
     // Attributes
   private:
-    std::unique_ptr<status::Element> prevshooter;
-    std::unique_ptr<status::Element> prevtarget;
+    status::Element* prev_shooter;
+    status::Element* prev_target;
   protected:
     int height_shooter;
     int width_shooter;
@@ -34,6 +33,7 @@ namespace engine {
     AttackUnitAction (int height_shooter, int width_shooter, int height_target, int width_target);
     void apply (status::State* state);
     void undo (status::State* state);
+    void setPrev_shooter (status::Element* prev_shooter);
     // Setters and Getters
     int getHeight_shooter() const;
     void setHeight_shooter(int height_shooter);

@@ -2,7 +2,6 @@
 #ifndef ENGINE__RESETUNITSACTION__H
 #define ENGINE__RESETUNITSACTION__H
 
-#include <memory>
 #include "status.h"
 
 namespace status {
@@ -13,8 +12,8 @@ namespace engine {
   class Action;
 }
 
-#include "status/Element.h"
 #include "Action.h"
+#include "status/Element.h"
 
 namespace engine {
 
@@ -22,10 +21,10 @@ namespace engine {
   class ResetUnitsAction : public engine::Action {
     // Attributes
   private:
-    std::unique_ptr<status::Element> prevunit;
+    status::Element* prev_unit;
     // Operations
   public:
-    ResetUnitsAction ();
+    ResetUnitsAction (status::Element* element);
     void apply (status::State* state);
     void undo (status::State* state);
     // Setters and Getters

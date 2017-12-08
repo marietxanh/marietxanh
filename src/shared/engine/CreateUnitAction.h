@@ -2,7 +2,6 @@
 #ifndef ENGINE__CREATEUNITACTION__H
 #define ENGINE__CREATEUNITACTION__H
 
-#include <memory>
 #include "status.h"
 
 namespace status {
@@ -13,8 +12,8 @@ namespace engine {
   class Action;
 }
 
-#include "status/Element.h"
 #include "Action.h"
+#include "status/Element.h"
 
 namespace engine {
 
@@ -22,7 +21,7 @@ namespace engine {
   class CreateUnitAction : public engine::Action {
     // Attributes
   private:
-    std::unique_ptr<status::Element> prevunit;
+    status::Element* prev_unit;
   protected:
     status::TypeUnits type_unit;
     int height;
@@ -32,6 +31,7 @@ namespace engine {
     CreateUnitAction (status::TypeUnits type_unit, int height, int width);
     void apply (status::State* state);
     void undo (status::State* state);
+    void setElement (status::Element* element);
     // Setters and Getters
     const status::TypeUnits& getType_unit() const;
     void setType_unit(const status::TypeUnits& type_unit);

@@ -5,6 +5,7 @@
 #include "status.h"
 
 namespace status {
+  class Element;
   class State;
 };
 namespace engine {
@@ -18,6 +19,8 @@ namespace engine {
   /// class MoveUnitAction - 
   class MoveUnitAction : public engine::Action {
     // Attributes
+  private:
+    status::Element* element;
   protected:
     int height_start;
     int width_start;
@@ -28,6 +31,7 @@ namespace engine {
     MoveUnitAction (int height_start, int width_start, int height_end, int width_end);
     void apply (status::State* state);
     void undo (status::State* state);
+    void setElement (status::Element* element);
     // Setters and Getters
     int getHeight_start() const;
     void setHeight_start(int height_start);

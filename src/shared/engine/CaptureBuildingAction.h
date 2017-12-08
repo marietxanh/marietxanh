@@ -2,7 +2,6 @@
 #ifndef ENGINE__CAPTUREBUILDINGACTION__H
 #define ENGINE__CAPTUREBUILDINGACTION__H
 
-#include <memory>
 #include "status.h"
 
 namespace status {
@@ -13,8 +12,8 @@ namespace engine {
   class Action;
 }
 
-#include "status/Element.h"
 #include "Action.h"
+#include "status/Element.h"
 
 namespace engine {
 
@@ -22,7 +21,7 @@ namespace engine {
   class CaptureBuildingAction : public engine::Action {
     // Attributes
   private:
-    std::unique_ptr<status::Element> prevbuilding;
+    status::Element* prev_building;
   protected:
     int height;
     int width;

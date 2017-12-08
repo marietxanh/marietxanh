@@ -19,6 +19,7 @@ namespace engine {
     }
     void ResetUnits::execute (std::stack<Action*>& actions, status::State* state)
     {
+        ResetUnitsAction reset_unit;
         for(int i(0); i < state->getHeight(); i++)
             for(int j(0); j < state->getWidth(); j++)
             {
