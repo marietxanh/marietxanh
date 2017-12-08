@@ -131,4 +131,9 @@ void TestAI::testHeuristic(){
     std::cout << "Window closed" << std::endl;
 }
 
+void TestAI::testDeep()
+{
+    
+}
+
 

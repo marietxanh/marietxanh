@@ -27,6 +27,7 @@ class TestAI
 public:
     static void testRandom();
     static void testHeuristic();
+    static void testDeep();
 };
 
 
