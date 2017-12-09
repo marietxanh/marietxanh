@@ -1,4 +1,5 @@
 #include "CreateUnit.h"
+#include "CreateUnitAction.h"
 #include "../status.h"
 #include <iostream>
 
@@ -24,12 +25,13 @@ namespace engine {
 	}
 	void CreateUnit::execute (std::stack<Action*>& actions, status::State* state)
 	{
-            CreateUnitAction create_unit;
+            CreateUnitAction* create_unit;
             if (state->getBuildings()->getElement(height, width) != NULL)
             {
 		state->getUnits()->newElement(height, width, new Unit(type_unit, ((Building*)(state->getBuildings()->getElement(height, width)))->getTeam()));
 		std::cout << "Unit created in (" << height << ", " << width << ")" << std::endl;
-                create_unit.setElement(state->getUnits()->getElement(height, width));
+                //create_unit->setElement(state->getUnits()->getElement(height, width));
+                actions.push(create_unit);
             }
 	}
 	

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 #include "ResetUnits.h"
+#include "ResetUnitsAction.h"
 
 using namespace status;
 
@@ -19,7 +20,6 @@ namespace engine {
     }
     void ResetUnits::execute (std::stack<Action*>& actions, status::State* state)
     {
-        ResetUnitsAction reset_unit;
         for(int i(0); i < state->getHeight(); i++)
             for(int j(0); j < state->getWidth(); j++)
             {
@@ -27,6 +27,9 @@ namespace engine {
                 {
                     ((Unit*)(state->getUnits()->getElement(i, j)))->setTurn_attack(false);
                     ((Unit*)(state->getUnits()->getElement(i, j)))->setTurn_move(false);
+                    ResetUnitsAction* reset_unit;
+                    //ResetUnitsAction* reset_unit = new ResetUnitsAction(state->getUnits()->getElement(i, j));
+                    actions.push(reset_unit);
                 }
             }
     }

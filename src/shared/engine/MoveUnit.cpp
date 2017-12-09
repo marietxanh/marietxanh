@@ -26,7 +26,7 @@ namespace engine {
 
 	void MoveUnit::execute (std::stack<Action*>& actions, status::State* state)
 	{
-            MoveUnitAction move_unit;
+            MoveUnitAction* move_unit;
 		if(height_start != height_end || width_start != width_end)
 		{
                     if(((Unit*)(state->getUnits()->getElement(height_start, width_start)))->getTurn_move() == false)
@@ -39,9 +39,9 @@ namespace engine {
                         }
                         if(state->getUnits()->setElement(height_end, width_end, state->getUnits()->getElement(height_start, width_start)))
                             state->getUnits()->setElement(height_start, width_start, NULL);
-                        move_unit.setHeight_start(height_start); move_unit.setWidth_start(width_start);
-                        move_unit.setHeight_end(height_end); move_unit.setWidth_end(width_end);
-                        move_unit.setElement(state->getUnits()->getElement(height_end, width_end));
+                        //move_unit->setHeight_start(height_start); move_unit->setWidth_start(width_start);
+                        //move_unit->setHeight_end(height_end); move_unit->setWidth_end(width_end);
+                        //move_unit->setElement(state->getUnits()->getElement(height_end, width_end));
                         actions.push(move_unit);
                     }
 		}
