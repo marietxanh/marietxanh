@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 #include <iostream>
+#include <stack>
 #include "../status.h"
 #include "Engine.h"
 
@@ -46,8 +47,8 @@ namespace engine {
             std::stack<Action*> pile;
 		for(int i(0); i < ((int)(currentCommands.size())); i++)
 		{
-			currentCommands[i]->execute(0, this->state);
-			pile.push(currentCommands[i]);
+			currentCommands[i]->execute(pile, this->state);
+			//pile.push(currentCommands[i]);
                         currentCommands[i] = 0;
 		}
 		currentCommands.clear();
