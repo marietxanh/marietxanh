@@ -2,6 +2,7 @@
 #ifndef AI__DEEPAI__H
 #define AI__DEEPAI__H
 
+#include <vector>
 #include "status.h"
 
 namespace ai {
@@ -24,17 +25,17 @@ namespace ai {
     // Associations
     // Attributes
   private:
-    PathMap building_map;
-    PathMap adv_units_map;
+    std::vector<PathMap> buildings_map;
+    std::vector<PathMap> units_map;
     PathMap qg_map;
   protected:
     int maxDepth     = 4;
     // Operations
   public:
     DeepAI (const status::State& state);
+    int minmax_rec_max (engine::Engine* engine, Direction& bestdir, int depth);
+    minmax_rec_min (engine::Engine* engine, Direction& bestdir, int depth);
     void run (engine::Engine* engine);
-  protected:
-    int minmax_rec (engine::Engine& engine, Direction& bestdir, int depth);
     // Setters and Getters
     int getMaxDepth() const;
     void setMaxDepth(int maxDepth);

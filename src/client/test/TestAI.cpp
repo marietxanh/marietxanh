@@ -133,7 +133,59 @@ void TestAI::testHeuristic(){
 
 void TestAI::testDeep()
 {
+    string file_name = "res/test_ai.txt";
+    Engine* moteur = new Engine();
+    moteur->addCommand(new LoadMap(file_name));
+    moteur->update();
+    Display display(moteur->getState());
+    int height = moteur->getState()->getHeight();
+    int width = moteur->getState()->getWidth();
+
+    /*creation d'unites pour faire tourner l'intelligence artificielle*/
+    for(int i(0); i <  height; i++)
+    {
+            for(int j(0); j < width; j++)
+            {
+                    if(moteur->getState()->getBuildings()->getElement(i, j) != NULL)
+                    {
+                            if(((Building*)(moteur->getState()->getBuildings()->getElement(i, j)))->getType_building() == FACTORY)
+                            {
+                                    moteur->addCommand(new CreateUnit(INFANTRY, i, j));
+                            }
+                    }
+            }
+    }
+    moteur->update();
+    string move = "move";
+    string attack = "attack";
+
+    DeepAI art_int;
+    art_int.addCommand(move);
+    art_int.addCommand(attack);
+    cout << "Window opens" << endl;
+    while(display.getWindow().isOpen())
+    {
+        sf::Event event;
+        while(display.checkEvent(event))
+        {
+            if(event.type == sf::Event::Closed)
+            {
+                display.closeWindow();
+                cout << "Window close request" << endl;
+            }
+        }
+        display.getUnits()->refresh_array();
+        moteur->addCommand(new ResetUnits());
+        moteur->update();
+        display.refreshWindow();
+        sleep(2);
+        cout << "--------------------------------------------" << endl;
+        art_int.run(moteur);
+        cout << "--------------------------------------------" << endl;
+    }
     
+    delete moteur;
+    std::cout << "Window closed" << std::endl;
 }
 
 
