@@ -236,12 +236,28 @@ Les différents changements extérieurs peuvent être un chargement de carte, un
     \item un changement de tour crée une rentrée d'argent proportionnelle au nombre de villes possédées
 \end{itemize}
 
+\section{Conception logiciel}
+\paragraph{}Le diagramme des classes pour le moteur du jeu est présenté en Figure  4.1. Le moteur se compose de différentes classes(Command et Action) qui permettent la mise en oeuvre différée de commandes extérieures sur l'état du jeu.
+\paragraph{}\textbf{Classes Command:} Le rôle de ces classes est de représenter une commande, quelque soit sa source. Pour chacune de ces classes, on a défini un type de commande avec CommandTypeId pour pouvoir identifier la classe d'une instance.
+\begin{itemize}
+    \item \emph{LoadMap} : Charge un niveau depuis un fichier;
+    \item \emph{CreateUnit} : Crée une unité;
+    \item \emph{MoveUnit} : Déplace une unité;
+    \item \emph{AttackUnit} : Une unité attaque une unité adverse;
+    \item \emph{CaptureBuilding} : Une unité capture un bâtiment ( neutre ou adverse);
+    \item \emph{ResetUnits} : Détruit les unités sur le terrain;
+    
+\paragraph{}\textbf{Classes Action:}  Chaque commande, lorsqu’elle est exécutée, donne lieu à certain nombre d’actions à réaliser, suivant les cas. Ces actions sont concrétisés par les classes ﬁlles de Action. Cela permet d’atomiser les opérations effectives, et donc de les inverser grâce à l’appel aux methodes undo(). Ces classes nous permettent donc d’annuler les conséquences de commandes, et nous servent à remonter dans l’arbre des états pour l’intelligence artiﬁcielle avancée (algorithme minmax). 
+
+\paragraph{}\textbf{Engine:} Cette classe correspond au moteur du jeu. Elle stocke les commandes dans une std : :map avec clé entière. Ce mode de stockage permet d’introduire une notion de priorité : on traite les commandes dans l’ordre de leur clés, de la plus petite à la plus grande. Lorsqu’une nouvelle époque démarre, c'est à dire quand on appelle la méthode update(), le moteur appelle la méthode execute() de chaque commande, incrémente l’époque, puis supprime toutes les commandes. Il en résulte une pile d’actions qui, si on les appliquent en ordre inverse, permettent d’annuler les commande précédemment invoquées.
+
+
     \newpage
 \thispagestyle{empty}
 \begin{landscape}
 \begin{figure}[h]
     \begin{center}
-    \includegraphics[scale=0.6]{engine.png}
+    \includegraphics[scale=0.35]{engine.png}    
     \end{center}
     \caption{Diagramme de l'engine}
 \end{figure}
@@ -254,6 +270,11 @@ Les différents changements extérieurs peuvent être un chargement de carte, un
 \subsection{Intelligence basée sur des heuristiques}
 \paragraph{}Pour obtenir un comportement meilleur que le hasard, nous voulons permettre à l'IA de rechercher l'ennemi le plus proche pour l'attaquer ou de chercher le bâtiment le plus proche pour le capturer ou soigner l'unité en déplacement.Pour cela nous allons fabriquer des cartes de distances.
 Pour calculer ces cartes, nous utilisons l’algorithme de Dijkstra.
+\subsection{Intelligence avancée}
+\paragraphe{}Nous proposons une intelligence plus avancée en suivant les méthodes de résolution de problèmes à états ﬁnis. Dans cette conﬁguration, un état est un état du jeu à une époque donnée, tel que déﬁni dans la section état. Les arcs entre les sommets du graphe d’état sont les changements d’états.. Passer d’un sommet du graphe d’état à un autre reviens à passer d’une époque à une autre du jeu, fonction de l’ensemble des commandes reçues (clavier, réseau, IA,...). L’évaluation/score d’un sommet/état du jeu n'a pas encore pu être déterminée.
+
+\paragraphe{}Pour que notre AI prenne les meilleures décisions, nous suivons des méthodes basées sur les arbres de recherche, avec une propriété importante. En effet, nous n’envisageons pas de dupliquer l’état du jeu à chaque sommet du graphe d’état. Nous n’allons considérer qu’un seul état que nous modiﬁons suivant la direction choisie par la recherche. Si le sommet suivant est à une époque suivante, i.e. on descend dans l’arbre de recherche, on applique les commandes associées, et notre état gagne une époque. Si le sommet suivant est à une époque précédente, i.e. on remonte dans l’arbre de recherche, on annule les commandes associées, et notre état retrouve sa forme passée. Ces pour cela que plus tôt nous créons les classes Action.
+
     \newpage
 \section{Conception logiciel}
 \paragraphe{}Le diagramme des classes pour l’intelligence artificielle est présenté en Figure 5.1.
@@ -261,6 +282,7 @@ Pour calculer ces cartes, nous utilisons l’algorithme de Dijkstra.
 \begin{itemize}
     \item RandomAI : Intelligence aléatoire
     \item HeuristicAI : Intelligence heuristique
+     \item DeepAI : Intelligence avancée
 \end{itemize}
 \paragraphe{}\textbf{PathMap:}La classe PathMap permet de calculer une carte des distances à plusieurs unités. Pour chaque case « espace » du niveau, on peut demander un poids qui représente la distance à ces objectifs. Pour s’approcher d’un objectif lorsqu’on est sur une case, il suffit de choisir la case
 adjacente qui a un plus petit poids. Deux cartes de distantes
@@ -269,12 +291,17 @@ sont crées en début de tour :
     \item adv\_units\_map : Objectif cases unités adverses, pour pouvoir attaquer l'unité la plus proche
     \item building\_map : Objectif building, pour s’emparer des building ennemis ou se soigner si le building nous appartient
 \end{itemize}
+
+\paragraphe{}\textbf{DeepAI:} Nous proposons ici une implantation pour une IA basée sur la résolution de problèmes à état ﬁni, tel que déﬁni dans la section précédente. L’algorithme utilisé est une version du minimax pour deux joueurs. 
+\newline (Le critère d'évaluation n'a pas encore été trouvé, car nous voulons évaluer l'avancée d'un joueur sur la distance de ces unités au QG adverse (car le but est de le capturer) mais aussi au nombre d'unité encore présentes sur le terrain ainsi que le nombre de bâtiments possédés, car ce sont des avantages déterminants pour la réussite du joueur).
+\end{itemize}
+
     \newpage
 \thispagestyle{empty}
 \begin{landscape}
 \begin{figure}[h]
     \begin{center}
-    \includegraphics[scale=0.6]{ai.png}
+    \includegraphics[scale=0.45]{ai.png}
     \end{center}
     \caption{Diagramme de l'intelligence artificielle bas-niveau}
 \end{figure}
