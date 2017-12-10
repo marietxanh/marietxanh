@@ -159,7 +159,7 @@ void TestAI::testDeep()
     string move = "move";
     string attack = "attack";
 
-    DeepAI art_int;
+    DeepAI art_int(moteur->getState());
     art_int.addCommand(move);
     art_int.addCommand(attack);
     cout << "Window opens" << endl;

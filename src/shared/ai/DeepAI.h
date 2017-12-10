@@ -32,9 +32,9 @@ namespace ai {
     int maxDepth     = 4;
     // Operations
   public:
-    DeepAI (const status::State& state);
+    DeepAI (status::State* state);
     int minmax_rec_max (engine::Engine* engine, Direction& bestdir, int depth);
-    minmax_rec_min (engine::Engine* engine, Direction& bestdir, int depth);
+    int minmax_rec_min (engine::Engine* engine, Direction& bestdir, int depth);
     void run (engine::Engine* engine);
     // Setters and Getters
     int getMaxDepth() const;

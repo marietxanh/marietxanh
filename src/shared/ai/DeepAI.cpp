@@ -8,24 +8,24 @@
 #include <limits>
 
 namespace ai{
-    DeepAI::DeepAI (const status::State& state)
+    DeepAI::DeepAI (status::State* state)
     {
         this->buildings_map.resize(2);
         this->units_map.resize(2);        
     }
-    int DeepAI::minmax_rec_max (engine::Engine& engine, Direction& bestdir, int depth)
+    int DeepAI::minmax_rec_max (engine::Engine* engine, Direction& bestdir, int depth)
     {
         if (depth <= 0) return 0;
         
-        int max_val = std::numeric_limits<int>;
+        int max_val = std::numeric_limits<int>::max();
         
         return max_val;
     }
-    int DeepAI::minmax_rec_min (engine::Engine& engine, Direction& bestdir, int depth)
+    int DeepAI::minmax_rec_min (engine::Engine* engine, Direction& bestdir, int depth)
     {
         if (depth <= 0) return 0;
         
-        int min_val = std::numeric_limits<int>;
+        int min_val = std::numeric_limits<int>::max();
         
         return min_val;
         
