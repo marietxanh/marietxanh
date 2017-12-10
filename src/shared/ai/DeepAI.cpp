@@ -32,7 +32,16 @@ namespace ai{
     }
     void DeepAI::run (engine::Engine* engine)
     {
+        int height = engine->getState()->getHeight();
+        int width = engine->getState()->getWidth();
         
+        for(int i(0); i < height; i++)
+        {
+            for(int j(0); j < width; j++)
+            {
+                
+            }
+        }
     }
     int DeepAI::getMaxDepth() const
     {
