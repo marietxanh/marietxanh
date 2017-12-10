@@ -56,8 +56,7 @@ namespace engine {
 
  	void Engine::undo (std::stack<Action*>& actions)
         {
-            
-        
+                    
         }
 	
 };
