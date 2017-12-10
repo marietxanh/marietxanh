@@ -45,7 +45,7 @@ namespace engine {
 	const std::stack<Action*>& Engine::update ()
 	{
             std::stack<Action*> pile;
-		for(int i(0); i < ((int)(currentCommands.size())); i++)
+		for(size_t i(0); i < currentCommands.size(); i++)
 		{
 			currentCommands[i]->execute(pile, this->state);
 			//pile.push(currentCommands[i]);
@@ -57,7 +57,11 @@ namespace engine {
 
  	void Engine::undo (std::stack<Action*>& actions)
         {
-                    
+            for (size_t i(0); i < actions.size(); i++)
+            {
+                Action *new_action = actions.top(); actions.pop();
+                new_action->undo(this->getState());
+            }
         }
 	
 };
