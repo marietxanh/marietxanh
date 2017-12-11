@@ -13,6 +13,7 @@ void testSFML() {
 #include "test/TestRender.h"
 #include "test/TestEngine.h"
 #include "test/TestAI.h"
+#include "test/TestThread.h"
 #include "render.h"
 #include "../shared/engine.h"
 #include "../shared/status.h"
@@ -45,6 +46,9 @@ int main(int argc,char* argv[])
         }
         else if(std::string(argv[1]) == "deep_ai"){
             TestAI::testDeep();
+        }
+        else if(std::string(argv[1]) == "thread"){
+            TestThread::testThread();
         }
     }
     else
