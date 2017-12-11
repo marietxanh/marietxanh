@@ -15,7 +15,11 @@
 #define TESTTHREAD_H
 
 #include <iostream>
-
+#include <string>
+#include "../render.h"
+#include "../../shared/ai.h"
+#include "../../shared/engine.h"
+#include "../../shared/status.h"
 
 class TestThread {
 public:
@@ -23,6 +27,7 @@ public:
     TestThread(const TestThread& orig);
     virtual ~TestThread();
     static void testThread();
+    void engine();
 private:
 
 };

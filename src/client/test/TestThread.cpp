@@ -13,6 +13,11 @@
 
 #include "TestThread.h"
 
+using namespace engine;
+using namespace render;
+using namespace status;
+using namespace std;
+
 TestThread::TestThread() {
 }
 
@@ -24,5 +29,12 @@ TestThread::~TestThread() {
 
 void TestThread::testThread(){
     
+}
+
+void TestThread::engine(){
+    string file_name = "res/test_ai.txt";
+    Engine* moteur = new Engine();
+    moteur->addCommand(new LoadMap(file_name));
+    moteur->update();
 }
 
