@@ -16,6 +16,8 @@
 
 #include <iostream>
 #include <string>
+#include <thread>
+#include <mutex>
 #include "../render.h"
 #include "../../shared/ai.h"
 #include "../../shared/engine.h"

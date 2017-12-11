@@ -27,8 +27,9 @@ TestThread::TestThread(const TestThread& orig) {
 TestThread::~TestThread() {
 }
 
-void TestThread::testThread(){
-    
+void TestThread::testThread()
+{
+    std::thread engine(engine);
 }
 
 void TestThread::engine(){
