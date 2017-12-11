@@ -33,7 +33,10 @@ public:
     TestThread(const TestThread& orig);
     virtual ~TestThread();
     void testThread();
+    
 private:
+    static std::mutex mtx;
+    bool running = true;
     void run(engine::Engine* moteur);
 
 };

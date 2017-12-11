@@ -20,6 +20,8 @@ using namespace ai;
 using namespace sf;
 using namespace std;
 
+std::mutex TestThread::mtx;
+
 TestThread::TestThread() {
 }
 
@@ -45,17 +47,21 @@ void TestThread::testThread()
     while(display.getWindow().isOpen())
     {
         sf::Event event;
+        
         while(display.checkEvent(event))
         {
             if(event.type == sf::Event::Closed)
             {
                 display.closeWindow();
+                this->running = false;
                 cout << "Window close request" << endl;
             }
         }
+        mtx.lock();
         display.getUnits()->refresh_array();
         display.refreshWindow();
-        sleep(2);
+        sleep(1);
+        mtx.unlock();
     }
         
     delete moteur;
@@ -63,6 +69,7 @@ void TestThread::testThread()
 }
 
 void TestThread::run(Engine* moteur){
+    mtx.lock();
     int height = moteur->getState()->getHeight();
     int width = moteur->getState()->getWidth();
     for(int i(0); i <  height; i++)
@@ -79,11 +86,13 @@ void TestThread::run(Engine* moteur){
             }
     }
     moteur->update();
+    mtx.unlock();
     string move = "move";
     string attack = "attack";
     HeuristicAI art_int;
-    while(1)
+    while(running)
     {
+        mtx.lock();
         cout << "--------------------------------------------" << endl;
         art_int.run(moteur);
         cout << "--------------------------------------------" << endl;
@@ -91,6 +100,8 @@ void TestThread::run(Engine* moteur){
         art_int.addCommand(attack);
         moteur->addCommand(new ResetUnits());
         moteur->update();
+        sleep(2);
+        mtx.unlock();
     }
 
 }
