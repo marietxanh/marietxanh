@@ -15,9 +15,13 @@
 #define TESTTHREAD_H
 
 #include <iostream>
+#include <unistd.h>
 #include <string>
 #include <thread>
 #include <mutex>
+#include <time.h>
+#include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window.hpp>
 #include "../render.h"
 #include "../../shared/ai.h"
 #include "../../shared/engine.h"
@@ -28,9 +32,9 @@ public:
     TestThread();
     TestThread(const TestThread& orig);
     virtual ~TestThread();
-    static void testThread();
-    void engine();
+    void testThread();
 private:
+    void run(engine::Engine* moteur);
 
 };
 

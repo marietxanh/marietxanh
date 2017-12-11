@@ -48,7 +48,7 @@ int main(int argc,char* argv[])
             TestAI::testDeep();
         }
         else if(std::string(argv[1]) == "thread"){
-            TestThread::testThread();
+            TestThread().testThread();
         }
     }
     else
@@ -59,7 +59,9 @@ int main(int argc,char* argv[])
                 "render : affiche le rendu d'un etat du jeu\n" <<
                 "engine : affiche une succession d'etats du jeu en passant des commandes\n" << 
                 "random_ai : affiche une succession d'etats du jeu engendres par les commandes d'une AI\n" <<
-                "heuristic_ai : affiche une IA dirigee par une fonction de recherche\n";
+                "heuristic_ai : affiche une IA dirigee par une fonction de recherche\n" <<
+                "deep_ai : affiche un IA qui utilise l'algorithme minmax\n" <<
+                "thread : affiche une succession d'etats du jeu traites par deux threads\n";
     }
     return 0;
 }
