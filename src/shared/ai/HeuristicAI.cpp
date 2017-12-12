@@ -16,15 +16,13 @@ namespace ai {
     const PathMap& HeuristicAI::getAdvUnitsMap (status::TEAM team) const
     {
         if (team == status::ORANGE) return this->units_map[0];
-        else if (team == status::BLUE) return this->units_map[1];
-        else std::cout << "CRASH" << std::endl;
+        else return this->units_map[1];
     }
 
     const PathMap& HeuristicAI::getBuildingMap (status::TEAM team) const
     {
         if(team == status::ORANGE) return this->buildings_map[0];
-        else if(team == status::BLUE) return this->buildings_map[1];
-        else std::cout << "CRASH" << std::endl;
+        else return this->buildings_map[1];
     }
 
     void HeuristicAI::run (engine::Engine* engine)

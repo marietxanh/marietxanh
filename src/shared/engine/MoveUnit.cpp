@@ -26,7 +26,7 @@ namespace engine {
 
 	void MoveUnit::execute (std::stack<Action*>& actions, status::State* state)
 	{
-            MoveUnitAction* move_unit;
+            MoveUnitAction* move_unit = NULL;
 		if(height_start != height_end || width_start != width_end)
 		{
                     if(((Unit*)(state->getUnits()->getElement(height_start, width_start)))->getTurn_move() == false)

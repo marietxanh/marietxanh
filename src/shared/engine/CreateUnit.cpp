@@ -25,7 +25,7 @@ namespace engine {
 	}
 	void CreateUnit::execute (std::stack<Action*>& actions, status::State* state)
 	{
-            CreateUnitAction* create_unit;
+            CreateUnitAction* create_unit = NULL;
             if (state->getBuildings()->getElement(height, width) != NULL)
             {
 		state->getUnits()->newElement(height, width, new Unit(type_unit, ((Building*)(state->getBuildings()->getElement(height, width)))->getTeam()));

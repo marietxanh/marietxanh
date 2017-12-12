@@ -27,7 +27,7 @@ namespace engine {
                 {
                     ((Unit*)(state->getUnits()->getElement(i, j)))->setTurn_attack(false);
                     ((Unit*)(state->getUnits()->getElement(i, j)))->setTurn_move(false);
-                    ResetUnitsAction* reset_unit;
+                    ResetUnitsAction* reset_unit = NULL;
                     //ResetUnitsAction* reset_unit = new ResetUnitsAction(state->getUnits()->getElement(i, j));
                     actions.push(reset_unit);
                 }
