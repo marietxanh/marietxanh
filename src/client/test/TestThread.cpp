@@ -41,11 +41,12 @@ void TestThread::testThread()
     
     Display display(moteur->getState());
     
-    vroum.join();
+    
 
     std::cout << "Window opens" << std::endl;
     while(display.getWindow().isOpen())
     {
+        mtx.lock();
         sf::Event event;
         
         while(display.checkEvent(event))
@@ -57,14 +58,16 @@ void TestThread::testThread()
                 cout << "Window close request" << endl;
             }
         }
-        mtx.lock();
+        
         display.getUnits()->refresh_array();
         display.refreshWindow();
-        sleep(1);
         mtx.unlock();
+        
+        sleep(1);
     }
         
     delete moteur;
+    vroum.join();
     std::cout << "Window closed" << std::endl;
 }
 
@@ -87,6 +90,7 @@ void TestThread::run(Engine* moteur){
     }
     moteur->update();
     mtx.unlock();
+    sleep(2);
     string move = "move";
     string attack = "attack";
     HeuristicAI art_int;
@@ -100,8 +104,9 @@ void TestThread::run(Engine* moteur){
         art_int.addCommand(attack);
         moteur->addCommand(new ResetUnits());
         moteur->update();
-        sleep(2);
+        
         mtx.unlock();
+        sleep(2);
     }
 
 }
