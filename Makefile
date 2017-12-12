@@ -21,7 +21,7 @@ configure:
 	@mkdir -p build 
 	@cd build && cmake ..
 
-build: bin/client 
+build: bin/client bin/server 
 
 bin/client:
 	@make -s -j4 -C build client
@@ -34,12 +34,12 @@ test:
 	./docker/validate.sh plt-test
 	./docker/run_docker_bash.sh plt-test
 
-diapdf: rapport/state.pdf rapport/render.pdf rapport/engine.pdf rapport/ai.pdf rapport/module.pdf
+diapdf: rapport/Status.pdf rapport/render.pdf rapport/engine.pdf rapport/ai.pdf rapport/module.pdf
 
-rapport/state.pdf: src/state.dia
-	dia -e rapport/state.ps $<
-	ps2pdf rapport/state.ps $@
-	rm -f rapport/state.ps
+rapport/Status.pdf: src/Status.dia
+	dia -e rapport/Status.ps $<
+	ps2pdf rapport/Status.ps $@
+	rm -f rapport/Status.ps
 
 rapport/render.pdf: src/render.dia
 	dia -e rapport/render.ps $<
