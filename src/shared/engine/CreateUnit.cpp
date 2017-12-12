@@ -36,7 +36,7 @@ namespace engine {
 	}
         void CreateUnit::serialize (Json::Value& out) const
         {
-            
+        	out["CreateUnit"]["type_unit"] = this->type_unit;
         }
         CreateUnit* CreateUnit::deserialize (const Json::Value& in)
         {

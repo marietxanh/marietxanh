@@ -52,11 +52,15 @@ namespace engine {
 	}
         void AttackUnit::serialize (Json::Value& out) const
         {
-            
+		   out["AttackUnit"]["height_shooter"] = this->height_shooter;
+		   out["AttackUnit"]["width_shooter"] = this->width_shooter;
+		   out["AttackUnit"]["height_target"] = this->height_target;
+		   out["AttackUnit"]["widht_target"] = this->width_target;
         }
         AttackUnit* AttackUnit::deserialize (const Json::Value& in)
         {
-            
-        }
+            AttackUnit* attack_unit = new AttackUnit(in["AttackUnit"]["height_shooter"], in["AttackUnit"]["width_shooter"], in["AttackUnit"]["height_target"], in["AttackUnit"]["widht_target"]);
+       		return attack_unit;
+	  	 }
 
 };
