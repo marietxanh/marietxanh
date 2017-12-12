@@ -50,5 +50,13 @@ namespace engine {
             }
             else std::cout << "No target in (" << height_target << ", " << width_target << ")\n" << std::endl;
 	}
+        void AttackUnit::serialize (Json::Value& out) const
+        {
+            
+        }
+        AttackUnit* AttackUnit::deserialize (const Json::Value& in)
+        {
+            
+        }
 
 };
