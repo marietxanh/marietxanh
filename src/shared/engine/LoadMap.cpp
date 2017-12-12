@@ -24,4 +24,12 @@ namespace engine{
 		state->initialisation(file_name);
 		std::cout << "Map loaded" << std::endl;
 	}
-};
+        void LoadMap::serialize (Json::Value& out) const
+        {
+            
+        }
+        LoadMap* LoadMap::deserialize (const Json::Value& in)
+        {
+            
+        }
+};  

@@ -4,6 +4,7 @@
 
 #include <stack>
 #include "status.h"
+#include <json/json.h>
 
 namespace engine {
   class Action;
@@ -12,6 +13,7 @@ namespace status {
   class State;
 };
 namespace engine {
+  class AttackUnit;
   class Command;
 }
 
@@ -34,6 +36,8 @@ namespace engine {
     ~AttackUnit ();
     CommandTypeID getTypeID () const;
     void execute (std::stack<Action*>& actions, status::State* state);
+    void serialize (Json::Value& out) const;
+    AttackUnit* deserialize (const Json::Value& in);
     // Setters and Getters
     int getHeight_shooter() const;
     void setHeight_shooter(int height_shooter);

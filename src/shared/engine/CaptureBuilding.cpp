@@ -35,5 +35,13 @@ namespace engine {
 			std::cout << "Health remaining : " << ((Building*)(state->getBuildings()->getElement(height, width)))->getHealth() << std::endl;
             }
 	}
+        void CaptureBuilding::serialize (Json::Value& out) const
+        {
+            
+        }
+        CaptureBuilding* CaptureBuilding::deserialize (const Json::Value& in)
+        {
+            
+        }
 	
 };

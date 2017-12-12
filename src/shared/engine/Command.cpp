@@ -12,5 +12,9 @@ namespace engine {
 	{
 	
 	}
+        Command* Command::deserialize (const Json::Value& in)
+        {
+            
+        }
 	
 };

@@ -34,5 +34,13 @@ namespace engine {
                 actions.push(create_unit);
             }
 	}
+        void CreateUnit::serialize (Json::Value& out) const
+        {
+            
+        }
+        CreateUnit* CreateUnit::deserialize (const Json::Value& in)
+        {
+            
+        }
 	
 };

@@ -4,6 +4,7 @@
 
 #include <stack>
 #include "status.h"
+#include <json/json.h>
 
 namespace engine {
   class Action;
@@ -12,6 +13,7 @@ namespace status {
   class State;
 };
 namespace engine {
+  class CaptureBuilding;
   class Command;
 }
 
@@ -32,6 +34,8 @@ namespace engine {
     ~CaptureBuilding ();
     CommandTypeID getTypeID () const;
     void execute (std::stack<Action*>& actions, status::State* state);
+    void serialize (Json::Value& out) const;
+    CaptureBuilding* deserialize (const Json::Value& in);
     // Setters and Getters
     int getHeight() const;
     void setHeight(int height);

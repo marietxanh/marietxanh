@@ -47,5 +47,13 @@ namespace engine {
 		}
 		else std::cout << "Unit already use this place\n" << std::endl;
 	}
+        void MoveUnit::serialize (Json::Value& out) const
+        {
+            
+        }
+        MoveUnit* MoveUnit::deserialize (const Json::Value& in)
+        {
+            
+        }
 	
 };

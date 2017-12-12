@@ -4,12 +4,16 @@
 
 #include <stack>
 #include "status.h"
+#include <json/json.h>
 
 namespace engine {
   class Action;
 };
 namespace status {
   class State;
+};
+namespace engine {
+  class Command;
 }
 
 #include "CommandTypeID.h"
@@ -24,6 +28,8 @@ namespace engine {
     virtual ~Command ();
     virtual CommandTypeID getTypeID () const = 0;
     virtual void execute (std::stack<Action*>& actions, status::State* state) = 0;
+    virtual void serialize (Json::Value& out) const = 0;
+    Command* deserialize (const Json::Value& in);
     // Setters and Getters
   };
 
