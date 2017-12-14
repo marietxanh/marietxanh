@@ -249,7 +249,7 @@ Les différents changements extérieurs peuvent être un chargement de carte, un
     
 \paragraph{}\textbf{Classes Action:}  Chaque commande, lorsqu’elle est exécutée, donne lieu à certain nombre d’actions à réaliser, suivant les cas. Ces actions sont concrétisés par les classes ﬁlles de Action. Cela permet d’atomiser les opérations effectives, et donc de les inverser grâce à l’appel aux methodes undo(). Ces classes nous permettent donc d’annuler les conséquences de commandes, et nous servent à remonter dans l’arbre des états pour l’intelligence artiﬁcielle avancée (algorithme minmax). 
 
-\paragraph{}\textbf{Engine:} Cette classe correspond au moteur du jeu. Elle stocke les commandes dans une std : :map avec clé entière. Ce mode de stockage permet d’introduire une notion de priorité : on traite les commandes dans l’ordre de leur clés, de la plus petite à la plus grande. Lorsqu’une nouvelle époque démarre, c'est à dire quand on appelle la méthode update(), le moteur appelle la méthode execute() de chaque commande, incrémente l’époque, puis supprime toutes les commandes. Il en résulte une pile d’actions qui, si on les appliquent en ordre inverse, permettent d’annuler les commande précédemment invoquées.
+\paragraph{}\textbf{Engine:} Cette classe correspond au moteur du jeu. Elle stocke les commandes dans une std : :map avec clé entière. Ce mode de stockage permet d’introduire une notion de priorité : on traite les commandes dans l’ordre de leur clés, de la plus petite à la plus grande. Lorsqu’une nouvelle époque démarre, c'est à dire quand on appelle la méthode update(), le moteur appelle la méthode execute() de chaque commande, incrémente l’époque, puis supprime toutes les commandes. Il en résulte une pile d’actions qui, si on les appliquent en ordre inverse, permettent d’annuler les commande précédemment invoquées. Cette classe peut être exécutée dans un thread séparé.
 
 
     \newpage
@@ -306,5 +306,37 @@ sont crées en début de tour :
     \caption{Diagramme de l'intelligence artificielle bas-niveau}
 \end{figure}
 \end{landscape}
+\newpage
+
+\chapter{Modularisation}
+\section{Organisation des modules}
+\subsection{Répartition sur différents threads}
+
+\paragraph{}Pour notre jeu nous avons choisi de placer notre moteur de rendu sur un thread principal et le moteur de jeu sur un thread secondaire. Pour cela nous utilisons deux types d'information : les commandes et les notifications de rendu.
+
+\paragraphe{}\textbf{Commandes:} Nos commandes peuvent arriver n'importe quand même à la mise à jour d'un état du jeu. Nous utilisons donc un double tampon de commandes. L'un contenant les commandes actuellement traitées lors d'une mise à jour de l'état; l'autre contenant les nouvelles commandes. A chaque nouvelle mise à jour de l’état du jeu, on copie les commandes d’un tampon à l’autre. 
+
+\paragraphe{}\textbf{Notifications:} (pas encore mis en place)
+
+\section{Conception logiciel}
+\paragraph{}Le diagramme de la classe Client est présenté en Figure 6.1.
+\newline
+\paragraphe{}\textbf{Client:} Cette classe  contient toutes les informations pour faire fonctionner le jeu : Moteur de jeu, intelligence artiﬁcielle, et rendu. Elle est un observateur du moteur de jeu : 
+\begin{itemize}
+    \item Lorsque le moteur est sur le point d’exécuter ses commandes (méthode engineUpdating()), il appelle l'IA pour ajouter les commandes.
+    \item Lorsque le moteur a terminé d’appliquer les commandes (méthode engineUpdated()), il vide le cache des événements émis vers le moteur de rendu.
+\end{itemize}
+
+\newpage
+\thispagestyle{empty}
+\begin{landscape}
+\begin{figure}[h]
+    \begin{center}
+    \includegraphics[scale=0.80]{client.png}
+    \end{center}
+    \caption{Diagramme du client}
+\end{figure}
+\end{landscape}
+
 \end{document}
 
