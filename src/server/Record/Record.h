@@ -21,11 +21,11 @@
 #include <thread>
 #include <mutex>
 #include <time.h>
-#include "../../client/render.h"
-#include "../../shared/ai.h"
-#include "../../shared/engine.h"
+
 #include "../../shared/status.h"
-#include "../../client/render/Display.h"
+#include "../../client/render.h"
+#include "../../shared/engine.h"
+#include "../../shared/ai.h"
 
 class Record {
 public:

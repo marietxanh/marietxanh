@@ -10,7 +10,10 @@
  * 
  * Created on December 12, 2017, 10:26 AM
  */
-
+#include "../../shared/status.h"
+#include "../../client/render.h"
+#include "../../shared/engine.h"
+#include "../../shared/ai.h"
 #include "Record.h"
 
 using namespace engine;

@@ -9,17 +9,15 @@ void testSFML() {
 
 // Fin test SFML
 
-#include "test/TestState.h"
-#include "test/TestRender.h"
-#include "test/TestEngine.h"
-#include "test/TestAI.h"
-#include "test/TestThread.h"
-#include "../server/Record/Record.h"
-#include "render.h"
-#include "../shared/engine.h"
-#include "../shared/status.h"
-#include "../shared/ai.h"
 
+
+
+#include "../shared/status.h"
+#include "../client/render.h"
+#include "../shared/engine.h"
+#include "../shared/ai.h"
+#include "test/test.h"
+#include "../server/Record/Record.h"
 using namespace std;
 using namespace status;
 

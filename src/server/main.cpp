@@ -1,15 +1,20 @@
 #include <iostream>
 
-#include "../server/Record/Record.h"
-#include "../client/test/TestRender.h"
-#include "../client/test/TestState.h"
-#include "../client/test/TestEngine.h"
-#include "../client/test/TestThread.h"
-#include "../client/test/TestEngine.h"
+#include <SFML/Graphics.hpp>
+
+void testSFML() {
+    sf::Texture texture;
+}
+
+#include "../shared/status.h"
 #include "../client/render.h"
 #include "../shared/engine.h"
-#include "../shared/status.h"
 #include "../shared/ai.h"
+#include "Record/Record.h"
+#include "../client/test/test.h"
+
+using namespace std;
+using namespace status;
 
 int main(int argc, char **argv)
 {
