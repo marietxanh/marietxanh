@@ -31,7 +31,7 @@ namespace engine{
         }
         LoadMap* LoadMap::deserialize (const Json::Value& in)
         {
-            LoadMap* load_map = new LoadMap(in["LoadMap"]["file_name"]);
+            LoadMap* load_map = new LoadMap(in["LoadMap"]["file_name"].asString());
             return load_map;
         }
 };  

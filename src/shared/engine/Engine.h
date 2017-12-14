@@ -4,6 +4,7 @@
 
 #include "status.h"
 #include <vector>
+#include <json/json.h>
 #include <stack>
 
 namespace status {
@@ -26,6 +27,10 @@ namespace engine {
   private:
     status::State* state;
     std::vector<Command*> currentCommands;
+  protected:
+    bool enableRecord     = false;
+    bool enableReplay     = false;
+    Json::Value recording;
     // Operations
   public:
     Engine ();
@@ -37,6 +42,12 @@ namespace engine {
     const std::stack<Action*>& update ();
     void undo (std::stack<Action*>& actions);
     // Setters and Getters
+    bool getEnableRecord() const;
+    void setEnableRecord(bool enableRecord);
+    bool getEnableReplay() const;
+    void setEnableReplay(bool enableReplay);
+    const Json::Value& getRecording() const;
+    void setRecording(const Json::Value& recording);
   };
 
 };

@@ -39,11 +39,10 @@ namespace engine {
     {
         out["CaptureBuilding"]["height"] = this->height;
         out["CaptureBuilding"]["width"] = this->width;
-
     }
     CaptureBuilding* CaptureBuilding::deserialize (const Json::Value& in)
     {
-        CaptureBuilding* capture_building = new CaptureBuilding(in["CaptureBuilding"]["height"], in["CaptureBuilding"]["width"]);
+        CaptureBuilding* capture_building = new CaptureBuilding(in["CaptureBuilding"]["height"].asInt(), in["CaptureBuilding"]["width"].asInt());
         return capture_building;
     }
 	

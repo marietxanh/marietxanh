@@ -14,13 +14,29 @@
 #ifndef RECORD_H
 #define RECORD_H
 
+#include <iostream>
+#include <fstream>
+#include <unistd.h>
+#include <string>
+#include <thread>
+#include <mutex>
+#include <time.h>
+#include "../../client/render.h"
+#include "../../shared/ai.h"
+#include "../../shared/engine.h"
+#include "../../shared/status.h"
+#include "../../client/render/Display.h"
+
 class Record {
 public:
     Record();
-    Record(const Record& orig);
     virtual ~Record();
-    static void recording();
+    void recording();
+    void run(engine::Engine* moteur);
+    void replay();
 private:
+    static std::mutex mtx;
+    bool running = true;
 
 };
 

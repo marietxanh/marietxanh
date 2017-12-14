@@ -14,6 +14,7 @@ void testSFML() {
 #include "test/TestEngine.h"
 #include "test/TestAI.h"
 #include "test/TestThread.h"
+#include "../server/Record/Record.h"
 #include "render.h"
 #include "../shared/engine.h"
 #include "../shared/status.h"
@@ -49,6 +50,9 @@ int main(int argc,char* argv[])
         }
         else if(std::string(argv[1]) == "thread"){
             TestThread().testThread();
+        }
+        else if(std::string(argv[1]) == "play"){
+            Record().replay();
         }
     }
     else

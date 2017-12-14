@@ -56,7 +56,8 @@ namespace engine {
         }
         MoveUnit* MoveUnit::deserialize (const Json::Value& in)
         {
-            MoveUnit* move_unit = new MoveUnit(in["MoveUnit"]["height_start"], in["MoveUnit"]["width_start"], in["MoveUnit"]["height_end"] in["MoveUnit"]["width_end"]);
+            MoveUnit* move_unit = new MoveUnit(in["MoveUnit"]["height_start"].asInt(), in["MoveUnit"]["width_start"].asInt(),
+                    in["MoveUnit"]["height_end"].asInt(), in["MoveUnit"]["width_end"].asInt());
             return move_unit;
         }
 	

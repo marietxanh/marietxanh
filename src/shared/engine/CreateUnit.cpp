@@ -42,9 +42,9 @@ namespace engine {
     }
     CreateUnit* CreateUnit::deserialize (const Json::Value& in)
     {
-        status::TypeUnits type = in["CreateUnit"]["type_unit"];
-        int h = in["CreateUnit"]["height"];
-        int w = in["CreateUnit"]["width"];
+        status::TypeUnits type = ((status::TypeUnits)(in["CreateUnit"]["type_unit"].asInt()));
+        int h = (int)in["CreateUnit"]["height"].asInt();
+        int w = (int)in["CreateUnit"]["width"].asInt();
         CreateUnit* create_unit = new CreateUnit(type, h, w);
         return create_unit;
     }

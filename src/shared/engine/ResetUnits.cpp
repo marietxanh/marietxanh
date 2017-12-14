@@ -35,10 +35,10 @@ namespace engine {
     }
     void ResetUnits::serialize (Json::Value& out) const
     {
-        
+        out["ResetUnit"];
     }
     ResetUnits* ResetUnits::deserialize (const Json::Value& in)
     {
-        
+        return new ResetUnits();
     }
 };

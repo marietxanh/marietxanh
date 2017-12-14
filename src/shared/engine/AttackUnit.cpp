@@ -59,7 +59,8 @@ namespace engine {
         }
         AttackUnit* AttackUnit::deserialize (const Json::Value& in)
         {
-            AttackUnit* attack_unit = new AttackUnit(in["AttackUnit"]["height_shooter"], in["AttackUnit"]["width_shooter"], in["AttackUnit"]["height_target"], in["AttackUnit"]["widht_target"]);
+            AttackUnit* attack_unit = new AttackUnit(in["AttackUnit"]["height_shooter"].asInt(), in["AttackUnit"]["width_shooter"].asInt()
+                    , in["AttackUnit"]["height_target"].asInt(), in["AttackUnit"]["width_target"].asInt());
             return attack_unit;
         }
 
