@@ -31,18 +31,20 @@ TestThread::TestThread(const TestThread& orig) {
 TestThread::~TestThread() {
 }
 
-void TestThread::testThread()
+void TestThread::testThread(bool replay)
 {
     string file_name = "res/test_ai.txt";
     Engine* moteur = new Engine();
-    moteur->addCommand(new LoadMap(file_name));
-    moteur->update();
+    moteur->setEnableReplay(replay);
+    if (!moteur->getEnableReplay())
+    {
+        moteur->addCommand(new LoadMap(file_name));
+        moteur->update();
+    }
     std::thread vroum(&TestThread::run, this, moteur);
     
     Display display(moteur->getState());
     
-    
-
     std::cout << "Window opens" << std::endl;
     while(display.getWindow().isOpen())
     {
@@ -73,6 +75,25 @@ void TestThread::testThread()
 
 void TestThread::run(Engine* moteur){
     mtx.lock();
+    if(moteur->getEnableReplay())
+    {
+        Json::Value in;
+        std::ifstream file ("res/record.json");
+        file >> in;
+        file.close();
+        
+        for(Json::ArrayIndex i(0); i < in.size(); i++)
+        {
+            Command* command;
+            string type = in[i]["type_command"].asString();
+            if(type == "LoadMap") ((LoadMap*)(command))->deserialize(in[i]);
+            else if(type == "AttackUnit") ((AttackUnit*)(command))->deserialize(in[i]);
+            else if(type == "CaptureBuilding") ((CaptureBuilding*)(command))->deserialize(in[i]);
+            else if(type == "CreateUnit") ((CreateUnit*)(command))->deserialize(in[i]);
+            else if(type == "MoveUnit") ((MoveUnit*)(command))->deserialize(in[i]);
+            else if(type == "ResetUnits") ((ResetUnits*)(command))->deserialize(in[i]);
+        }
+    }
     int height = moteur->getState()->getHeight();
     int width = moteur->getState()->getWidth();
     for(int i(0); i <  height; i++)

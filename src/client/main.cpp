@@ -44,9 +44,10 @@ int main(int argc,char* argv[])
             TestAI::testDeep();
         }
         else if(std::string(argv[1]) == "thread"){
-            TestThread().testThread();
+            TestThread().testThread(false);
         }
         else if(std::string(argv[1]) == "play"){
+            TestThread().testThread(true);
         }
     }
     else

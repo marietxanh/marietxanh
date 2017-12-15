@@ -15,6 +15,7 @@
 #define TESTTHREAD_H
 
 #include <iostream>
+#include <fstream>
 #include <unistd.h>
 #include <string>
 #include <thread>
@@ -32,7 +33,7 @@ public:
     TestThread();
     TestThread(const TestThread& orig);
     virtual ~TestThread();
-    void testThread();
+    void testThread(bool);
     
 private:
     static std::mutex mtx;

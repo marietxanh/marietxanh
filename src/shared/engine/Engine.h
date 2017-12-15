@@ -30,7 +30,7 @@ namespace engine {
   protected:
     bool enableRecord     = false;
     bool enableReplay     = false;
-    Json::Value recording;
+    Json::Value recording     = Json::arrayValue;
     // Operations
   public:
     Engine ();

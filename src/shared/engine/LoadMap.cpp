@@ -26,12 +26,13 @@ namespace engine{
 	}
         void LoadMap::serialize (Json::Value& out) const
         {
-			out["LoadMap"]["file_name"] = this->file_name;
-            
+            out["type_command"] = "LoadMap";
+            out["file_name"] = this->file_name;
+            std::cout << "LoadMap serialize" << std::endl;
         }
         LoadMap* LoadMap::deserialize (const Json::Value& in)
         {
-            LoadMap* load_map = new LoadMap(in["LoadMap"]["file_name"].asString());
+            LoadMap* load_map = new LoadMap(in["file_name"].asString());
             return load_map;
         }
 };  

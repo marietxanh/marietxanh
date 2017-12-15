@@ -35,7 +35,7 @@ namespace engine {
     }
     void ResetUnits::serialize (Json::Value& out) const
     {
-        out["ResetUnit"];
+        out["ResetUnits"];
     }
     ResetUnits* ResetUnits::deserialize (const Json::Value& in)
     {

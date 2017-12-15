@@ -49,15 +49,16 @@ namespace engine {
 	}
         void MoveUnit::serialize (Json::Value& out) const
         {
-       		out["MoveUnit"]["height_start"] = this->height_start;
-		   	out["MoveUnit"]["width_start"] = this->width_start;
-		   	out["MoveUnit"]["height_end"] = this->height_end;
-			out["MoveUnit"]["width_end"] = this->width_end;
+            out["type_command"] = "MoveUnit";
+            out["height_start"] = this->height_start;
+            out["width_start"] = this->width_start;
+            out["height_end"] = this->height_end;
+            out["width_end"] = this->width_end;
         }
         MoveUnit* MoveUnit::deserialize (const Json::Value& in)
         {
-            MoveUnit* move_unit = new MoveUnit(in["MoveUnit"]["height_start"].asInt(), in["MoveUnit"]["width_start"].asInt(),
-                    in["MoveUnit"]["height_end"].asInt(), in["MoveUnit"]["width_end"].asInt());
+            MoveUnit* move_unit = new MoveUnit(in["height_start"].asInt(), in["width_start"].asInt(),
+                    in["height_end"].asInt(), in["width_end"].asInt());
             return move_unit;
         }
 	

@@ -16,14 +16,13 @@ namespace engine {
 	Engine::Engine ()
 	{
 		state = new State();
-                this->recording = false;
 	}
         
 	Engine::~Engine ()
 	{
             if(enableRecord)
             {   
-                std::ofstream file ("record.json",std::ofstream::out);
+                std::ofstream file ("res/record.json",std::ofstream::out);
                 file << recording;
                 file.close();
             }
@@ -53,16 +52,21 @@ namespace engine {
 	const std::stack<Action*>& Engine::update ()
 	{
             std::stack<Action*> pile;
-		for(size_t i(0); i < currentCommands.size(); i++)
-		{
-			currentCommands[i]->execute(pile, this->state);
-                        if(enableRecord) this->recording.append(currentCommands[i]);
-                        else 
-			//pile.push(currentCommands[i]);
-                        currentCommands[i] = 0;
-		}
-		currentCommands.clear();
-		return pile;
+            for(size_t i(0); i < currentCommands.size(); i++)
+            {
+                    currentCommands[i]->execute(pile, this->state);
+                    if(enableRecord)
+                    {
+                        Json::Value value;
+                        recording.resize(recording.size() + 1);
+                        currentCommands[i]->serialize(value);
+                        recording.append(value);
+                        std::cout << "append" << std::endl;
+                    }
+                    currentCommands[i] = 0;
+            }
+            currentCommands.clear();
+            return pile;
 	}
 
  	void Engine::undo (std::stack<Action*>& actions)

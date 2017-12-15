@@ -36,15 +36,16 @@ namespace engine {
     }
     void CreateUnit::serialize (Json::Value& out) const
     {
-        out["CreateUnit"]["type_unit"] = this->type_unit;
-        out["CreateUnit"]["height"] = this->height;
-        out["CreateUnit"]["width"] = this->width;
+        out["type_command"] = "CreateUnit";
+        out["type_unit"] = this->type_unit;
+        out["height"] = this->height;
+        out["width"] = this->width;
     }
     CreateUnit* CreateUnit::deserialize (const Json::Value& in)
     {
-        status::TypeUnits type = ((status::TypeUnits)(in["CreateUnit"]["type_unit"].asInt()));
-        int h = (int)in["CreateUnit"]["height"].asInt();
-        int w = (int)in["CreateUnit"]["width"].asInt();
+        status::TypeUnits type = ((status::TypeUnits)(in["type_unit"].asInt()));
+        int h = (int)in["height"].asInt();
+        int w = (int)in["width"].asInt();
         CreateUnit* create_unit = new CreateUnit(type, h, w);
         return create_unit;
     }
