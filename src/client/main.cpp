@@ -1,5 +1,11 @@
 #include <iostream>
 
+#include "../client/render.h"
+#include "../shared/status.h"
+#include "../shared/engine.h"
+#include "../shared/ai.h"
+#include "test/test.h"
+#include "../shared/record/Record.h"
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
 
@@ -9,15 +15,6 @@ void testSFML() {
 
 // Fin test SFML
 
-
-
-
-#include "../shared/status.h"
-#include "../client/render.h"
-#include "../shared/engine.h"
-#include "../shared/ai.h"
-#include "test/test.h"
-#include "../server/Record/Record.h"
 using namespace std;
 using namespace status;
 

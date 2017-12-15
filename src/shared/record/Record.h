@@ -22,8 +22,9 @@
 #include <mutex>
 #include <time.h>
 
-#include "../../shared/status.h"
 #include "../../client/render.h"
+#include "../../shared/status.h"
+
 #include "../../shared/engine.h"
 #include "../../shared/ai.h"
 
@@ -31,12 +32,12 @@ class Record {
 public:
     Record();
     virtual ~Record();
-    void recording();
-    void run(engine::Engine* moteur);
+    void recording(); 
     void replay();
 private:
     static std::mutex mtx;
     bool running = true;
+    void run(engine::Engine* moteur);
 
 };
 
