@@ -5,7 +5,7 @@
 #include "../shared/engine.h"
 #include "../shared/ai.h"
 #include "test/test.h"
-#include "../shared/record/Record.h"
+#include "../shared/record.h"
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
 
@@ -47,7 +47,6 @@ int main(int argc,char* argv[])
             TestThread().testThread();
         }
         else if(std::string(argv[1]) == "play"){
-            Record().replay();
         }
     }
     else

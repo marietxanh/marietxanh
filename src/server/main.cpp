@@ -1,12 +1,9 @@
 #include <iostream>
 
-#include "../client/render.h"
 #include "../shared/status.h"
 #include "../shared/engine.h"
 #include "../shared/ai.h"
-#include "../client/test/test.h"
-#include "../shared/record/Record.h"
-
+#include "../shared/record.h"
 
 using namespace std;
 using namespace status;

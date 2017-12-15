@@ -23,21 +23,15 @@
 #include <time.h>
 
 #include "../../client/render.h"
-#include "../../shared/status.h"
-
-#include "../../shared/engine.h"
-#include "../../shared/ai.h"
+#include "../status.h"
+#include "../engine.h"
+#include "../ai.h"
 
 class Record {
 public:
     Record();
     virtual ~Record();
-    void recording(); 
-    void replay();
-private:
-    static std::mutex mtx;
-    bool running = true;
-    void run(engine::Engine* moteur);
+    void recording();
 
 };
 
