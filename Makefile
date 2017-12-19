@@ -34,7 +34,7 @@ test:
 	./docker/validate.sh plt-test
 	./docker/run_docker_bash.sh plt-test
 
-diapdf: rapport/Status.pdf rapport/render.pdf rapport/engine.pdf rapport/ai.pdf rapport/module.pdf
+diapdf: rapport/Status.pdf rapport/render.pdf rapport/engine.pdf rapport/ai.pdf rapport/client.pdf rapport/server.pdf
 
 rapport/Status.pdf: src/Status.dia
 	dia -e rapport/Status.ps $<
@@ -56,9 +56,14 @@ rapport/ai.pdf: src/ai.dia
 	ps2pdf rapport/ai.ps $@
 	rm -f rapport/ai.ps
 
-rapport/module.pdf: src/module.dia
-	dia -e rapport/module.ps $<
-	ps2pdf rapport/module.ps $@
-	rm -f rapport/module.ps
+rapport/client.pdf: src/client.dia
+	dia -e rapport/client.ps $<
+	ps2pdf rapport/client.ps $@
+	rm -f rapport/client.ps
+
+rapport/server.pdf: src/server.dia
+	dia -e rapport/server.ps $<
+	ps2pdf rapport/server.ps $@
+	rm -f rapport/server.ps
 
 .PHONY: configure build clean extern test 

@@ -1,0 +1,1075 @@
+[
+	null,
+	{
+		"file_name" : "res/test_ai.txt",
+		"type_command" : "LoadMap"
+	},
+	null,
+	{
+		"height" : 3,
+		"type_command" : "CreateUnit",
+		"type_unit" : 1,
+		"width" : 2
+	},
+	null,
+	{
+		"height" : 3,
+		"type_command" : "CreateUnit",
+		"type_unit" : 1,
+		"width" : 5
+	},
+	null,
+	{
+		"height" : 4,
+		"type_command" : "CreateUnit",
+		"type_unit" : 1,
+		"width" : 2
+	},
+	null,
+	{
+		"height" : 4,
+		"type_command" : "CreateUnit",
+		"type_unit" : 1,
+		"width" : 5
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 3,
+		"width_start" : 2
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 4,
+		"width_start" : 3
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 5,
+		"width_target" : 5
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 3,
+		"width_start" : 2
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 4,
+		"width_start" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 5,
+		"width_target" : 5
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 4,
+		"width_start" : 5
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 4,
+		"width_start" : 5
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 3
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 3
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 3
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 3
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 3,
+		"width_target" : 3
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 4,
+		"width_start" : 3
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 5,
+		"width_start" : 4
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 4,
+		"width_start" : 3
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 5,
+		"width_start" : 4
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 4,
+		"width_target" : 4
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 5,
+		"width_start" : 4
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 5
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 5,
+		"width_start" : 4
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 5
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 5,
+		"width_target" : 5
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 5,
+		"width_target" : 5
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 5
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 5
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 6,
+		"width_target" : 6
+	},
+	null,
+	{
+		"ResetUnits" : null
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 3,
+		"height_start" : 3,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 7,
+		"width_start" : 6
+	},
+	null,
+	{
+		"height_end" : 4,
+		"height_start" : 4,
+		"type_command" : "MoveUnit",
+		"width_end" : 6,
+		"width_start" : 7
+	},
+	null,
+	{
+		"height_shooter" : 3,
+		"height_target" : 4,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"height_shooter" : 4,
+		"height_target" : 3,
+		"type_command" : "AttackUnit",
+		"width_shooter" : 7,
+		"width_target" : 7
+	},
+	null,
+	{
+		"ResetUnits" : null
+	}
+]
