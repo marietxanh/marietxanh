@@ -5,12 +5,12 @@
  * @copyright CNRS
  */
 
-#ifndef __UserService_hpp__
-#define __UserService_hpp__
+#ifndef __PlayerService_hpp__
+#define __PlayerService_hpp__
 
 #include "AbstractService.hpp"
-#include "UserDB.hpp"
-#include "UserService.h"
+#include "Game.hpp"
+#include "PlayerService.h"
 
 #endif
 

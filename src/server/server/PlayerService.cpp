@@ -15,7 +15,7 @@ namespace server {
     }
 
     HttpStatus PlayerService::get (Json::Value& out, int id) const {
-        const Player* player = game.getPlayer(id);
+        const Player* player = &game.players[id];
         if (!player)
             throw ServiceException(HttpStatus::NOT_FOUND,"Invalid player id");
         out["name"] = player->name;
@@ -24,7 +24,7 @@ namespace server {
     }
 
     HttpStatus PlayerService::post (const Json::Value& in, int id) {
-        const Player* player = game.getPlayer(id);
+        const Player* player = &game.players[id];
         if (!player)
             throw ServiceException(HttpStatus::NOT_FOUND,"Invalid player id");
         unique_ptr<Player> playermod (new Player(*player));
@@ -32,24 +32,25 @@ namespace server {
             playermod->name = in["name"].asString();
         }
         if (in.isMember("teamcolor")) {
-            playermod->teamcolor = in["teamcolor"].asInt();
+            playermod->teamcolor = (status::TEAM)(in["teamcolor"].asInt()); 
         }
-        game.setPlayer(id,std::move(playermod));
+        game.players.push_back(*playermod);
         return HttpStatus::NO_CONTENT;
     }
 
     HttpStatus PlayerService::put (Json::Value& out,const Json::Value& in) {
         string name = in["name"].asString();
-        int teamcolor = in["teamcolor"].asInt();
-        out["id"] = game.addPlayer(make_unique<Player>(name,teamcolor));
+        status::TEAM teamcolor = (status::TEAM)(in["teamcolor"].asInt());
+        game.players.push_back(Player(name,teamcolor));
+        out["id"] = game.players.size();
         return HttpStatus::CREATED;
     }
 
     HttpStatus PlayerService::remove (int id) {
-        const Player* player = game.getPlayer(id);
+        const Player* player = &game.players[id];;
         if (!player)
             throw ServiceException(HttpStatus::NOT_FOUND,"Invalid player id");
-        game.removePlayer(id);
+        game.players.erase(game.players.begin()+id);
         return HttpStatus::NO_CONTENT;
     }
 };

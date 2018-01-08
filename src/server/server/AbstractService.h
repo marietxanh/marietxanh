@@ -18,10 +18,10 @@ namespace server {
   public:
     AbstractService (const std::string& pattern);
     virtual ~AbstractService ();
-    virtual HttpStatus const get (Json::Value& out, int id) = 0;
-    virtual HttpStatus post (const Json::Value& in, int id) = 0;
-    virtual HttpStatus put (Json::Value& out, const Json::Value& in) = 0;
-    virtual HttpStatus remove (int id) = 0;
+    virtual HttpStatus  get (Json::Value& out, int id) const;
+    virtual HttpStatus post (const Json::Value& in, int id);
+    virtual HttpStatus put (Json::Value& out, const Json::Value& in);
+    virtual HttpStatus remove (int id);
     // Setters and Getters
     const std::string& getPattern() const;
     void setPattern(const std::string& pattern);

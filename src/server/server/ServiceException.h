@@ -23,7 +23,7 @@ namespace server {
     // Operations
   public:
     ServiceException (HttpStatus status, std::string msg);
-    HttpStatus const status ();
+    HttpStatus  status () const;
     const char* what () const;
     // Setters and Getters
     HttpStatus getHttpStatus() const;

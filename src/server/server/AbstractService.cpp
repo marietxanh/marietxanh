@@ -1,10 +1,3 @@
-/** 
- * @file AbstractService.cpp
- * @author Philippe-Henri Gosselin
- * @date 9 décembre 2015
- * @copyright CNRS
- */
-
 #include "AbstractService.hpp"
 
 namespace server {
@@ -31,5 +24,13 @@ namespace server {
 
     HttpStatus AbstractService::remove (int id) {
         throw ServiceException(HttpStatus::NOT_IMPLEMENTED,"Non implanté");
+    }
+    
+    const std::string& AbstractService::getPattern() const {
+        return pattern;
+    }
+    
+    void AbstractService::setPattern(const std::string& pattern) {
+        this->pattern = pattern;
     }
 };
