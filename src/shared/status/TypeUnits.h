@@ -18,7 +18,8 @@ namespace status {
     ROCKET_L     = 9,
     FIGHTER     = 10,
     BOMBER     = 11,
-    DESTROYER     = 12
+    DESTROYER     = 12,
+    HELICOPTER     = 13
   };
 
 };

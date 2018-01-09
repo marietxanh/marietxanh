@@ -2,6 +2,7 @@
 #ifndef STATUS__UNIT__H
 #define STATUS__UNIT__H
 
+#include <vector>
 
 namespace status {
   class Element;
@@ -9,6 +10,7 @@ namespace status {
 
 #include "TypeUnits.h"
 #include "TEAM.h"
+#include "TypeTransport.h"
 #include "Element.h"
 
 namespace status {
@@ -19,17 +21,18 @@ namespace status {
     // Attributes
   protected:
     int amplitude_mvmt;
-    int range_mvmt;
+    int range_shoot;
     int fuel_tank;
     int fuel_consumption;
     int rocket;
-    int attack;
     int health;
     TypeUnits type_unit;
     TEAM team;
     bool turn_attack;
     bool turn_move;
     bool double_action;
+    std::vector<int> basic_units_damage;
+    std::vector<int> basic_transports_damage;
     // Operations
   public:
     Unit ();
@@ -39,19 +42,19 @@ namespace status {
     bool isStatic () const;
     bool isTransport () const;
     void affiche () const;
+    int getDamage_on_unit (TypeUnits type) const;
+    int getDamage_on_transport (TypeTransport type) const;
     // Setters and Getters
     int getAmplitude_mvmt() const;
     void setAmplitude_mvmt(int amplitude_mvmt);
-    int getRange_mvmt() const;
-    void setRange_mvmt(int range_mvmt);
+    int getRange_shoot() const;
+    void setRange_shoot(int range_shoot);
     int getFuel_tank() const;
     void setFuel_tank(int fuel_tank);
     int getFuel_consumption() const;
     void setFuel_consumption(int fuel_consumption);
     int getRocket() const;
     void setRocket(int rocket);
-    int getAttack() const;
-    void setAttack(int attack);
     int getHealth() const;
     void setHealth(int health);
     TypeUnits getType_unit() const;
@@ -64,6 +67,10 @@ namespace status {
     void setTurn_move(bool turn_move);
     bool getDouble_action() const;
     void setDouble_action(bool double_action);
+    const std::vector<int>& getBasic_units_damage() const;
+    void setBasic_units_damage(const std::vector<int>& basic_units_damage);
+    const std::vector<int>& getBasic_transports_damage() const;
+    void setBasic_transports_damage(const std::vector<int>& basic_transports_damage);
   };
 
 };

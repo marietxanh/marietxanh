@@ -46,7 +46,7 @@ namespace ai {
                 {
                     if(engine->getState()->getUnits()->getElement(i,j) != NULL)
                     {
-                        int range = ((status::Unit*)(engine->getState()->getUnits()->getElement(i, j)))->getRange_mvmt();
+                        int range = ((status::Unit*)(engine->getState()->getUnits()->getElement(i, j)))->getRange_shoot();
                         for(int k(0); k < range; k++)
                         {
                             std::priority_queue<Point,std::vector<Point>,PcompW> area;

@@ -38,6 +38,7 @@ namespace engine {
     void execute (std::stack<Action*>& actions, status::State* state);
     void serialize (Json::Value& out) const;
     AttackUnit* deserialize (const Json::Value& in);
+    int damage_formula (int attack, int health_shooter, int defense, int health_target);
     // Setters and Getters
     int getHeight_shooter() const;
     void setHeight_shooter(int height_shooter);

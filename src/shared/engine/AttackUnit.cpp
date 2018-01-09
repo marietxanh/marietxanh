@@ -1,5 +1,6 @@
 #include "AttackUnit.h"
 #include <iostream>
+#include <random>
 
 using namespace engine;
 using namespace status;
@@ -33,12 +34,23 @@ namespace engine {
                     if(((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getTurn_attack() == false)
                     {
                         std::cout << "execute attack" << std::endl;
-                        int attack = ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getAttack();
+                        int attack;
+                        if(((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getType_unit() != status::TRANSPORT)
+                            attack = ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getDamage_on_unit(((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getType_unit());
+                        else
+                            attack = ((Transport*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getDamage_on_transport(((Transport*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getType_transport());
+                        int health_shooter = ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->getHealth();
+                        int defense = ((Land*)(state->getLands()->getElement(height_target, width_target)))->getDefense();
+                        int health_target = ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth();
                         ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->setTurn_attack(true);
                         ((Unit*)(state->getUnits()->getElement(height_shooter, width_shooter)))->setTurn_move(true);
-                        ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->setHealth(-attack);
-                        std::cout << "Unit from (" << height_shooter << ", " << width_shooter << ") attack unit in (" << height_target << ", " << width_target << ")" << std::endl;
-                        std::cout << "Health of attacked unit : " << ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth() << std::endl;
+                        if(attack > 0)
+                        {
+                            int damage = damage_formula(attack, health_shooter, defense, health_target);
+                            ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->setHealth(-damage);
+                            std::cout << "Unit from (" << height_shooter << ", " << width_shooter << ") attack unit in (" << height_target << ", " << width_target << ")" << std::endl;
+                            std::cout << "Health of attacked unit : " << ((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth() << std::endl;
+                        }
                         if(((Unit*)(state->getUnits()->getElement(height_target, width_target)))->getHealth() <= 0)
                         {
                             delete state->getUnits()->getElement(height_target, width_target);
@@ -63,6 +75,17 @@ namespace engine {
             AttackUnit* attack_unit = new AttackUnit(in["height_shooter"].asInt(), in["width_shooter"].asInt()
                     , in["height_target"].asInt(), in["width_target"].asInt());
             return attack_unit;
+        }
+        
+        int AttackUnit::damage_formula(int attack, int health_shooter, int defense, int health_target)
+        {
+            std::random_device seed;
+            std::mt19937 gen(seed());
+            std::uniform_int_distribution<int> dis(0, 9);
+            int damage = (attack + dis(gen)) * (health_shooter / 10) * ((100 - (defense * health_target)) / 100);
+            if(damage > 120) damage = 120;
+            damage /= 10;
+            return damage;
         }
 
 };
