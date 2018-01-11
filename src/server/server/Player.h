@@ -14,10 +14,10 @@ namespace server {
   public:
     std::string name;
     status::TEAM teamcolor;
-    bool free     = true;
+    bool free_player     = true;
     // Operations
   public:
-    Player (std::string name, status::TEAM teamcolor);
+    Player (std::string name, status::TEAM teamcolor, bool free_player);
     // Setters and Getters
   };
 

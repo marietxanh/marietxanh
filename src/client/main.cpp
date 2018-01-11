@@ -5,6 +5,7 @@
 #include "../shared/engine.h"
 #include "../shared/ai.h"
 #include "test/test.h"
+#include "SFML/Network.hpp"
 #include "../shared/record.h"
 // Les lignes suivantes ne servent qu'à vérifier que la compilation avec SFML fonctionne
 #include <SFML/Graphics.hpp>
@@ -48,6 +49,46 @@ int main(int argc,char* argv[])
         }
         else if(std::string(argv[1]) == "play"){
             TestThread().testThread(true);
+        }
+        
+        else if(std::string(argv[1]) == "network"){
+            sf::Http http ("http://localhost",8080);
+            sf::Http::Request req0 ("version");
+            sf::Http::Response rep = http.sendRequest(req0);
+            std::cout<<rep.getBody()<<std::endl;
+            std::srand(std::time(NULL));
+            int val = rand();
+            Json::Value obj;
+            obj["name"] = std::to_string(val);
+            obj["teamcolor"] = status::ORANGE;
+            obj["free_player"] = true;
+            sf::Http::Request req1 ("player", sf::Http::Request::Method::Put , obj.toStyledString());
+            req1.setField("Content-Type","application/x-www-form-urlencoded");
+            rep = http.sendRequest(req1);
+            std::cout<< rep.getBody() << std::endl;
+   
+            int id = 0;
+            Json::Reader jsonReader;
+            Json::Value jsonIn;
+            if (jsonReader.parse(rep.getBody(),jsonIn))
+            id = jsonIn["id"].asInt();
+
+            sf::Http::Request req2 ("player/" + std::to_string(id));
+            rep = http.sendRequest(req2);
+            std::cout << rep.getBody()<<std::endl;
+
+            sf::Http::Request req3 ("player/-1");
+            rep = http.sendRequest(req3);
+            std::cout<<"number of players : " << rep.getBody() << std::endl;
+
+            getc(stdin);
+
+            sf::Http::Request req4 ("player/"+ std::to_string(id), sf::Http::Request::Method::Delete);
+            rep = http.sendRequest(req4);
+
+            sf::Http::Request req5 ("player/-1");
+            rep = http.sendRequest(req5);
+            std::cout<< "number of players : " << rep.getBody() << std::endl;
         }
     }
     else

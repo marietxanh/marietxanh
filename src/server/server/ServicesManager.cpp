@@ -30,8 +30,7 @@ namespace server {
     HttpStatus ServicesManager::queryService (string& out, const string& in, const string& url, const string& method) { 
         AbstractService* service = findService(url);
         if (!service)
-            throw ServiceException(HttpStatus::NOT_FOUND,"Service "+url+" non trouvé");
-        // Recherche un éventuel id (ex: /mon/service/<id>)
+            throw ServiceException(HttpStatus::NOT_FOUND, "Service " + url + " non trouvé");
         const string& pattern(service->getPattern());
         int id = 0;
         if (url.size() > pattern.size()) {
@@ -45,15 +44,15 @@ namespace server {
                 size_t pos = 0;
                 id = stoi(end,&pos);
                 if (pos != end.size())
-                    throw ServiceException(HttpStatus::BAD_REQUEST,"Url malformée: '"+end+"' n'est pas un nombre");
+                    throw ServiceException(HttpStatus::BAD_REQUEST,"Url malformée: '" + end + "' n'est pas un nombre");
             }
             catch(...) {
-                throw ServiceException(HttpStatus::BAD_REQUEST,"Url malformée: '"+end+"' n'est pas un nombre");
+                throw ServiceException(HttpStatus::BAD_REQUEST,"Url malformée: '" + end + "' n'est pas un nombre");
             }
         }
         // Traite les différentes méthodes
         if (method == "GET") {
-            cerr << "Requête GET " << pattern << " avec id=" << id << endl;
+            cerr << "Requête GET " << pattern << " avec id = " << id << endl;
             Json::Value jsonOut;
             HttpStatus status = service->get(jsonOut,id);
             out = jsonOut.toStyledString();
@@ -64,17 +63,17 @@ namespace server {
             Json::Reader jsonReader;
             Json::Value jsonIn;
             if (!jsonReader.parse(in,jsonIn))
-                throw ServiceException(HttpStatus::BAD_REQUEST,"Données invalides: "+jsonReader.getFormattedErrorMessages());
+                throw ServiceException(HttpStatus::BAD_REQUEST, "Données invalides : " + jsonReader.getFormattedErrorMessages());
             return service->post(jsonIn,id);
         }
         else if (method == "PUT") {
-            cerr << "Requête PUT " << pattern << " avec contenu: " << in << endl;
+            cerr << "Requête PUT " << pattern << " avec contenu : " << in << endl;
             Json::Reader jsonReader;
             Json::Value jsonIn;
-            if (!jsonReader.parse(in,jsonIn))
-                throw ServiceException(HttpStatus::BAD_REQUEST,"Données invalides: "+jsonReader.getFormattedErrorMessages());
+            if (!jsonReader.parse(in, jsonIn))
+                throw ServiceException(HttpStatus::BAD_REQUEST, "Données invalides : " + jsonReader.getFormattedErrorMessages());
             Json::Value jsonOut;
-            HttpStatus status = service->put(jsonOut,jsonIn);
+            HttpStatus status = service->put(jsonOut, jsonIn);
             out = jsonOut.toStyledString();
             return status;
         }
@@ -82,7 +81,7 @@ namespace server {
             cerr << "Requête DELETE" << endl;
             return service->remove(id);
         }
-        throw ServiceException(HttpStatus::BAD_REQUEST,"Méthode "+method+" invalide");
+        throw ServiceException(HttpStatus::BAD_REQUEST, "Méthode " + method + " invalide");
     }
 
 };

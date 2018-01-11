@@ -15,12 +15,20 @@ namespace server {
     }
 
     HttpStatus PlayerService::get (Json::Value& out, int id) const {
+         if (game.players.size() > id && id >= 0)
+    {
         const Player* player = &game.players[id];
-        if (!player)
-            throw ServiceException(HttpStatus::NOT_FOUND,"Invalid player id");
         out["name"] = player->name;
         out["teamcolor"] = player->teamcolor;
         return HttpStatus::OK;
+    }
+    else if (id < 0)
+    {
+        out["number_players"] = game.players.size();
+        return HttpStatus::OK;
+    }
+    else
+        throw ServiceException(HttpStatus::NOT_FOUND,"Invalid player id");
     }
 
     HttpStatus PlayerService::post (const Json::Value& in, int id) {
@@ -38,11 +46,11 @@ namespace server {
         return HttpStatus::NO_CONTENT;
     }
 
-    HttpStatus PlayerService::put (Json::Value& out,const Json::Value& in) {
-        string name = in["name"].asString();
+    HttpStatus PlayerService::put (Json::Value& out, const Json::Value& in) {
+        std::string name = in["name"].asString();
         status::TEAM teamcolor = (status::TEAM)(in["teamcolor"].asInt());
-        game.players.push_back(Player(name,teamcolor));
-        out["id"] = game.players.size();
+        game.players.push_back(Player(name, teamcolor, true));
+        out["id"] = game.players.size() - 1;
         return HttpStatus::CREATED;
     }
 

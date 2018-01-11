@@ -133,7 +133,6 @@ int main(int argc, char *const *argv)
             servicesManager.registerService(make_unique<VersionService>());
 
             Game game;
-            game.players.push_back(Player("Paul",(status::TEAM)(1)));
             servicesManager.registerService(make_unique<PlayerService>(std::ref(game)));
 
             struct MHD_Daemon *d;
@@ -145,14 +144,14 @@ int main(int argc, char *const *argv)
                     MHD_USE_SELECT_INTERNALLY | MHD_USE_DEBUG,
                     // MHD_USE_THREAD_PER_CONNECTION | MHD_USE_DEBUG | MHD_USE_POLL,
                     // MHD_USE_THREAD_PER_CONNECTION | MHD_USE_DEBUG,
-                    atoi(argv[1]),
+                    8080,
                     NULL, NULL, 
                     &main_handler, (void*) &servicesManager,
                     MHD_OPTION_NOTIFY_COMPLETED, request_completed, NULL,
                     MHD_OPTION_END);
             if (d == NULL)
                 return 1;
-            cout << "Pressez <entrée> pour arrêter le serveur" << endl;
+            cout << "Press <Enter> to stop the server" << endl;
             (void) getc(stdin);
             MHD_stop_daemon(d);
         }
