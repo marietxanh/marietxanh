@@ -275,7 +275,7 @@ Pour calculer ces cartes, nous utilisons l’algorithme de Dijkstra.
 
 \paragraphe{}Pour que notre AI prenne les meilleures décisions, nous suivons des méthodes basées sur les arbres de recherche, avec une propriété importante. En effet, nous n’envisageons pas de dupliquer l’état du jeu à chaque sommet du graphe d’état. Nous n’allons considérer qu’un seul état que nous modiﬁons suivant la direction choisie par la recherche. Si le sommet suivant est à une époque suivante, i.e. on descend dans l’arbre de recherche, on applique les commandes associées, et notre état gagne une époque. Si le sommet suivant est à une époque précédente, i.e. on remonte dans l’arbre de recherche, on annule les commandes associées, et notre état retrouve sa forme passée. Ces pour cela que plus tôt nous créons les classes Action.
 
-    \newpage
+
 \section{Conception logiciel}
 \paragraphe{}Le diagramme des classes pour l’intelligence artificielle est présenté en Figure 5.1.
 \paragraphe{}\textbf{Classes AI:}Les classes filles de la classe AI implante différentes stratégies d’IA :
@@ -301,7 +301,7 @@ sont crées en début de tour :
 \begin{landscape}
 \begin{figure}[h]
     \begin{center}
-    \includegraphics[scale=0.45]{ai.png}
+    \includegraphics[scale=0.4]{ai.png}
     \end{center}
     \caption{Diagramme de l'intelligence artificielle bas-niveau}
 \end{figure}
@@ -318,23 +318,91 @@ sont crées en début de tour :
 
 \paragraphe{}\textbf{Notifications:} (pas encore mis en place)
 
-\section{Conception logiciel}
-\paragraph{}Le diagramme de la classe Client est présenté en Figure 6.1.
+\subsection{Répartition sur différentes machines : rassemblement des joueurs}
+\paragraphe{}Pour jouer en réseau nous devons créer une liste de client pour le serveur. Nous créons une API Web REST :
 \newline
-\paragraphe{}\textbf{Client:} Cette classe  contient toutes les informations pour faire fonctionner le jeu : Moteur de jeu, intelligence artiﬁcielle, et rendu. Elle est un observateur du moteur de jeu : 
 \begin{itemize}
-    \item Lorsque le moteur est sur le point d’exécuter ses commandes (méthode engineUpdating()), il appelle l'IA pour ajouter les commandes.
-    \item Lorsque le moteur a terminé d’appliquer les commandes (méthode engineUpdated()), il vide le cache des événements émis vers le moteur de rendu.
+    \item[$\bullet$] Requête GET/player/<id> : Pas de données en entrée
+    \begin{itemize}
+        \item Si <id> joueur existe : Statut 200 OK
+        \newline Données de sortie : 
+        \begin{verbatim} 
+        type : "object",
+        properties : {
+            "name" : {type : string},
+            "teamcolor" : {type : status::TEAM},
+        },
+        required : ["name"] \end{verbatim} 
+        \item Si <id> joueur n'existe pas : Statut 404 NOT\_FOUND
+        \newline Pas de données de sortie
+    \end{itemize}  
+\newpage
+
+    \item[$\bullet$] Requête PUT/player :
+    \newline Données en entrée :
+    \begin{verbatim} 
+    type : "object",
+        properties : {
+            "name" : {type : string},
+            "teamcolor" : {type : status::TEAM},
+        },
+        required : ["name"] \end{verbatim}
+    \begin{itemize}
+        \item S'il reste une place libre : Statut 201 CREATED
+        \newline Données de sortie : 
+        \begin{verbatim} 
+        type : "object",
+        properties : {
+            "id" : {type : number, minimum : 0, maximum : 2},
+        },
+        required : ["id"] \end{verbatim}
+        \item S'il n'y a plus de place : Statut 503 OUT\_OF\_RESOURCES
+        \newline Pas de données de sortie
+    \end{itemize}
+    
+    \bigskip
+    \item[$\bullet$] Requête POST/player/<id> :
+    \newline Données en entrée :
+    \begin{verbatim} 
+    type : "object",
+        properties : {
+            "name" : {type : string},
+            "teamcolor" : {type : status::TEAM},
+        },
+        required : ["name"] \end{verbatim}
+    \begin{itemize}
+        \item Si <id> joueur existe : Statut 204 NO\_CONTENT
+        \newline Pas de données de sortie
+        \item Si <id> joueur n'existe pas : Statut 404 NOT\_FOUND
+        \newline Pas de données de sortie
+    \end{itemize}
+    
+    \bigskip
+    \item[$\bullet$] Requête DELETE/player/<id> : Pas de données en entrée
+    \begin{itemize}
+        \item Si <id> joueur existe : Statut 204 NO\_CONTENT
+        \newline Pas de données de sortie
+        \item Si <id> joueur n'existe pas : Statut 404 NOT\_FOUND
+        \newline Pas de données de sortie
+    \end{itemize}
 \end{itemize}
+
+\section{Conception logiciel}
+\paragraph{}Le diagramme de la classe Serveur est présenté en Figure 6.1.
+\newline
+\paragraphe{}
+\textbf{Game} Contient la liste des joueurs connectés ou non.\newline
+\textbf{PlayerService} Répond aux requêtes envoyées par les clients connectés : ajout, modification, consultation et suppression de profil.\newline
+\textbf{VersionService} Renvoie la version actuelle de l'API.
 
 \newpage
 \thispagestyle{empty}
 \begin{landscape}
 \begin{figure}[h]
     \begin{center}
-    \includegraphics[scale=0.80]{client.png}
+    \includegraphics[scale=0.60]{server.png}
     \end{center}
-    \caption{Diagramme du client}
+    \caption{Diagramme du serveur}
 \end{figure}
 \end{landscape}
 
