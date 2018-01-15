@@ -3,27 +3,42 @@
 #define SERVER__GAME__H
 
 #include <vector>
+#include <thread>
+#include <memory>
 
 namespace server {
   class Player;
+};
+namespace engine {
+  class Engine;
 }
 
 #include "Player.h"
+#include "engine/Engine.h"
+#include "GameStatus.h"
 
 namespace server {
 
   /// class Game - 
   class Game {
     // Associations
+    server::GameStatus status;
     // Attributes
   public:
     /// 											
     std::vector<Player> players;
+    engine::Engine engine;
+    std::unique_ptr<std::thread> engineThread;
     // Operations
   public:
     Game ();
+    ~Game ();
+    engine::Engine& getEngine ();
     Player& player (int i);
+    void run ();
     // Setters and Getters
+    GameStatus getStatus() const;
+    void setStatus(GameStatus status);
   };
 
 };

@@ -1,6 +1,8 @@
 #include "server/ServicesManager.hpp"
 #include "server/VersionService.hpp"
 #include "server/PlayerService.hpp"
+#include "server/CommandsService.h"
+#include "server/GameService.h"
 #include "./record.h"
 
 #include <iostream>
