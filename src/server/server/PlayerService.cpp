@@ -47,11 +47,14 @@ namespace server {
     }
 
     HttpStatus PlayerService::put (Json::Value& out, const Json::Value& in) {
-        std::string name = in["name"].asString();
-        status::TEAM teamcolor = (status::TEAM)(in["teamcolor"].asInt());
-        game.players.push_back(Player(name, teamcolor, true));
-        out["id"] = game.players.size() - 1;
-        return HttpStatus::CREATED;
+        if (game.players.size()< 2) {
+            std::string name = in["name"].asString();
+            status::TEAM teamcolor = (status::TEAM)(in["teamcolor"].asInt());
+            game.players.push_back(Player(name, teamcolor, true));
+            out["id"] = game.players.size() - 1;
+            return HttpStatus::CREATED;
+        }
+        else return HttpStatus::OUT_OF_RESOURCES;
     }
 
     HttpStatus PlayerService::remove (int id) {

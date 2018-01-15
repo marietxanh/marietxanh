@@ -13,11 +13,13 @@ namespace server {
 
 #include "HttpStatus.h"
 #include "AbstractService.h"
+#include "engine/Engine.h"
 
 namespace server {
 
   /// class CommandsService - 
   class CommandsService : public server::AbstractService {
+    // Associations
     // Attributes
   private:
     /// 					

@@ -6,9 +6,9 @@ namespace server {
         this->game = game;
     }
     
-    GameStatus GameService::get (Json::Value& out, int id) const {
-        if(game) return GameStatus::RUNNING;
-        else return GameStatus::CREATING;
+    HttpStatus GameService::get (Json::Value& out, int id) const {
+        if(game) return HttpStatus::CREATED;
+        else return HttpStatus::NOT_IMPLEMENTED;
     }
 };
     

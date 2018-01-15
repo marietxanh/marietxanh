@@ -9,7 +9,7 @@ namespace server {
   class AbstractService;
 }
 
-#include "GameStatus.h"
+#include "HttpStatus.h"
 #include "AbstractService.h"
 #include "Game.h"
 
@@ -24,7 +24,7 @@ namespace server {
     // Operations
   public:
     GameService (Game& game);
-    GameStatus get (Json::Value& out, int id) const;
+    HttpStatus get (Json::Value& out, int id) const;
     // Setters and Getters
   };
 
