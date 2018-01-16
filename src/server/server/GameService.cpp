@@ -2,13 +2,13 @@
 
 namespace server {
     
-    GameService::GameService (Game& game) {
-        this->game = game;
+    GameService::GameService (Game& game) : AbstractService("/game"),
+        game(game) {
     }
     
     HttpStatus GameService::get (Json::Value& out, int id) const {
-        if(game) return HttpStatus::CREATED;
-        else return HttpStatus::NOT_IMPLEMENTED;
+        if(game.getStatus() == CREATING) return HttpStatus::OK;
+        else return HttpStatus::OUT_OF_RESOURCES;
     }
 };
     

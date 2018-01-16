@@ -2,19 +2,19 @@
 #ifndef SERVER__GAME__H
 #define SERVER__GAME__H
 
-#include <vector>
 #include <thread>
 #include <memory>
+#include <vector>
 
-namespace server {
-  class Player;
-};
 namespace engine {
   class Engine;
+};
+namespace server {
+  class Player;
 }
 
-#include "Player.h"
 #include "engine/Engine.h"
+#include "Player.h"
 #include "GameStatus.h"
 
 namespace server {
@@ -24,11 +24,12 @@ namespace server {
     // Associations
     server::GameStatus status;
     // Attributes
-  public:
-    /// 											
-    std::vector<Player> players;
+  private:
     engine::Engine engine;
     std::unique_ptr<std::thread> engineThread;
+  protected:
+    /// 											
+    std::vector<Player> players;
     // Operations
   public:
     Game ();
@@ -39,6 +40,8 @@ namespace server {
     // Setters and Getters
     GameStatus getStatus() const;
     void setStatus(GameStatus status);
+    const std::vector<Player>& getPlayers() const;
+    void setPlayers(const std::vector<Player>& players);
   };
 
 };
