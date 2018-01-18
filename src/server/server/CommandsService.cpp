@@ -11,7 +11,7 @@ namespace server {
         // trouver la bonne condition, engine???
         if(engine.getEnableRecord()) {    
             //liste commandes sérialisées
-            out["commands"] = engine.getRecording(); ; 
+            out["commands"] = engine.getRecording(); 
             return HttpStatus::OK;
         }
         else return HttpStatus::NOT_FOUND;

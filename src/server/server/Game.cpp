@@ -42,6 +42,7 @@ namespace server {
 		}
 		
 		engine.update();
+                setStatus(CREATING);
 
     }
     
