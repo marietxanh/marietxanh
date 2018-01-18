@@ -7,13 +7,41 @@
 #include <mutex>
 
 #include "Game.hpp"
+#include "./record.h"
+#include "./../../shared/engine.h"
+#include "./../../shared/status.h"
+#include "./../../shared/ai.h"
 #include "./../../client/render.h"
 
 using namespace render;
+using namespace engine;
+using namespace status;
+using namespace ai;
 
 namespace server {
     
     Game::Game() {
+    	
+    	string file_name = "res/test_ai.txt";
+		engine.addCommand(new LoadMap(file_name));
+		engine.update();
+	    int height = engine.getState()->getHeight();
+    	int width = engine.getState()->getWidth();
+		for(int i(0); i <  height; i++)
+		{
+		    for(int j(0); j < width; j++)
+		    {
+	            if(engine.getState()->getBuildings()->getElement(i, j) != NULL)
+	            {
+                    if(((Building*)(engine.getState()->getBuildings()->getElement(i, j)))->getType_building() == FACTORY)
+                    {
+                            engine.addCommand(new CreateUnit(INFANTRY, i, j));
+                    }
+	            }
+            }
+		}
+		
+		engine.update();
 
     }
     
@@ -31,44 +59,7 @@ namespace server {
     
     void Game::run () {
         
-        string file_name = "res/test_ai.txt";
-        engine.setEnableReplay(true);
         
-        if (!engine.getEnableReplay())
-        {
-            engine.addCommand(new engine::LoadMap(file_name));
-            engine.update();
-        }
-        engineThread(fonction_run, this, engine);
-
-        Display display(engine.getState());
-        std::mutex mtx;
-        std::cout << "Window opens" << std::endl;
-        while(display.getWindow().isOpen())
-        {
-            setStatus(RUNNING);
-            mtx.lock();
-            sf::Event event;
-
-            while(display.checkEvent(event))
-            {
-                if(event.type == sf::Event::Closed)
-                {
-                    display.closeWindow();
-                    std::cout << "Window close request" << std::endl;
-                }
-            }
-
-            //display.getUnits()->refresh_array();
-            //display.refreshWindow();
-            mtx.unlock();
-
-            sleep(1);
-        }
-
-        //delete engine;
-        engineThread->join();
-        std::cout << "Window closed" << std::endl;
     }
     
     GameStatus Game::getStatus() const {

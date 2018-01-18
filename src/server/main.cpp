@@ -10,6 +10,16 @@
 #include <microhttpd.h>
 #include <string.h>
 
+#include "./../shared/engine.h"
+#include "./../shared/status.h"
+#include "./../shared/ai.h"
+#include "./../client/render.h"
+
+using namespace render;
+using namespace engine;
+using namespace status;
+using namespace ai;
+
 using namespace std;
 using namespace server;
 
@@ -129,13 +139,33 @@ int main(int argc, char *const *argv)
     
     if(std::string(argv[1]) == "listen")
         {
+        /*
+        	string file_name = "res/test_ai.txt";
+    		Engine* moteur = new Engine();
+    		moteur->addCommand(new LoadMapFile(file_name));
+    		for(int i(0); i <  height; i++)
+			{
+				    for(int j(0); j < width; j++)
+				    {
+				            if(moteur->getState()->getBuildings()->getElement(i, j) != NULL)
+				            {
+				                    if(((Building*)(moteur->getState()->getBuildings()->getElement(i, j)))->getType_building() == FACTORY)
+				                    {
+				                            moteur->addCommand(new CreateUnit(INFANTRY, i, j));
+				                    }
+				            }
+				    }
+			}
+    		moteur->update();
                
+               */
         try {
             ServicesManager servicesManager;
             servicesManager.registerService(make_unique<VersionService>());
 
             Game game;
             servicesManager.registerService(make_unique<PlayerService>(std::ref(game)));
+            servicesManager.registerService(make_unique<CommandsService>(std::ref(game.getEngine())));
 
             struct MHD_Daemon *d;
             if (argc != 2) {

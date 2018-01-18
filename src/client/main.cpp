@@ -18,6 +18,9 @@ void testSFML() {
 
 using namespace std;
 using namespace status;
+using namespace engine;
+using namespace ai;
+using namespace render;
 
 int main(int argc,char* argv[]) 
 {
@@ -80,17 +83,51 @@ int main(int argc,char* argv[])
             sf::Http::Request req3 ("player/-1");
             rep = http.sendRequest(req3);
             std::cout<<"number of players : " << rep.getBody() << std::endl;
+            
+            while (1)
+			{
+				std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+				rep = http.sendRequest(req3);
+				if (jsonReader.parse(rep.getBody(),jsonIn))
+					if(jsonIn.size() == 2)
+						break;
+			}
+			
+			string file_name = "res/test_ai.txt";
+			Engine* moteur = new Engine();
+			
+			moteur->addCommand(new LoadMap(file_name));
+			moteur->update();
+			
+			string move = "move";
+			string attack = "attack";
 
-            getc(stdin);
-
-            sf::Http::Request req4 ("player/"+ std::to_string(id), sf::Http::Request::Method::Delete);
-            rep = http.sendRequest(req4);
-
-            sf::Http::Request req5 ("player/-1");
-            rep = http.sendRequest(req5);
-            std::cout<< "number of players : " << rep.getBody() << std::endl;
-        }
+			HeuristicAI art_int;
+			art_int.addCommand(move);
+			art_int.addCommand(attack);
+		
+			Display display(moteur->getState());
+		
+			std::cout << "Window opens" << std::endl;
+			while(display.getWindow().isOpen())
+			{
+				sf::Event event;
+				
+				while(display.checkEvent(event))
+				{
+				    if(event.type == sf::Event::Closed)
+				    {
+				        display.closeWindow();
+				        cout << "Window close request" << endl;
+				    }
+				}
+				
+				display.getUnits()->refresh_array();
+				display.refreshWindow();
+			}
+			
     }
+}
     else
     {
         cout << "Commandes disponibles :\n" <<
